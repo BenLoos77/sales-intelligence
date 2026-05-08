@@ -1,0 +1,2778 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sales Intelligence — KI im Vertrieb für den Mittelstand</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --paper-soft: #fafafa;
+  --ink: #0a0a0a;
+  --ink-soft: #2a2a2a;
+  --ink-soft2: #585858;
+  --muted: #8a8a8a;
+  --hair: #e5e5e5;
+  --hair-soft: #f0f0f0;
+  --accent: #0096C7;
+  --issue: #5DEAFF;
+  --issue-deep: #00b3d4;
+  /* Serif as primary — brand eins style; cross-platform stack */
+  --serif: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
+  --serif-display: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
+  --sans: -apple-system, "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --maxw: 1320px;
+  --gutter: clamp(20px, 4vw, 56px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+
+/* ============================================================
+   MAIN HEADER — weiß, Wordmark + Nav (Strich oben)
+   ============================================================ */
+.header-rule {
+  border-top: 1px solid var(--ink);
+  max-width: var(--maxw);
+  margin: 18px auto 0;
+}
+.main-header {
+  background: var(--paper);
+  padding: 26px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--ink);
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.wordmark {
+  font-family: var(--serif-display);
+  font-size: 38px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  cursor: pointer;
+}
+.wordmark .em { font-style: italic; }
+.wordmark .subtitle {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft2);
+  margin-top: 6px;
+}
+.main-nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.main-nav a {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: color 0.15s;
+  position: relative;
+  padding: 4px 0;
+}
+.main-nav a:hover { color: var(--accent); }
+.main-nav a.active { color: var(--accent); }
+.main-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 0; right: 0;
+  height: 2px; background: var(--accent);
+}
+
+/* ============================================================
+   PAGE CONTAINER
+   ============================================================ */
+.shell {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.page { display: none; padding: 80px 0 120px; }
+.page.active { display: block; animation: fadeUp 0.4s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   BIG SERIF HERO — wie "brand eins. Für alle, die..."
+   ============================================================ */
+.brand-statement {
+  padding: 64px 0 80px;
+}
+.brand-statement h1 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.4vw, 78px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  max-width: 1100px;
+}
+.brand-statement h1 em { font-style: italic; }
+
+/* ============================================================
+   FEATURED ISSUE — Cover links + Text rechts
+   ============================================================ */
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 120px;
+  align-items: center;
+}
+.cover-card {
+  background: var(--issue);
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+}
+.cover-card .cover-inner {
+  position: absolute;
+  inset: 28px;
+  background: var(--issue-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  color: var(--paper);
+  transform: rotate(-2deg) translate(8px, 14px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.12);
+}
+.cover-card .cover-top {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--paper);
+  padding-bottom: 12px;
+}
+.cover-card .brand-mark {
+  font-family: var(--serif-display);
+  font-size: clamp(36px, 4.2vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin-top: 24px;
+}
+.cover-card .brand-mark em { font-style: italic; }
+.cover-card .issue-title {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: auto 0;
+  text-align: center;
+  position: relative;
+}
+.cover-card .issue-title em { font-style: italic; }
+.cover-card svg.curved-title { width: 100%; height: auto; max-width: 360px; margin: 0 auto; }
+.cover-card .cover-bottom {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.6);
+  padding-top: 12px;
+}
+
+.featured-text .kicker {
+  font-family: var(--sans);
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+.featured-text h2 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(40px, 4.4vw, 62px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 28px;
+}
+.featured-text h2 em { font-style: italic; }
+.featured-text .lead {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 32px;
+  max-width: 56ch;
+}
+.featured-text .cta {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 28px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.featured-text .cta:hover { background: var(--accent); }
+
+/* ============================================================
+   ARTICLE GRID — 4 Spalten wie brand eins
+   ============================================================ */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px 32px;
+  margin-bottom: 120px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--hair);
+}
+.art-card { display: flex; flex-direction: column; cursor: pointer; }
+.art-card .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+.art-card .visual {
+  aspect-ratio: 3 / 4;
+  margin-bottom: 22px;
+  overflow: hidden;
+  position: relative;
+}
+.art-card h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 16px;
+  transition: color 0.15s;
+}
+.art-card h3 em { font-style: italic; }
+.art-card p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.art-card:hover h3 { color: var(--accent); }
+
+/* Visual color treatments per card */
+.visual.cyan { background: var(--issue); }
+.visual.cyan-deep { background: var(--issue-deep); }
+.visual.dark { background: var(--ink); }
+.visual.cream { background: #f4ede0; }
+.visual.gray { background: #d8dde0; }
+
+/* ============================================================
+   IN DIESER AUSGABE — Editorial TOC
+   ============================================================ */
+.toc-section {
+  margin-bottom: 120px;
+}
+.section-band {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 32px;
+  align-items: end;
+}
+.section-band .band-eyebrow {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.section-band h2 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+}
+.section-band h2 em { font-style: italic; }
+.section-band .band-meta {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-align: right;
+  align-self: end;
+}
+
+.toc-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 64px;
+}
+.toc-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 22px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--hair);
+  align-items: baseline;
+  cursor: pointer;
+  transition: padding 0.2s;
+}
+.toc-row:hover { padding-left: 8px; }
+.toc-row:hover h4 { color: var(--accent); }
+.toc-row .num {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--accent);
+  line-height: 1;
+}
+.toc-row h4 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 4px;
+  transition: color 0.15s;
+}
+.toc-row p {
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft2);
+  margin: 0;
+}
+.toc-row .pg {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   NEWSLETTER STRIP — kostenfrei, kompakt
+   ============================================================ */
+.nl-strip {
+  background: var(--issue);
+  padding: 56px var(--gutter);
+  margin: 0 calc(var(--gutter) * -1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.nl-strip .body { max-width: 520px; }
+.nl-strip .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.nl-strip h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+.nl-strip h3 em { font-style: italic; }
+.nl-strip p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.nl-strip .form-mini {
+  display: flex;
+  gap: 12px;
+  background: var(--paper);
+  padding: 10px 10px 10px 18px;
+  align-items: center;
+}
+.nl-strip .form-mini input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--serif);
+  font-size: 17px;
+  background: transparent;
+  color: var(--ink);
+  padding: 8px 0;
+}
+.nl-strip .form-mini input::placeholder { color: var(--muted); }
+.nl-strip .form-mini button {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.nl-strip .form-mini button:hover { background: var(--accent); }
+
+/* ============================================================
+   ARTICLE PAGE (Schwerpunkt, Magazin Editorial)
+   ============================================================ */
+.article-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 56px;
+}
+.article-hero .meta-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.article-hero h1 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  max-width: 1080px;
+}
+.article-hero h1 em { font-style: italic; }
+.article-hero .standfirst {
+  font-family: var(--serif);
+  font-size: 23px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 36px;
+  max-width: 760px;
+}
+.article-hero .byline {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hair);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.article-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.article-body { max-width: 720px; margin: 0 auto; }
+.article-body p {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+}
+.article-body p:first-of-type::first-letter {
+  font-family: var(--serif-display);
+  font-size: 80px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.85;
+  margin-right: 14px;
+  margin-top: 6px;
+  color: var(--ink);
+}
+.article-body h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(28px, 2.8vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 56px 0 22px;
+}
+.article-body h3 em { font-style: italic; }
+
+.pullquote {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 32px 0;
+  margin: 56px 0;
+}
+.pullquote .source {
+  display: block;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.inline-fig {
+  margin: 56px calc(-1 * var(--gutter));
+  background: var(--paper-soft);
+  padding: 40px var(--gutter);
+}
+.inline-fig .cap {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hair);
+}
+
+.byline-end {
+  border-top: 1px solid var(--ink);
+  margin-top: 64px;
+  padding-top: 22px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ============================================================
+   CASES PAGE
+   ============================================================ */
+.cases-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 100px;
+  align-items: center;
+}
+.cases-feature .vis {
+  aspect-ratio: 4 / 5;
+  background: var(--issue);
+  position: relative;
+  overflow: hidden;
+}
+.cases-feature .body .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+.cases-feature .body h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(40px, 4.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+.cases-feature .body h3 em { font-style: italic; }
+.cases-feature .body .lead {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.kpi-cell {
+  padding: 22px 18px;
+  border-right: 1px solid var(--hair);
+}
+.kpi-cell:last-child { border-right: none; }
+.kpi-cell:first-child { padding-left: 0; }
+.kpi-cell .v {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: clamp(36px, 3.6vw, 48px);
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.025em;
+}
+.kpi-cell .l {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.cases-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64px 48px;
+  border-top: 1px solid var(--hair);
+  padding-top: 80px;
+}
+.case-tile { display: flex; flex-direction: column; }
+.case-tile .vis {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 22px;
+  overflow: hidden;
+  position: relative;
+}
+.case-tile .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.case-tile h4 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.case-tile h4 em { font-style: italic; }
+.case-tile p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  flex: 1;
+}
+.case-tile .kpi-line {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--ink-soft2);
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--hair);
+  padding-top: 14px;
+}
+.case-tile .kpi-line .num {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ============================================================
+   TOOLS PAGE
+   ============================================================ */
+.tools-prelude {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.tools-prelude h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 22px;
+}
+.tools-prelude h3 em { font-style: italic; }
+.tools-prelude p {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.tools-chart-wrap {
+  background: var(--paper-soft);
+  padding: 32px;
+  height: 380px;
+  border: 1px solid var(--hair);
+}
+.tools-chart-wrap canvas { max-height: 316px; }
+
+.tools-list { border-top: 2px solid var(--ink); }
+.tool-row {
+  display: grid;
+  grid-template-columns: 60px 2fr 1.4fr 90px;
+  gap: 32px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--hair);
+  align-items: start;
+  transition: padding 0.2s;
+}
+.tool-row:hover { padding-left: 8px; }
+.tool-row:last-child { border-bottom: 2px solid var(--ink); }
+.tool-row .num {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.tool-row .main h4 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.tool-row .main h4 em { font-style: italic; }
+.tool-row .main .cat {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft2);
+  margin-bottom: 14px;
+}
+.tool-row .main p {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.tool-row .pros {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.tool-row .pros .label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-style: italic;
+  color: var(--ink-soft2);
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--serif);
+}
+.tool-row .pros .row { margin-bottom: 12px; }
+.tool-row .pros .row strong { font-style: italic; color: var(--ink); font-weight: 400; }
+.tool-row .score {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 3vw, 46px);
+  text-align: right;
+  color: var(--accent);
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.tool-row .score small {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   DATEN PAGE
+   ============================================================ */
+.daten-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 80px;
+}
+.chart-card {
+  padding: 28px 0;
+  border-top: 1px solid var(--ink);
+}
+.chart-card .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft2);
+  margin-bottom: 12px;
+}
+.chart-card h4 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+.chart-card h4 em { font-style: italic; }
+.chart-card .sub {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--ink-soft2);
+  margin: 0 0 22px;
+  line-height: 1.5;
+}
+.chart-card .canvas-wrap { height: 300px; }
+.chart-card .source {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hair);
+}
+
+.numbers-band {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 56px 0;
+  margin: 64px 0;
+}
+.numbers-band .stat {
+  padding: 0 24px;
+  border-right: 1px solid var(--hair);
+}
+.numbers-band .stat:first-child { padding-left: 0; }
+.numbers-band .stat:last-child { border-right: none; }
+.numbers-band .v {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(56px, 6.5vw, 96px);
+  line-height: 0.95;
+  color: var(--ink);
+  letter-spacing: -0.04em;
+}
+.numbers-band .v .accent { color: var(--accent); }
+.numbers-band .l {
+  font-family: var(--serif);
+  font-size: 16px;
+  margin-top: 14px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.daten-comment {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 56px;
+  border-top: 1px solid var(--ink);
+  padding-top: 64px;
+  margin-top: 80px;
+}
+.daten-comment .l {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+}
+.daten-comment h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.2vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 22px;
+  color: var(--ink);
+}
+.daten-comment h3 em { font-style: italic; }
+.daten-comment p {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+}
+
+/* ============================================================
+   MAGAZIN PAGE — Editorial + Side
+   ============================================================ */
+.magazin-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 80px;
+}
+.editorial-feature .tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft2);
+  margin-bottom: 14px;
+}
+.editorial-feature h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(40px, 4.4vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+.editorial-feature h3 em { font-style: italic; }
+.editorial-feature .standfirst {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  max-width: 60ch;
+}
+.editorial-feature .body p {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 0 22px;
+}
+.editorial-feature .body .pull {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  border-left: 2px solid var(--accent);
+  padding-left: 22px;
+  margin: 32px 0;
+}
+
+.magazin-side { display: flex; flex-direction: column; gap: 36px; }
+.side-card { border-top: 1px solid var(--hair); padding-top: 18px; }
+.side-card .tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft2);
+  margin-bottom: 10px;
+}
+.side-card h4 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.side-card h4 em { font-style: italic; }
+.side-card p {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.interview-section {
+  margin-top: 80px;
+  padding-top: 48px;
+  border-top: 1px solid var(--ink);
+}
+.interview-section .pre {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft2);
+  margin-bottom: 20px;
+}
+.interview-section h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 32px;
+  max-width: 920px;
+}
+.interview-section h3 em { font-style: italic; }
+.qa { display: grid; grid-template-columns: 60px 1fr; gap: 22px; margin-bottom: 26px; max-width: 860px; }
+.qa .q { font-family: var(--serif-display); font-style: italic; color: var(--accent); font-size: 19px; line-height: 1.4; }
+.qa .qtext { font-family: var(--serif-display); font-size: 21px; line-height: 1.45; color: var(--ink); letter-spacing: -0.015em; }
+.qa .a { font-family: var(--serif-display); color: var(--ink-soft2); font-size: 19px; line-height: 1.4; }
+.qa .atext { font-family: var(--serif); font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
+
+/* ============================================================
+   NEWSLETTER PAGE
+   ============================================================ */
+.nl-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+.nl-hero .body { padding-top: 8px; }
+.nl-hero .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+.nl-hero h2 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(48px, 5.6vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0 0 28px;
+  color: var(--ink);
+}
+.nl-hero h2 em { font-style: italic; }
+.nl-hero .lead {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+.nl-hero ul { font-family: var(--serif); font-size: 17px; list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--hair); }
+.nl-hero ul li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--hair);
+  display: flex;
+  gap: 16px;
+  color: var(--ink-soft);
+  align-items: baseline;
+}
+.nl-hero ul li::before { content: "—"; color: var(--accent); font-weight: 600; }
+
+.signup-form {
+  background: var(--paper-soft);
+  padding: 44px;
+  border: 1px solid var(--hair);
+}
+.signup-form h4 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 16px;
+}
+.signup-form label {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft2);
+  margin-bottom: 6px;
+}
+.signup-form input[type="text"], .signup-form input[type="email"] {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--hair);
+  font-family: var(--serif);
+  font-size: 17px;
+  margin-bottom: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.15s;
+}
+.signup-form input::placeholder { color: var(--muted); font-style: italic; }
+.signup-form input:focus { outline: none; border-color: var(--accent); }
+.signup-form button {
+  width: 100%;
+  padding: 16px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.signup-form button:hover { background: var(--accent); }
+.signup-form .fine { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.55; }
+.signup-form .check { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+.signup-form .check input { margin-top: 4px; accent-color: var(--accent); }
+.signup-form .check label { font-family: var(--serif); font-size: 13px; color: var(--ink-soft); margin: 0; font-style: normal; line-height: 1.5; }
+.success-msg { display: none; text-align: center; padding: 30px 0; }
+.success-msg.show { display: block; }
+.success-msg h4 { font-family: var(--serif-display); font-style: italic; font-size: 36px; margin: 0 0 12px; color: var(--accent); border: none; padding: 0; }
+.success-msg p { font-family: var(--serif); font-size: 16px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+
+.nl-archive {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  border-top: 1px solid var(--ink);
+  padding-top: 56px;
+}
+.nl-archive .head {
+  grid-column: 1 / -1;
+  margin-bottom: 16px;
+}
+.nl-archive .head h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.4vw, 44px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1;
+  margin: 0;
+}
+.nl-archive .head h3 em { font-style: italic; }
+.archive-item { border-top: 1px solid var(--hair); padding-top: 18px; }
+.archive-item .date { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink-soft2); margin-bottom: 10px; }
+.archive-item h5 { font-family: var(--serif-display); font-weight: 400; font-size: 22px; line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 12px; color: var(--ink); }
+.archive-item p { font-family: var(--serif); font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--ink);
+  color: #cccccc;
+  padding: 80px var(--gutter) 32px;
+  margin-top: 0;
+}
+footer .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid #333;
+}
+footer .brand-foot {
+  font-family: var(--serif-display);
+  font-size: clamp(36px, 3.6vw, 52px);
+  font-weight: 400;
+  margin-bottom: 22px;
+  color: var(--paper);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+footer .brand-foot em { font-style: italic; }
+footer p { font-size: 15px; line-height: 1.6; color: #cccccc; margin: 0 0 12px; font-family: var(--serif); }
+footer .imprint {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.7;
+  color: #aaaaaa;
+  letter-spacing: 0.04em;
+  margin-top: 18px;
+}
+footer .imprint strong { color: var(--paper); font-weight: 700; }
+footer h5 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--issue);
+  margin: 0 0 18px;
+  font-weight: 400;
+}
+footer a { color: #cccccc; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
+footer a:hover { color: var(--issue); }
+footer .legal {
+  max-width: var(--maxw);
+  margin: 28px auto 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: #888;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ============================================================
+   INFO PAGES (Impressum / Kontakt / Datenschutz)
+   ============================================================ */
+.info-page { max-width: 820px; }
+.info-page h2.section-title { margin-bottom: 56px; }
+.info-page .info-block {
+  border-top: 1px solid var(--hair);
+  padding: 32px 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.info-page .info-block:last-child { border-bottom: 1px solid var(--hair); }
+.info-page .info-block .label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft2);
+}
+.info-page .info-block .value {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.info-page .info-block .value strong { font-weight: 700; color: var(--ink); }
+.info-page .info-block .value a { color: var(--accent); }
+.info-page .info-block .value a:hover { color: var(--ink); }
+.info-page .lead {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 56px;
+  max-width: 76ch;
+}
+.kontakt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+}
+.kontakt-grid .col { display: flex; flex-direction: column; }
+.kontakt-grid h3 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+.kontakt-grid h3 em { font-style: italic; }
+.kontakt-grid p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+.kontakt-grid p strong { color: var(--ink); }
+.kontakt-grid a { color: var(--accent); }
+.kontakt-grid a:hover { color: var(--ink); }
+
+@media (max-width: 720px) {
+  .info-page .info-block { grid-template-columns: 1fr; gap: 8px; }
+  .kontakt-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ============================================================
+   STICKY NEWSLETTER WIDGET — auf jeder Seite, am Rand
+   ============================================================ */
+.nl-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 22px 26px 20px;
+  max-width: 360px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+  font-family: var(--serif);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nl-widget.hidden { transform: translateY(120%); opacity: 0; pointer-events: none; }
+.nl-widget .close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  padding: 4px 8px;
+  font-family: var(--sans);
+}
+.nl-widget .close:hover { opacity: 1; }
+.nl-widget .kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--issue);
+  margin-bottom: 8px;
+}
+.nl-widget .title {
+  font-family: var(--serif-display);
+  font-size: 22px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  letter-spacing: -0.015em;
+}
+.nl-widget .title em { font-style: italic; }
+.nl-widget .row {
+  display: flex;
+  gap: 6px;
+  background: var(--paper);
+  padding: 6px 6px 6px 14px;
+  align-items: center;
+}
+.nl-widget input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--serif);
+  font-size: 15px;
+  background: transparent;
+  color: var(--ink);
+  padding: 8px 0;
+  min-width: 0;
+}
+.nl-widget input::placeholder { color: var(--muted); font-style: italic; }
+.nl-widget button {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.nl-widget button:hover { background: var(--accent); }
+.nl-widget .fine {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 12px;
+  line-height: 1.45;
+}
+.nl-widget .fine a { color: var(--issue); cursor: pointer; }
+.nl-widget.success .row, .nl-widget.success .title, .nl-widget.success .kicker { display: none; }
+.nl-widget.success .success-state { display: block; }
+.nl-widget .success-state { display: none; }
+.nl-widget .success-state .ok-title {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--issue);
+  margin-bottom: 8px;
+}
+.nl-widget .success-state .ok-text {
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .featured { grid-template-columns: 1fr; gap: 48px; }
+  .article-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
+  .toc-list { grid-template-columns: 1fr; gap: 0; }
+  .nl-strip { grid-template-columns: 1fr; gap: 32px; }
+  .cases-feature { grid-template-columns: 1fr; gap: 32px; }
+  .cases-grid-4 { grid-template-columns: 1fr; gap: 48px; }
+  .tools-prelude { grid-template-columns: 1fr; gap: 32px; }
+  .tool-row { grid-template-columns: 50px 1fr; }
+  .tool-row .pros, .tool-row .score { grid-column: 2; }
+  .tool-row .score { text-align: left; }
+  .daten-grid { grid-template-columns: 1fr; gap: 48px; }
+  .daten-comment { grid-template-columns: 1fr; gap: 16px; }
+  .magazin-layout { grid-template-columns: 1fr; gap: 48px; }
+  .nl-hero { grid-template-columns: 1fr; gap: 48px; }
+  .nl-archive { grid-template-columns: 1fr; gap: 32px; }
+  .section-band { grid-template-columns: 1fr; gap: 12px; }
+  .section-band .band-meta { text-align: left; }
+  footer .inner { grid-template-columns: 1fr 1fr; }
+  .main-header { gap: 16px; }
+  .main-nav { gap: 22px; flex-wrap: wrap; }
+  .main-nav a { font-size: 17px; }
+}
+@media (max-width: 640px) {
+  .article-grid { grid-template-columns: 1fr; }
+  .numbers-band { grid-template-columns: 1fr 1fr; }
+  .numbers-band .stat { padding: 16px; border-bottom: 1px solid var(--hair); }
+  .nl-archive { grid-template-columns: 1fr; }
+  footer .inner { grid-template-columns: 1fr; }
+  .qa { grid-template-columns: 1fr; gap: 8px; }
+  .nl-widget { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="header-rule"></div>
+
+<!-- MAIN HEADER (weiß) -->
+<header class="main-header">
+  <div class="wordmark" data-link="start">Sales <span class="em">Intelligence</span><span class="subtitle">by B_77 &amp; Quoodix</span></div>
+  <nav class="main-nav">
+    <a data-page="start" class="active">Aktuell</a>
+    <a data-page="schwerpunkt">Schwerpunkt</a>
+    <a data-page="cases">Cases</a>
+    <a data-page="tools">Tools</a>
+    <a data-page="daten">Daten</a>
+    <a data-page="magazin">Magazin</a>
+  </nav>
+</header>
+
+<div class="shell">
+
+<!-- ============================================
+     PAGE: START
+     ============================================ -->
+<section class="page active" id="page-start">
+
+  <!-- BIG SERIF HERO -->
+  <div class="brand-statement">
+    <h1>Sales Intelligence. <em>Für alle, die KI im Mittelstand vorantreiben.</em></h1>
+  </div>
+
+  <!-- FEATURED ISSUE -->
+  <section class="featured">
+    <div class="cover-card">
+      <div class="cover-inner">
+        <div class="cover-top">
+          <span>Briefing · Mai 2026</span>
+          <span>kostenfrei</span>
+        </div>
+        <div class="brand-mark">Sales <em>Intelligence</em></div>
+        <div class="issue-title">
+          <svg class="curved-title" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="circle" d="M 180,180 m -135,0 a 135,135 0 1,1 270,0 a 135,135 0 1,1 -270,0" />
+            </defs>
+            <text fill="#ffffff" font-family="Iowan Old Style, Georgia, serif" font-size="32" font-weight="400">
+              <textPath href="#circle" startOffset="2%">Der Mittelstand zieht nach — schneller als die Schlagzeilen.</textPath>
+            </text>
+            <text x="180" y="160" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="22" fill="#ffffff" text-anchor="middle">Was Vertrieb</text>
+            <text x="180" y="190" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="22" fill="#ffffff" text-anchor="middle">heute leisten muss</text>
+          </svg>
+        </div>
+        <div class="cover-bottom">sales-intel.de · KI im Vertrieb · Mittelstand-Edition</div>
+      </div>
+    </div>
+
+    <div class="featured-text">
+      <div class="kicker">Die aktuelle Sales Intelligence</div>
+      <h2>Der Mittelstand zieht nach — <em>schneller, als die Schlagzeilen vermuten.</em></h2>
+      <p class="lead">41 Prozent der deutschen Mittelständler nutzen KI heute produktiv. Bis 2028 werden es über 70 Prozent sein. Im Vertrieb holen kleinere Unternehmen sogar schneller auf als Konzerne. Eine Bestandsaufnahme aus der Praxis — und das, was Mittelstands-Entscheider jetzt anschalten müssen.</p>
+      <span class="cta" data-link="schwerpunkt">Schwerpunkt lesen</span>
+    </div>
+  </section>
+
+  <!-- ARTICLE GRID — 4 articles -->
+  <section class="article-grid">
+    <article class="art-card" data-link="cases">
+      <div class="kicker">Kostenlos lesbar</div>
+      <div class="visual cyan">
+        <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="400" height="540" fill="#5DEAFF"/>
+          <text x="34" y="80" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="100" font-weight="400" fill="#0a0a0a" letter-spacing="-3">+34%</text>
+          <text x="34" y="115" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" font-weight="500">QUALIFIZIERTE LEADS · 6 MONATE</text>
+          <line x1="34" y1="140" x2="366" y2="140" stroke="#0a0a0a" opacity="0.15"/>
+          <line x1="34" y1="140" x2="100" y2="140" stroke="#0a0a0a" stroke-width="2"/>
+          <text x="34" y="280" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#0a0a0a" letter-spacing="-1">Werkzeug-</text>
+          <text x="34" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#0a0a0a" letter-spacing="-1">maschinen-</text>
+          <text x="34" y="360" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#0a0a0a" letter-spacing="-1">bauer aus BW.</text>
+          <text x="34" y="490" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" font-weight="500" opacity="0.7">320 MITARBEITER · 12 VERTRIEBLER</text>
+          <text x="34" y="510" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" font-weight="500" opacity="0.7">HUBSPOT BREEZE + DEALCODE</text>
+        </svg>
+      </div>
+      <h3>Werkzeugmaschinen-Mittelstand: <em>Wenn der Vertrieb plötzlich</em> 34 Prozent mehr qualifizierte Leads schafft.</h3>
+      <p>Ein Familienbetrieb aus Baden-Württemberg, 320 Mitarbeiter, technischer Vertrieb mit zwölf Außendienstlern. Die Lösung: HubSpot Breeze plus Dealcode. Nach sechs Monaten ist die Pipeline messbar voller — bei gleicher Mannschaftsstärke.</p>
+    </article>
+
+    <article class="art-card" data-link="tools">
+      <div class="kicker">Kostenlos lesbar</div>
+      <div class="visual cream">
+        <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="400" height="540" fill="#f4ede0"/>
+          <g transform="translate(34,60)">
+            <text font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">10 Werkzeuge</text>
+            <text y="36" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">für den</text>
+            <text y="72" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">Mittelstand.</text>
+          </g>
+          <g transform="translate(34,200)">
+            <text font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">01 — HubSpot Breeze</text>
+            <text y="22" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">02 — Pipedrive AI</text>
+            <text y="44" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">03 — Dealcode</text>
+            <text y="66" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">04 — MS Copilot</text>
+            <text y="88" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">05 — Apollo.io</text>
+            <text y="110" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">06 — moin.ai</text>
+            <text y="132" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">07 — Gong</text>
+            <text y="154" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">08 — Brevo</text>
+            <text y="176" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">09 — 11x.ai</text>
+            <text y="198" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">10 — Make.com</text>
+          </g>
+          <line x1="34" y1="445" x2="366" y2="445" stroke="#0a0a0a" opacity="0.2"/>
+          <text x="34" y="475" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0096C7">Geordnet nach</text>
+          <text x="34" y="500" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0096C7">Vertriebsprozess.</text>
+        </svg>
+      </div>
+      <h3>Zehn Werkzeuge — <em>geordnet nach Vertriebsprozess.</em></h3>
+      <p>Von HubSpot Breeze über Pipedrive AI bis Dealcode aus Hamburg. Mit Fit-Score speziell für Unternehmen zwischen 50 und 500 Mitarbeitern. Kein Salesforce-Enterprise-Bias — nur Tools, die ein Mittelständler heute realistisch betreiben kann.</p>
+    </article>
+
+    <article class="art-card" data-link="daten">
+      <div class="kicker">Kostenlos lesbar</div>
+      <div class="visual gray">
+        <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="400" height="540" fill="#d8dde0"/>
+          <text x="34" y="80" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">KI-Adoption</text>
+          <text x="34" y="106" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">Mittelstand</text>
+          <text x="34" y="132" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">2023 – 2026.</text>
+
+          <!-- Big trend line -->
+          <g transform="translate(34,200)">
+            <line x1="0" y1="220" x2="332" y2="220" stroke="#0a0a0a" opacity="0.3"/>
+            <line x1="0" y1="0" x2="0" y2="220" stroke="#0a0a0a" opacity="0.3"/>
+            <polyline points="0,180 110,140 220,90 332,40" fill="none" stroke="#0a0a0a" stroke-width="2.5"/>
+            <circle cx="0" cy="180" r="6" fill="#0a0a0a"/>
+            <circle cx="110" cy="140" r="6" fill="#0a0a0a"/>
+            <circle cx="220" cy="90" r="6" fill="#0a0a0a"/>
+            <circle cx="332" cy="40" r="9" fill="#0096C7"/>
+            <text x="0" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2023</text>
+            <text x="105" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2024</text>
+            <text x="215" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2025</text>
+            <text x="320" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2026</text>
+            <text x="332" y="25" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0096C7" text-anchor="end" font-weight="400">41%</text>
+          </g>
+          <text x="34" y="500" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" opacity="0.6">QUELLE · BITKOM + KFW</text>
+        </svg>
+      </div>
+      <h3>Wie schnell der deutsche Mittelstand <em>wirklich aufholt.</em></h3>
+      <p>Adoptions-Kurven, ROI-Erwartungen, Tool-Kategorien, Konzernvergleich. Vier Visualisierungen, die mehr sagen als jeder Vendor-Whitepaper. Und eine Beobachtung: Die Schere zwischen Mittelstand und Konzern schließt sich rasanter als gedacht.</p>
+    </article>
+
+    <article class="art-card" data-link="newsletter">
+      <div class="kicker">Angebot</div>
+      <div class="visual dark">
+        <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="400" height="540" fill="#0a0a0a"/>
+          <g transform="rotate(-4 200 200)">
+            <rect x="40" y="80" width="280" height="380" fill="#5DEAFF"/>
+            <rect x="48" y="92" width="264" height="20" fill="#0a0a0a"/>
+            <text x="60" y="180" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#0a0a0a" font-weight="400">Briefing</text>
+            <text x="60" y="220" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#0a0a0a" font-weight="400">+ Whitepaper</text>
+            <text x="60" y="280" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0a0a0a">Wöchentlich.</text>
+            <text x="60" y="305" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0a0a0a">8 Minuten.</text>
+            <text x="60" y="330" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0a0a0a">Kostenfrei.</text>
+            <text x="60" y="430" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">B77.SI</text>
+          </g>
+        </svg>
+      </div>
+      <h3>Newsletter-Paket: <em>Acht Minuten</em> Vorsprung pro Woche.</h3>
+      <p>Mit dem wöchentlichen Briefing und dem Whitepaper „10 KI-Tools, die Mittelständler 2026 brauchen". Kuratiert von der Redaktion. Kein Hype, keine Werbung, mit einem Klick abbestellbar.</p>
+    </article>
+  </section>
+
+  <!-- IN DIESER AUSGABE / TOC -->
+  <section class="toc-section">
+    <div class="section-band">
+      <div>
+        <div class="band-eyebrow">Aktuell auf der Plattform</div>
+        <h2>Sechs <em>Rubriken,</em> eine Frage.</h2>
+      </div>
+      <div class="band-meta">Werktäglich aktualisiert<br>Stand · 8. Mai 2026</div>
+    </div>
+    <div class="toc-list">
+      <div class="toc-row" data-link="schwerpunkt">
+        <span class="num">01</span>
+        <div>
+          <h4>Schwerpunkt: Vom Co-Pilot zum Auto-Pilot</h4>
+          <p>Wie agentische KI im Mittelstand still den Funnel-Top übernimmt — und der Mensch trotzdem unverzichtbar bleibt.</p>
+        </div>
+        <span class="pg">04</span>
+      </div>
+      <div class="toc-row" data-link="cases">
+        <span class="num">02</span>
+        <div>
+          <h4>Cases: Sechs Mittelstands-Beispiele aus DACH</h4>
+          <p>Maschinenbau, B2B-Großhandel, Industrie, IT-Dienstleister, Versicherer — mit konkreten KPIs.</p>
+        </div>
+        <span class="pg">12</span>
+      </div>
+      <div class="toc-row" data-link="tools">
+        <span class="num">03</span>
+        <div>
+          <h4>Tools: Zehn Werkzeuge mit Mittelstands-Fit</h4>
+          <p>Geordnet nach Vertriebsprozess. Mit Fit-Score und Empfehlung nach Unternehmensgröße.</p>
+        </div>
+        <span class="pg">22</span>
+      </div>
+      <div class="toc-row" data-link="daten">
+        <span class="num">04</span>
+        <div>
+          <h4>Daten: KI-Adoption im Mittelstand 2023–2026</h4>
+          <p>Vier Visualisierungen. Eine Botschaft: Der Mittelstand schließt rasant auf.</p>
+        </div>
+        <span class="pg">36</span>
+      </div>
+      <div class="toc-row" data-link="magazin">
+        <span class="num">05</span>
+        <div>
+          <h4>Magazin: Editorial, Interview, Streitschrift</h4>
+          <p>Drei Stimmen aus dem Mittelstand. Eine gemeinsame These.</p>
+        </div>
+        <span class="pg">44</span>
+      </div>
+      <div class="toc-row" data-link="newsletter">
+        <span class="num">06</span>
+        <div>
+          <h4>Newsletter &amp; Whitepaper</h4>
+          <p>Acht Minuten pro Woche. Whitepaper „10 KI-Tools, die Mittelständler 2026 brauchen" zum Download.</p>
+        </div>
+        <span class="pg">52</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER STRIP -->
+  <div class="nl-strip">
+    <div class="body">
+      <div class="kicker">Werktäglich kuratiert</div>
+      <h3>Acht Minuten. <em>Eine Woche im Vorsprung.</em></h3>
+      <p>Das wöchentliche Briefing zu KI im Mittelstands-Vertrieb. Kostenfrei, mit einem Klick abbestellbar.</p>
+    </div>
+    <div>
+      <form class="form-mini" onsubmit="return submitMiniForm(event)" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="hidden" name="_replyto" value="ben@b77.de">
+        <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+        <button type="submit">Abonnieren</button>
+      </form>
+      <p style="font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink-soft); margin-top: 14px;">Direkt nach Anmeldung: Whitepaper zum Download.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: SCHWERPUNKT
+     ============================================ -->
+<section class="page" id="page-schwerpunkt">
+  <div class="article-hero">
+    <div class="meta-line">Schwerpunkt · Mai 2026 · Lesezeit 9 Minuten</div>
+    <h1>Der Mittelstand <em>zieht nach.</em> Schneller, als die Schlagzeilen vermuten.</h1>
+    <p class="standfirst">41 Prozent der deutschen Unternehmen nutzen KI heute produktiv — und die spannendste Bewegung kommt nicht aus den Konzernzentralen, sondern aus dem Maschinenbau, dem B2B-Großhandel und dem industriellen Mittelstand.</p>
+    <div class="byline">
+      <span>Redaktion · Sales Intelligence</span>
+      <span>8. Mai 2026 · Mittelstand-Edition</span>
+    </div>
+  </div>
+
+  <div class="article-image" style="background: var(--issue);">
+    <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+      <rect width="1280" height="720" fill="#5DEAFF"/>
+      <defs>
+        <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="#0a0a0a" opacity="0.2"/>
+        </pattern>
+      </defs>
+      <rect width="1280" height="720" fill="url(#dots)"/>
+      <g transform="translate(380,200)">
+        <rect width="200" height="200" fill="#0a0a0a"/>
+        <text x="100" y="118" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="68" fill="#5DEAFF" text-anchor="middle">KI</text>
+        <text x="100" y="148" font-family="Helvetica" font-size="13" fill="#5DEAFF" text-anchor="middle" letter-spacing="6" font-weight="600">AGENT</text>
+      </g>
+      <g transform="translate(720,200)">
+        <rect width="200" height="200" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+        <text x="100" y="100" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="38" fill="#0a0a0a" text-anchor="middle">Sales</text>
+        <text x="100" y="142" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="38" fill="#0a0a0a" text-anchor="middle">Rep</text>
+      </g>
+      <path d="M580 300 Q650 270 720 300" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-dasharray="6,4"/>
+      <text x="650" y="280" font-family="Helvetica" font-size="11" fill="#0a0a0a" text-anchor="middle" letter-spacing="6" font-weight="600">SYNERGIE</text>
+      <text x="80" y="660" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">MITTELSTAND · DACH 2026 · ABBILDUNG 1</text>
+    </svg>
+  </div>
+
+  <div class="article-body">
+    <p>Es gibt diese Konferenzen, auf denen Mittelstandsentscheider mit verschränkten Armen erklären, warum „der direkte Draht zum Kunden" das Wichtigste sei. Sie haben Recht. Und sie verstehen die Frage nicht.</p>
+
+    <p>Niemand ersetzt die zwanzigjährige Beziehung zum Stammkunden. Niemand ersetzt das Gespür, wann ein Werkzeugmaschinenkunde tatsächlich kaufbereit ist. Was ersetzt wird, ist das Vorglühen: die zwei Stunden Account-Recherche, die drei Versuche, einen Einkäufer zu erreichen, die fünfzehnte Variation derselben Follow-up-Mail. Und genau dort entscheidet sich, wer 2026 im DACH-B2B mithält.</p>
+
+    <h3>Warum gerade <em>der Mittelstand</em> jetzt aufholt</h3>
+
+    <p>Drei Entwicklungen haben sich im ersten Halbjahr 2026 zu einer kritischen Masse verdichtet. Erstens: KI-Tools mit Mittelstands-Fit sind verfügbar. HubSpot Breeze im Free Tier, Dealcode aus Hamburg, Pipedrive mit AI-Workflow — die Auswahl reicht heute weit über die Salesforce-Welt hinaus. Zweitens: Die Implementierungskosten sind drastisch gefallen. Was 2024 ein sechsstelliges Projekt war, läuft heute in vier bis sechs Wochen produktiv. Drittens: Der Wettbewerbsdruck wirkt. Wenn der Konkurrent aus dem Allgäu doppelt so viele qualifizierte Erstkontakte produziert, ist die Diskussion vorbei.</p>
+
+    <div class="pullquote">
+      „Die Frage ist nicht, ob KI in Ihren Vertrieb gehört. Die Frage ist, ob Sie Ihrem Wettbewerber erlauben, schneller zu sein."
+      <span class="source">Editorial · Sales Intelligence · Mai 2026</span>
+    </div>
+
+    <h3>Was die Agenten <em>wirklich</em> übernehmen</h3>
+
+    <p>In den Mittelstands-Pilotprogrammen, die wir für die Plattform analysiert haben, übernehmen agentische Systeme nahezu den gesamten Funnel-Top: Account-Recherche im Handelsregister und auf LinkedIn, Anreicherung durch Geschäftsberichte und Branchen-News, erste Outreach-Sequenzen, Follow-up-Logik, Meeting-Vorbereitung. Die Vertriebs-Mitarbeiter gewinnen damit zwischen sechs und acht Stunden pro Woche zurück — Zeit, die in Discovery-Calls, Werksbesuche und Verhandlungen fließt.</p>
+
+    <p>Spannender als die Effizienz ist die Qualität: KI-getriebene Outreach-Sequenzen erzielen in Mittelstands-Setups doppelte Antwortraten gegenüber Standard-Templates. Der Grund ist nicht magisch. Es ist Recherche-Tiefe, die ein Vertriebsmitarbeiter unter Druck schlicht nicht leisten kann — Geschäftsbericht, Pressemitteilungen, Marktbewegungen, alles in 60 Sekunden.</p>
+
+    <div class="inline-fig">
+      <svg viewBox="0 0 880 280" width="100%" preserveAspectRatio="xMidYMid meet">
+        <text x="0" y="22" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#0a0a0a">Bearbeitungszeiten · Mittelstands-Vertrieb</text>
+        <line x1="0" y1="40" x2="880" y2="40" stroke="#0a0a0a"/>
+
+        <text x="0" y="86" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0a0a0a">Account-Recherche</text>
+        <rect x="220" y="74" width="500" height="18" fill="#0a0a0a" opacity="0.25"/>
+        <rect x="220" y="74" width="50" height="18" fill="#0096C7"/>
+        <text x="740" y="86" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">90 Min · 9 Min</text>
+
+        <text x="0" y="130" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0a0a0a">Outreach-Mail</text>
+        <rect x="220" y="118" width="380" height="18" fill="#0a0a0a" opacity="0.25"/>
+        <rect x="220" y="118" width="26" height="18" fill="#0096C7"/>
+        <text x="740" y="130" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">25 Min · 1,5 Min</text>
+
+        <text x="0" y="174" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0a0a0a">Follow-up-Sequenz</text>
+        <rect x="220" y="162" width="430" height="18" fill="#0a0a0a" opacity="0.25"/>
+        <rect x="220" y="162" width="16" height="18" fill="#0096C7"/>
+        <text x="740" y="174" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">45 Min · 0,8 Min</text>
+
+        <text x="0" y="218" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0a0a0a">Meeting-Brief</text>
+        <rect x="220" y="206" width="270" height="18" fill="#0a0a0a" opacity="0.25"/>
+        <rect x="220" y="206" width="18" height="18" fill="#0096C7"/>
+        <text x="740" y="218" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">15 Min · 1 Min</text>
+
+        <text x="0" y="262" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="13" fill="#8a8a8a">grau — manuell · cyan — mit KI-Agent</text>
+      </svg>
+      <div class="cap">Abb. 1 · Bearbeitungszeiten in einem Pilot-Setup eines Maschinenbauers, n=18 Vertriebsmitarbeiter, Q1 / 2026.</div>
+    </div>
+
+    <h3>Die Mittelstand-Falle: <em>Tools ohne</em> Prozess</h3>
+
+    <p>Wer 2026 ein KI-Tool kauft, ohne den dahinterliegenden Vertriebsprozess zu sortieren, kauft sich teure Enttäuschung ein. Das gilt für den 50-Personen-Großhandel ebenso wie für den Maschinenbauer mit 800 Mitarbeitern. Denn: Kein Agent macht aus schlechten CRM-Daten gute Insights. Kein Outreach-Bot rettet ein Wertversprechen, das niemand verstehen kann. Und kein Forecasting-Algorithmus produziert Genauigkeit, wenn die Pipeline-Disziplin fehlt.</p>
+
+    <p>Die Mittelständler, die hier mit messbaren Ergebnissen auftauchen, haben eines gemeinsam: Sie haben vor der KI-Einführung erst aufgeräumt. Datenmodelle vereinheitlicht, Verantwortlichkeiten geklärt, KPI definiert. Erst dann kam das Tool.</p>
+
+    <h3>Was jetzt zu tun ist</h3>
+
+    <p>Drei Empfehlungen — speziell für Mittelständler, die in den nächsten 90 Tagen anfangen wollen. Erstens: den größten Hebel identifizieren. Wo verlieren Vertriebsmitarbeiter die meiste Zeit? Recherche, Angebotserstellung, Follow-up, Pipeline-Review? Genau dort fangen Sie an. Zweitens: einen 30-Tage-Pilot aufsetzen. Ein Team, ein klar definierter Anwendungsfall, eine messbare KPI. Drittens: die Daten sauber halten. Datenhygiene kommt nie zu früh.</p>
+
+    <p>Und wer noch immer überzeugt werden muss: 83 Prozent der KI-nutzenden Sales-Teams haben im letzten Jahr mehr Umsatz gemacht. 66 Prozent der Nicht-Nutzer auch. Der Wettbewerb läuft. Sie können mitlaufen oder zuschauen.</p>
+
+    <div class="byline-end">
+      <span>Redaktion · Sales Intelligence · Mai 2026</span>
+      <span>Quellen · Bitkom, KfW, eigene Recherche</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: CASES
+     ============================================ -->
+<section class="page" id="page-cases">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Cases · Mai 2026</div>
+      <h2>Was im <em>Mittelstand</em> wirklich funktioniert.</h2>
+    </div>
+    <div class="band-meta">Sechs Geschichten<br>Echte Zahlen</div>
+  </div>
+
+  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 80px;">Sechs Mittelständler, sechs Anwendungsfälle. Vom Maschinenbauer bis zum B2B-Großhandel — mit konkreten KPIs und ohne Marketing-Lack. Wo KI im Vertrieb 2026 nachweisbar Wert schafft, ohne Konzern-Budget.</p>
+
+  <article class="cases-feature">
+    <div class="vis">
+      <svg viewBox="0 0 600 750" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+        <rect width="600" height="750" fill="#5DEAFF"/>
+        <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">FEATURED CASE · 01</text>
+        <text x="40" y="110" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#0a0a0a">Maschinenbauer · Baden-Württemberg</text>
+        <text x="40" y="280" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="160" fill="#0a0a0a" letter-spacing="-8">+34%</text>
+        <text x="40" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">qualifizierte Leads · sechs Monate</text>
+        <line x1="40" y1="360" x2="560" y2="360" stroke="#0a0a0a" opacity="0.2"/>
+        <line x1="40" y1="360" x2="120" y2="360" stroke="#0a0a0a" stroke-width="2"/>
+        <text x="40" y="430" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.7" letter-spacing="2">VORHER · MANUELLE RECHERCHE</text>
+        <rect x="40" y="448" width="500" height="22" fill="#0a0a0a" opacity="0.3"/>
+        <text x="550" y="464" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0a0a0a">42 Min/Lead</text>
+        <text x="40" y="510" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.7" letter-spacing="2">NACHHER · AGENTIC OUTREACH</text>
+        <rect x="40" y="528" width="96" height="22" fill="#0a0a0a"/>
+        <text x="146" y="544" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0a0a0a">8 Min/Lead</text>
+        <line x1="40" y1="640" x2="560" y2="640" stroke="#0a0a0a" opacity="0.3"/>
+        <text x="40" y="670" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0a0a0a">HubSpot Breeze + Dealcode</text>
+        <text x="40" y="700" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.7" letter-spacing="2">320 MA · 12 VERTRIEBSMITARBEITER · SEIT Q4/2025</text>
+      </svg>
+    </div>
+    <div class="body">
+      <div class="kicker">Featured Case · Mai 2026</div>
+      <h3>Werkzeugmaschinen-Mittelstand: <em>Wenn der Vertrieb plötzlich</em> 34 Prozent mehr qualifizierte Leads schafft.</h3>
+      <p class="lead">Ein Familienbetrieb aus Baden-Württemberg, 320 Mitarbeiter, technischer Vertrieb mit zwölf Außendienstlern. Die Herausforderung: zu wenig qualifizierte Erstkontakte, zu viel Zeit für Recherche. Der Lösungsweg: HubSpot Breeze für Lead-Qualifizierung, kombiniert mit Dealcode für DACH-konforme Outreach-Sequenzen. Nach sechs Monaten sind 34 Prozent mehr qualifizierte Leads in der Pipeline — bei gleicher Mitarbeiterzahl.</p>
+      <div class="kpi-row">
+        <div class="kpi-cell"><div class="v">+34%</div><div class="l">Qualifizierte Leads</div></div>
+        <div class="kpi-cell"><div class="v">−81%</div><div class="l">Recherchezeit</div></div>
+        <div class="kpi-cell"><div class="v">12</div><div class="l">Vertriebs-MA live</div></div>
+      </div>
+    </div>
+  </article>
+
+  <div class="cases-grid-4">
+    <article class="case-tile">
+      <div class="vis cream">
+        <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="580" height="360" fill="#f4ede0"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 02 · B2B-GROSSHANDEL · NRW · 180 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">+8h</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">pro Innendienst-Mitarbeiter pro Woche</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
+          <text x="40" y="310" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.6" letter-spacing="2">MICROSOFT COPILOT IN OUTLOOK / TEAMS</text>
+        </svg>
+      </div>
+      <div class="kicker">B2B-Großhandel · NRW</div>
+      <h4>Inside Sales mit <em>Microsoft Copilot.</em></h4>
+      <p>Familiengeführter Großhändler. Copilot in Outlook fasst Anfragen zusammen, bereitet Angebote vor, entwirft Follow-ups. Acht Stunden Zeitgewinn pro Innendienst-Mitarbeiter und Woche.</p>
+      <div class="kpi-line"><span>Zeitgewinn</span><span class="num">+8h/Wo.</span></div>
+    </article>
+
+    <article class="case-tile">
+      <div class="vis gray">
+        <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="580" height="360" fill="#d8dde0"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 03 · SAAS · HAMBURG · 95 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">+22%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">Forecast-Genauigkeit pro Quartal</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
+          <polyline points="40,330 130,318 220,304 310,290 400,278 490,266 540,258" fill="none" stroke="#0096C7" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="kicker">SaaS-Mittelstand · Hamburg</div>
+      <h4>KI-Forecast statt <em>Bauchgefühl.</em></h4>
+      <p>Wachsendes SaaS-Unternehmen mit Pipedrive AI plus eigener Datenanalyse. Forecast-Genauigkeit pro Quartal um 22 Prozent verbessert, Pipeline-Reviews dauern halb so lange.</p>
+      <div class="kpi-line"><span>Genauigkeit</span><span class="num">+22%</span></div>
+    </article>
+
+    <article class="case-tile">
+      <div class="vis cyan">
+        <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="580" height="360" fill="#5DEAFF"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 04 · IT-DIENSTLEISTER · MÜNCHEN · 65 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">×2,3</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">Reply-Rate beim Cold-Outreach</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
+          <g transform="translate(40,304)">
+            <rect width="60" height="40" fill="none" stroke="#0a0a0a" opacity="0.5"/>
+            <path d="M0 0 L30 20 L60 0" fill="none" stroke="#0a0a0a" opacity="0.5"/>
+            <rect x="80" width="60" height="40" fill="#0a0a0a"/>
+            <path d="M80 0 L110 20 L140 0" fill="none" stroke="#5DEAFF" stroke-width="1.5"/>
+            <rect x="160" width="60" height="40" fill="#0a0a0a"/>
+            <path d="M160 0 L190 20 L220 0" fill="none" stroke="#5DEAFF" stroke-width="1.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="kicker">IT-Dienstleister · München</div>
+      <h4>Cold-Outreach in <em>60 Sekunden.</em></h4>
+      <p>IT-Beratung mit eigener LinkedIn-Recherche-Pipeline auf Basis von Dealcode. Antwortrate gegenüber Templates verzweieinhalbfacht. Vertrieb spricht plötzlich mit Entscheidern, nicht Sekretariaten.</p>
+      <div class="kpi-line"><span>Reply-Rate</span><span class="num">×2,3</span></div>
+    </article>
+
+    <article class="case-tile">
+      <div class="vis dark">
+        <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="580" height="360" fill="#0a0a0a"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#5DEAFF" letter-spacing="3" font-weight="500">CASE 05 · MASCHINENBAU · BAYERN · 220 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#5DEAFF" letter-spacing="-6">+24%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#ffffff">Cross-Selling über Predictive Maintenance</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#5DEAFF" opacity="0.4"/>
+          <g transform="translate(40,304)">
+            <rect width="60" height="40" fill="none" stroke="#5DEAFF" stroke-width="1.5"/>
+            <circle cx="30" cy="20" r="9" fill="#5DEAFF"/>
+            <text x="30" y="25" font-family="Helvetica" font-size="13" fill="#0a0a0a" text-anchor="middle" font-weight="900">!</text>
+          </g>
+          <text x="120" y="318" font-family="Helvetica" font-size="11" fill="#5DEAFF" letter-spacing="3" font-weight="600">PREDICTIVE</text>
+          <text x="120" y="336" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#ffffff">Service-Lead</text>
+        </svg>
+      </div>
+      <div class="kicker">Maschinenbau · Bayern</div>
+      <h4>Predictive Maintenance trifft <em>Vertrieb.</em></h4>
+      <p>Anlagenbauer mit Sensordaten installierter Maschinen. Die KI erkennt Verschleißmuster vor dem Ausfall und erzeugt automatisch Service- und Cross-Selling-Leads — der Vertrieb hat Anlass und Argument.</p>
+      <div class="kpi-line"><span>Cross-Sell</span><span class="num">+24%</span></div>
+    </article>
+
+    <article class="case-tile">
+      <div class="vis cyan-deep" style="background:#00b3d4;">
+        <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="580" height="360" fill="#00b3d4"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#ffffff" letter-spacing="3" font-weight="500">CASE 06 · INDUSTRIE-GROSSHANDEL · HESSEN · 140 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#ffffff" letter-spacing="-6">−68%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#ffffff">Angebotserstellungs-Zeit</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#ffffff" opacity="0.4"/>
+          <g transform="translate(40,300)">
+            <rect width="20" height="20" fill="#ffffff"/>
+            <rect x="28" width="20" height="20" fill="#ffffff" opacity="0.78"/>
+            <rect x="56" width="20" height="20" fill="#ffffff" opacity="0.62"/>
+            <rect x="84" width="20" height="20" fill="#ffffff" opacity="0.5"/>
+            <rect x="112" width="20" height="20" fill="#ffffff" opacity="0.4"/>
+            <rect x="140" width="20" height="20" fill="#ffffff" opacity="0.32"/>
+            <rect x="168" width="20" height="20" fill="#ffffff" opacity="0.25"/>
+            <rect x="196" width="20" height="20" fill="#ffffff" opacity="0.18"/>
+            <text x="240" y="18" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#ffffff" font-weight="400">12.000+ Produkte</text>
+          </g>
+        </svg>
+      </div>
+      <div class="kicker">Industrie-Großhandel · Hessen</div>
+      <h4>RAG-Chatbot für <em>12.000 Produkte.</em></h4>
+      <p>Industrie-Großhandel. Vertrieb muss Spezifikationen, Preise und Verfügbarkeiten nicht mehr selbst recherchieren. Ein interner Retrieval-Agent liefert in Sekunden belastbare Antworten — direkt im Angebotsprozess.</p>
+      <div class="kpi-line"><span>Angebotszeit</span><span class="num">−68%</span></div>
+    </article>
+
+    <article class="case-tile">
+      <div class="vis gray">
+        <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+          <rect width="580" height="360" fill="#d8dde0"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 07 · VERSICHERUNG · BW · 110 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">+41%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">qualifizierte Anfragen · DSGVO-first</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
+          <g transform="translate(40,304)">
+            <text font-family="Iowan Old Style, Georgia, serif" font-size="22" fill="#0a0a0a" font-weight="400">DE  ·  AT  ·  CH</text>
+            <line x1="0" y1="14" x2="170" y2="14" stroke="#0096C7" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="kicker">Versicherer · Baden-Württemberg</div>
+      <h4>Conversational AI in der <em>Erstberatung.</em></h4>
+      <p>Mittelständischer Versicherer mit DSGVO-konformem Chatbot für die erste Bedarfsanalyse. Qualifizierte Leads werden warm an die Berater übergeben — plus 41 Prozent qualifizierte Anfragen.</p>
+      <div class="kpi-line"><span>Qualifiziert</span><span class="num">+41%</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: TOOLS
+     ============================================ -->
+<section class="page" id="page-tools">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Tools · Stand Mai 2026</div>
+      <h2>Zehn <em>Werkzeuge</em> für den Mittelstand.</h2>
+    </div>
+    <div class="band-meta">Stand · Mai 2026</div>
+  </div>
+
+  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 80px;">Geordnet nach Vertriebsprozess. Mit Fit-Score speziell für Unternehmen zwischen 50 und 500 Mitarbeitern. Kein Salesforce-Enterprise-Bias — nur Tools, die ein deutscher Mittelständler heute realistisch einführen, bezahlen und betreiben kann.</p>
+
+  <div class="tools-prelude">
+    <div>
+      <h3>Die Tool-Landschaft <em>im Mittelstand.</em></h3>
+      <p>Der Markt für KI im Vertrieb ist nicht ein Markt — er ist mindestens fünf. Wer Tool-Auswahl mit Plattform-Auswahl verwechselt, kauft regelmäßig die falsche Lösung.</p>
+      <p>Die Verteilung zeigt unsere Fit-Score-Bewertung der zehn folgenden Werkzeuge nach Hauptanwendungsfall im Mittelstand.</p>
+    </div>
+    <div class="tools-chart-wrap">
+      <canvas id="toolsCategoryChart"></canvas>
+    </div>
+  </div>
+
+  <div class="tools-list">
+    <div class="tool-row">
+      <span class="num">01</span>
+      <div class="main">
+        <h4>HubSpot Breeze AI</h4>
+        <div class="cat">All-in-One · Mid-Market</div>
+        <p>KI-Suite für Marketing, Sales und Service — niederschwellig, im Free Tier verfügbar. Content-Generierung im Workflow, deutsches Hosting möglich. Der Mittelstands-Liebling 2026.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Schneller Einstieg, gute Defaults.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Geringere Tiefe bei komplexen Cycles.</div>
+        <div class="row"><span class="label">Für wen</span>50–500 MA, KMU mit Wachstumsplänen.</div>
+      </div>
+      <div class="score">9,2<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">02</span>
+      <div class="main">
+        <h4>Pipedrive AI</h4>
+        <div class="cat">CRM · DACH-Klassiker</div>
+        <p>Das CRM, das im DACH-Mittelstand seit Jahren funktioniert — jetzt mit eingebauter KI für Lead-Scoring, Aktivitätsempfehlungen und Forecast. Pragmatisch, nicht überladen.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Niedrige Lernkurve, faire Preise.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>KI-Tiefe nicht auf Salesforce-Niveau.</div>
+        <div class="row"><span class="label">Für wen</span>Klassische DACH-Mittelständler.</div>
+      </div>
+      <div class="score">8,9<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">03</span>
+      <div class="main">
+        <h4>Dealcode</h4>
+        <div class="cat">DACH · B2B Engagement</div>
+        <p>Hamburger AI-Sales-Plattform. DSGVO-konform per Default, deutsche Sprachqualität, persönlicher Support — der Specialist für DACH-Mittelständler im B2B.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>DSGVO-first, deutsche Tonalität.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Kleineres Ökosystem als US-Tools.</div>
+        <div class="row"><span class="label">Für wen</span>DACH-zentrierte B2B-Vertriebsteams.</div>
+      </div>
+      <div class="score">9,0<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">04</span>
+      <div class="main">
+        <h4>Microsoft Copilot</h4>
+        <div class="cat">Workflow · M365</div>
+        <p>Eingebaut in Outlook, Teams, Word, Excel — und Dynamics 365. Der schnellste Weg, Vertrieb ohne neue Lizenzen zu beschleunigen, wenn der Mittelstand bereits auf M365 läuft.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Tiefe MS-Integration, Compliance.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Volle Wirkung nur in MS-Welt.</div>
+        <div class="row"><span class="label">Für wen</span>Mittelständler mit M365-Backbone.</div>
+      </div>
+      <div class="score">8,7<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">05</span>
+      <div class="main">
+        <h4>Apollo.io</h4>
+        <div class="cat">Lead-Daten · Outreach</div>
+        <p>Datenbank mit über 270 Millionen Kontakten plus integrierte KI-gestützte Outreach-Sequenzen. Buying-Intent-Daten als Differenzierer.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Preis-Leistung, Intent-Signale.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>DSGVO-Konfiguration nötig.</div>
+        <div class="row"><span class="label">Für wen</span>Wachsende SDR-Teams.</div>
+      </div>
+      <div class="score">8,4<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">06</span>
+      <div class="main">
+        <h4>moin.ai</h4>
+        <div class="cat">Chatbot · Made in Germany</div>
+        <p>Deutscher Chatbot-Anbieter aus Hamburg. DSGVO-konform, deutscher Sprachsupport, einfacher Workflow-Builder. Ideal für Erstberatung und Lead-Qualifizierung im Web.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Made in Germany, einfacher Setup.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Weniger Tiefe als US-Wettbewerber.</div>
+        <div class="row"><span class="label">Für wen</span>B2B-Mittelstand mit Web-Lead-Generierung.</div>
+      </div>
+      <div class="score">8,3<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">07</span>
+      <div class="main">
+        <h4>Gong</h4>
+        <div class="cat">Conversation Intelligence</div>
+        <p>Die Standard-Plattform zur Analyse von Sales-Calls, Risikosignalen und Coaching-Hinweisen. Ab ca. zehn Vertriebsmitarbeitern sinnvoll.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Coaching-Datenbasis, Insights-Tiefe.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Premium-Preis, Disziplin nötig.</div>
+        <div class="row"><span class="label">Für wen</span>Reife Vertriebsteams im Mittelstand.</div>
+      </div>
+      <div class="score">8,6<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">08</span>
+      <div class="main">
+        <h4>Brevo (ehem. Sendinblue)</h4>
+        <div class="cat">Newsletter · CRM · Europa</div>
+        <p>Französischer Anbieter mit deutschem Hosting. Newsletter, Marketing-Automation, einfaches Sales-CRM, DSGVO-first. Beliebt im DACH-Mittelstand für Performance-Vertrieb.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Faire Preise, EU-Hosting.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Sales-Tiefe begrenzt.</div>
+        <div class="row"><span class="label">Für wen</span>Marketing-getriebene KMU.</div>
+      </div>
+      <div class="score">8,1<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">09</span>
+      <div class="main">
+        <h4>11x.ai</h4>
+        <div class="cat">Agentic SDR</div>
+        <p>Vollautonome SDR-Agenten — recherchieren, schreiben, follow-uppen rund um die Uhr. Skalierung ohne Headcount.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Skalierung, schnelle Iteration.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Reputations-Risiko bei zu generisch.</div>
+        <div class="row"><span class="label">Für wen</span>Volume-Outbound-Setups.</div>
+      </div>
+      <div class="score">7,8<small>Fit-Score</small></div>
+    </div>
+
+    <div class="tool-row">
+      <span class="num">10</span>
+      <div class="main">
+        <h4>Make.com + LLM-API</h4>
+        <div class="cat">Workflow · DIY</div>
+        <p>No-Code Automation-Layer für eigene Sales-Workflows. Volle Kontrolle, niedrige Betriebskosten, On-Premise-Option möglich.</p>
+      </div>
+      <div class="pros">
+        <div class="row"><span class="label">Stärke</span><strong>Flexibilität, niedrige Kosten.</strong></div>
+        <div class="row"><span class="label">Schwäche</span>Eigene Konfigurations-Disziplin nötig.</div>
+        <div class="row"><span class="label">Für wen</span>Tech-affine Mittelständler.</div>
+      </div>
+      <div class="score">7,9<small>Fit-Score</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: DATEN
+     ============================================ -->
+<section class="page" id="page-daten">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Daten · Stand Mai 2026</div>
+      <h2>KI im Mittelstand, <em>in Zahlen.</em></h2>
+    </div>
+    <div class="band-meta">Quellen · Bitkom, KfW<br>eigene Recherche</div>
+  </div>
+
+  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 80px;">Vier Visualisierungen, die mehr sagen als jeder Marktreport-PowerPoint. Wer den deutschen Mittelstand 2026 verstehen will, braucht andere Vergleiche als globale Pressemitteilungen.</p>
+
+  <div class="daten-grid">
+    <div class="chart-card">
+      <div class="kicker">Adoption Mittelstand</div>
+      <h4>Vom Experiment zum <em>Kerngeschäft.</em></h4>
+      <p class="sub">Anteil deutscher Mittelständler (50–500 MA) mit KI im produktiven Einsatz, 2023–2026.</p>
+      <div class="canvas-wrap"><canvas id="adoptionChart"></canvas></div>
+      <div class="source">Quelle · Bitkom + KfW Mittelstandspanel</div>
+    </div>
+
+    <div class="chart-card">
+      <div class="kicker">Erfolgs-Effekte im Vertrieb</div>
+      <h4>Wo KI den <em>ROI</em> bringt.</h4>
+      <p class="sub">Effektgrößen aus Pilot-Programmen, DACH-Mittelstand-Stichprobe (n≈210).</p>
+      <div class="canvas-wrap"><canvas id="roiChart"></canvas></div>
+      <div class="source">Quelle · Mittelstand-Heute + eigene Recherche, Q1 / 2026</div>
+    </div>
+
+    <div class="chart-card">
+      <div class="kicker">Tool-Verteilung Mittelstand</div>
+      <h4>Welche Kategorien <em>dominieren.</em></h4>
+      <p class="sub">Verteilung der Sales-AI-Tool-Investitionen 2026 nach Hauptanwendung.</p>
+      <div class="canvas-wrap"><canvas id="toolsDistChart"></canvas></div>
+      <div class="source">Quelle · Branchenauswertung, eigene Erhebung</div>
+    </div>
+
+    <div class="chart-card">
+      <div class="kicker">Mittelstand vs. Konzern</div>
+      <h4>Die Adoptions-Schere <em>schließt sich.</em></h4>
+      <p class="sub">KI-Nutzung im Vertrieb nach Unternehmensgröße, 2024 und 2026.</p>
+      <div class="canvas-wrap"><canvas id="sizeChart"></canvas></div>
+      <div class="source">Quelle · Bitkom + Mittelstand-Heute</div>
+    </div>
+  </div>
+
+  <div class="numbers-band">
+    <div class="stat"><div class="v"><span class="accent">+83%</span></div><div class="l">Mehr Umsatz mit KI-Tools</div></div>
+    <div class="stat"><div class="v"><span class="accent">41%</span></div><div class="l">Mittelständler produktiv</div></div>
+    <div class="stat"><div class="v"><span class="accent">34%</span></div><div class="l">Zeitgewinn in Recherche</div></div>
+    <div class="stat"><div class="v"><span class="accent">70%</span></div><div class="l">Erwartete Adoption 2028</div></div>
+  </div>
+
+  <div class="daten-comment">
+    <div>
+      <div class="l">Einordnung der Redaktion</div>
+    </div>
+    <div>
+      <h3>Die wichtigste Zahl für den <em>Mittelstand</em> steht nicht oben.</h3>
+      <p>Wer auf die Adoptionskurve schaut, sieht eine Verdoppelung in zwei Jahren. Wer hingegen die Tool-Verteilung liest, erkennt: Im Mittelstand gewinnen weniger die Big-Player wie Salesforce, sondern Mid-Market-Tools wie HubSpot, Pipedrive und Dealcode. Das ist kein Zufall: Dort liegt das beste Verhältnis aus Nutzen, Kosten und Implementierungsaufwand.</p>
+      <p>Die für deutsche Mittelstandsentscheider relevanteste Erkenntnis: Die Schere zwischen Mittelstand und Konzern schließt sich rasant. Während Konzerne in eigene Plattformen investieren, kombinieren Mittelständler Best-of-Breed. Beide Wege funktionieren — auf unterschiedliche Weise teuer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: MAGAZIN
+     ============================================ -->
+<section class="page" id="page-magazin">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Magazin · Mai 2026</div>
+      <h2>Drei Stimmen. <em>Eine These.</em></h2>
+    </div>
+    <div class="band-meta">Lange Form<br>Drei Beiträge</div>
+  </div>
+
+  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 80px;">Editorial, Streitschrift, Interview — die langen Texte unserer Plattform. Für alle, die wissen wollen, was unter der Tool-Oberfläche im Mittelstand wirklich passiert.</p>
+
+  <div class="magazin-layout">
+    <div>
+      <article class="editorial-feature">
+        <div class="tag">Editorial · Die Redaktion</div>
+        <h3>Wer 2026 noch debattiert, ob KI in den Mittelstands-Vertrieb gehört, hat das <em>Spielfeld bereits verlassen.</em></h3>
+        <p class="standfirst">Es gibt diese Konferenzen, auf denen Mittelstands-Geschäftsführer mit verschränkten Armen erklären, warum „der direkte Draht zum Kunden" das Wichtigste sei. Sie haben Recht. Und sie verstehen die Frage nicht.</p>
+        <div class="body">
+          <p>Niemand ersetzt die zwanzigjährige Beziehung zum Stammkunden. Niemand ersetzt das Gespür, wann ein Werkzeugmaschinenkunde tatsächlich kaufbereit ist. Was ersetzt wird, ist das Vorglühen: die zwei Stunden Account-Recherche, die drei Versuche eine Telefonnummer zu finden, die fünfzehnte Variation derselben Follow-up-Mail.</p>
+          <div class="pull">Wer 2024 gezögert hat, war vorsichtig. Wer 2025 gezögert hat, war konservativ. Wer 2026 noch zögert, ist abgehängt — und merkt es noch nicht.</div>
+          <p>Diese Plattform ist die Antwort auf einen einfachen Anspruch: Werktäglich verstehen, was sich bewegt, was funktioniert und was Quatsch ist. Damit Mittelstandsentscheider in fünfzehn Minuten sehen, was sonst eine Woche Recherche kostet.</p>
+          <p>Wir orientieren uns an drei einfachen Regeln. Erstens: Keine Pressemitteilungen, nur Substanz. Zweitens: Zahlen mit Quelle. Drittens: Wenn wir uns irren, korrigieren wir uns.</p>
+        </div>
+      </article>
+
+      <div class="interview-section">
+        <div class="pre">Interview · Aus der Praxis</div>
+        <h3>„Wir haben drei <em>Tools</em> ausgemustert, bevor wir das Vierte verstanden hatten."</h3>
+        <p style="font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 36px; max-width: 820px;">Ein Vertriebsleiter eines mittelständischen Maschinenbauers über teure Lehrgeld-Phasen, das fehlende KPI-Setup und warum die Antwort am Ende eine Datenmodell-Frage war. Auszug aus einem Hintergrundgespräch.</p>
+
+        <div class="qa">
+          <span class="q">F</span>
+          <div class="qtext">Sie haben drei KI-Tools im Vertrieb getestet, bevor das vierte produktiv ging. Was war der Fehler?</div>
+        </div>
+        <div class="qa">
+          <span class="a">A</span>
+          <div class="atext">Wir haben Tools gekauft, ohne den Prozess davor zu sortieren. Das klingt jetzt offensichtlich — war es im Moment der Entscheidung aber nicht. Jeder Anbieter zeigt eine Demo, in der alles funktioniert. Niemand zeigt, was in den ersten drei Monaten passiert, wenn die CRM-Daten unsauber sind und die Mitarbeiter nicht wissen, was die KPI eigentlich ist.</div>
+        </div>
+        <div class="qa">
+          <span class="q">F</span>
+          <div class="qtext">Was hat dann den Durchbruch gebracht?</div>
+        </div>
+        <div class="qa">
+          <span class="a">A</span>
+          <div class="atext">Wir haben das Tool-Projekt für drei Monate gestoppt und stattdessen am Datenmodell gearbeitet. Verantwortlichkeiten, Pflichtfelder, Pipeline-Disziplin. Erst danach haben wir das vierte Tool eingeführt — und es lief in vier Wochen. Die Lektion: Datenqualität ist die Voraussetzung, nicht das Nebenprodukt.</div>
+        </div>
+        <div class="qa">
+          <span class="q">F</span>
+          <div class="qtext">Welche Empfehlung geben Sie heute weiter?</div>
+        </div>
+        <div class="qa">
+          <span class="a">A</span>
+          <div class="atext">Erst der Prozess, dann das Tool. Erst die KPI, dann die Software. Und niemals zwei Tools gleichzeitig einführen. Das ist der schnellste Weg, eine Vertriebsmannschaft zu verlieren.</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="magazin-side">
+      <div class="side-card">
+        <div class="tag">Glosse · Vertriebsalltag</div>
+        <h4>„Wir haben da mal ein <em>KI-Tool</em> eingeführt"</h4>
+        <p>Ein Satz, der in deutschen Mittelstands-Vorständen 2025 noch Bewunderung erntete und 2026 nichts mehr bedeutet. Was zählt, ist nicht die Einführung — sondern die Veränderung, die danach passiert.</p>
+      </div>
+      <div class="side-card">
+        <div class="tag">Streitschrift · Pro &amp; Contra</div>
+        <h4>Brauchen Mittelständler <em>noch SDRs?</em></h4>
+        <p>Pro: Junior-Vertriebler lernen den Beruf am Telefon. Contra: KI macht 80 Prozent der SDR-Arbeit besser. Die Wahrheit liegt nicht in der Mitte, sondern davor.</p>
+      </div>
+      <div class="side-card">
+        <div class="tag">Reportage · Praxis</div>
+        <h4>Ein Tag bei einem deutschen <em>AI-Sales-Anbieter</em></h4>
+        <p>Wir haben einen Tag in der Dealcode-Redaktion verbracht. Was wir mitnehmen: Hochwertige KI im Vertrieb sieht weniger glamourös aus, als der Markt suggeriert.</p>
+      </div>
+      <div class="side-card">
+        <div class="tag">Empfehlung · Lesetipps</div>
+        <h4>Drei Bücher <em>zum Thema</em></h4>
+        <p>„Vertrieb für Hidden Champions" (Hermann Simon), „No Forms. No Spam." (Latane Conant) und Bitkoms aktueller KI-Studienbericht. Was die Bücher gemein haben: Sie kommen ohne Hype aus.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: NEWSLETTER
+     ============================================ -->
+<section class="page" id="page-newsletter">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Newsletter · Briefing</div>
+      <h2>Acht Minuten. <em>Eine Woche im Vorsprung.</em></h2>
+    </div>
+    <div class="band-meta">Wöchentlich<br>Montagmorgens</div>
+  </div>
+
+  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 80px;">Das wöchentliche Briefing für KI im Mittelstands-Vertrieb. Kuratiert von der Redaktion, frei von Hype, fokussiert auf Anwendbarkeit. Inklusive Whitepaper „10 KI-Tools, die Mittelständler 2026 brauchen" — direkt nach Anmeldung.</p>
+
+  <div class="nl-hero">
+    <div class="body">
+      <div class="kicker">Sales Intelligence Briefing</div>
+      <h2>Jeden Montag.<br>Acht Minuten.<br><em>Wettbewerbsvorsprung.</em></h2>
+      <p class="lead">Was sich in der Welt von KI im Mittelstands-Vertrieb verändert hat — und was Sie diese Woche tun sollten. Kompakt, kuratiert, anwendbar.</p>
+      <ul>
+        <li>Die fünf wichtigsten Mittelstands-Cases der Woche</li>
+        <li>Tool-Updates, die wirklich relevant sind</li>
+        <li>Einordnungen statt Pressemitteilungen</li>
+        <li>Direkt nach Anmeldung: Whitepaper als PDF</li>
+        <li>Werbefrei. Kostenfrei. Mit einem Klick abbestellbar.</li>
+      </ul>
+    </div>
+
+    <form class="signup-form" id="signupForm" onsubmit="return submitForm(event)" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+      <input type="hidden" name="_subject" value="Sales Intelligence Newsletter Anmeldung">
+      <input type="hidden" name="_replyto" value="ben@b77.de">
+      <div id="formFields">
+        <h4>Briefing &amp; Whitepaper anfordern</h4>
+        <label for="name">Vorname</label>
+        <input type="text" id="name" name="name" required placeholder="Max">
+
+        <label for="email">E-Mail-Adresse</label>
+        <input type="email" id="email" name="email" required placeholder="max@firma.de">
+
+        <label for="company">Unternehmen (optional)</label>
+        <input type="text" id="company" name="company" placeholder="Firma GmbH">
+
+        <div class="check">
+          <input type="checkbox" id="dsgvo" required>
+          <label for="dsgvo">Ich willige ein, dass meine Daten zum Versand des Newsletters verarbeitet werden. Abmeldung jederzeit per Klick möglich.</label>
+        </div>
+
+        <button type="submit">Jetzt anfordern</button>
+        <p class="fine">Kein Spam. Kein Verkauf an Dritte. Abmeldung mit einem Klick.</p>
+      </div>
+      <div class="success-msg" id="successMsg">
+        <h4>Danke!</h4>
+        <p>Bitte bestätigen Sie Ihre Anmeldung über die E-Mail, die wir Ihnen gerade gesendet haben. Das Whitepaper liegt direkt im Anhang.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="nl-archive">
+    <div class="head">
+      <h3>Aus dem <em>Briefing-Archiv.</em></h3>
+    </div>
+    <article class="archive-item">
+      <div class="date">28. April 2026 · Ausgabe 17</div>
+      <h5>Warum Forecasting der wichtigste KI-Use-Case 2026 ist</h5>
+      <p>Drei Studien, eine Botschaft: Pipeline-Genauigkeit ist die Disziplin, in der KI den größten messbaren Hebel liefert.</p>
+    </article>
+    <article class="archive-item">
+      <div class="date">21. April 2026 · Ausgabe 16</div>
+      <h5>HubSpot Breeze im Free Tier — was das für KMU bedeutet</h5>
+      <p>Strategischer Schachzug Richtung Mittelstand. Eine Einordnung des Mid-Market-Manövers.</p>
+    </article>
+    <article class="archive-item">
+      <div class="date">14. April 2026 · Ausgabe 15</div>
+      <h5>Vier Fragen, die Sie KI-Anbietern stellen sollten</h5>
+      <p>Was den Unterschied zwischen einer guten Demo und einem produktiven System macht.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: KONTAKT
+     ============================================ -->
+<section class="page" id="page-kontakt">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Kontakt</div>
+      <h2>Schreiben Sie uns. <em>Persönlich.</em></h2>
+    </div>
+    <div class="band-meta">B77 GmbH<br>Sitz Siegen</div>
+  </div>
+
+  <p class="lead" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 64px; max-width: 76ch;">B77 ist eine Managementberatung für mittelständische Unternehmen. Über 25 Jahre Erfahrung im Mittelstand, Spezialisierung auf den Verkauf und die Weiterentwicklung von Unternehmen. Sales Intelligence ist eine gemeinsame Plattform von B77 und Quoodix.</p>
+
+  <div class="kontakt-grid">
+    <div class="col">
+      <h3>Hauptsitz <em>Siegen</em></h3>
+      <p><strong>B77 GmbH</strong><br>
+      Wallhausenstraße 1<br>
+      57072 Siegen<br>
+      Deutschland</p>
+      <p style="margin-top: 24px;"><strong>Telefon</strong><br>
+      <a href="tel:+491717454140">+49 (0) 171 7454140</a></p>
+      <p><strong>E-Mail</strong><br>
+      <a href="mailto:kontakt@b77.de">kontakt@b77.de</a></p>
+    </div>
+    <div class="col">
+      <h3>Redaktion <em>Sales Intelligence</em></h3>
+      <p>Hinweise, Tipps, Themenvorschläge oder Pressemitteilungen aus dem Mittelstand erreichen die Redaktion direkt unter:</p>
+      <p style="margin-top: 16px;"><a href="mailto:ben@b77.de">ben@b77.de</a></p>
+      <p style="margin-top: 32px;"><strong>Mediadaten &amp; Kooperationen</strong><br>
+      Für Werbeanzeigen, Sponsorships und Content-Partnerschaften wenden Sie sich bitte an <a href="mailto:kontakt@b77.de">kontakt@b77.de</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: IMPRESSUM
+     ============================================ -->
+<section class="page" id="page-impressum">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Impressum</div>
+      <h2>Angaben gemäß <em>§ 5 TMG.</em></h2>
+    </div>
+    <div class="band-meta">Stand · Mai 2026</div>
+  </div>
+
+  <div class="info-page">
+    <div class="info-block">
+      <div class="label">Anbieter</div>
+      <div class="value">
+        <strong>B77 GmbH</strong><br>
+        (Bseventyseven GmbH)<br>
+        Wallhausenstraße 1<br>
+        57072 Siegen<br>
+        Deutschland
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="label">Vertretungsberechtigt</div>
+      <div class="value">Geschäftsführerin: (FH) Verena Giesler</div>
+    </div>
+    <div class="info-block">
+      <div class="label">Registereintrag</div>
+      <div class="value">
+        Amtsgericht Siegen<br>
+        Handelsregister-Nr. HRB 13092
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="label">Umsatzsteuer-ID</div>
+      <div class="value">DE352933500</div>
+    </div>
+    <div class="info-block">
+      <div class="label">Kontakt</div>
+      <div class="value">
+        Telefon: <a href="tel:+491717454140">+49 (0) 171 7454140</a><br>
+        E-Mail: <a href="mailto:kontakt@b77.de">kontakt@b77.de</a>
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="label">Verantwortlich nach § 18 Abs. 2 MStV</div>
+      <div class="value">
+        Verena Giesler<br>
+        Anschrift wie oben
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="label">Quellen &amp; Methodik</div>
+      <div class="value">
+        Die auf dieser Plattform veröffentlichten Daten und Studien-Auswertungen stammen aus folgenden Primärquellen:<br><br>
+        <strong>Bitkom e. V.</strong> — KI-Studienberichte 2023–2026 (<a href="https://www.bitkom.org" target="_blank" rel="noopener">bitkom.org</a>)<br>
+        <strong>KfW Bankengruppe</strong> — KfW-Mittelstandspanel (<a href="https://www.kfw.de" target="_blank" rel="noopener">kfw.de</a>)<br>
+        <strong>Mittelstand-Heute</strong> — Branchen-Auswertungen (<a href="https://www.mittelstand-heute.com" target="_blank" rel="noopener">mittelstand-heute.com</a>)<br>
+        <strong>Simon-Kucher &amp; Partners</strong> — Insights zu B2B-Vertrieb &amp; Pricing (<a href="https://www.simon-kucher.com" target="_blank" rel="noopener">simon-kucher.com</a>)<br>
+        <strong>Eigene Recherche</strong> — anonymisierte Pilot-Programme aus dem DACH-Mittelstand sowie Hintergrundgespräche mit Vertriebsentscheidern.<br><br>
+        Cases werden, soweit nicht anders gekennzeichnet, anonymisiert nach Branche, Region und Mitarbeiterzahl dargestellt. KPI-Werte basieren auf von den jeweiligen Unternehmen geteilten Pilot-Daten.
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="label">Haftungsausschluss</div>
+      <div class="value">
+        Die Inhalte dieser Plattform werden mit größter Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.<br><br>
+        Beiträge, die als redaktionelle Einordnung oder Meinung gekennzeichnet sind, geben die Einschätzung der Redaktion wieder. Sie stellen keine Anlage- oder Investitionsberatung dar.
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="label">Streitschlichtung</div>
+      <div class="value">
+        Plattform der EU zur Online-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.<br><br>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PAGE: DATENSCHUTZ
+     ============================================ -->
+<section class="page" id="page-datenschutz">
+  <div class="section-band">
+    <div>
+      <div class="band-eyebrow">Datenschutz</div>
+      <h2>Wie wir mit Ihren <em>Daten umgehen.</em></h2>
+    </div>
+    <div class="band-meta">Stand · Mai 2026</div>
+  </div>
+
+  <div class="info-page">
+    <p class="lead">Diese Datenschutzerklärung informiert Sie über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten auf dieser Plattform. Verantwortlich im Sinne der DSGVO ist die B77 GmbH, Wallhausenstraße 1, 57072 Siegen.</p>
+
+    <div class="info-block">
+      <div class="label">Verantwortlicher</div>
+      <div class="value">
+        <strong>B77 GmbH</strong><br>
+        Wallhausenstraße 1, 57072 Siegen<br>
+        E-Mail: <a href="mailto:kontakt@b77.de">kontakt@b77.de</a><br>
+        Telefon: <a href="tel:+491717454140">+49 (0) 171 7454140</a>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Server-Logfiles</div>
+      <div class="value">Beim Aufruf dieser Website werden technisch notwendige Daten in Server-Logfiles gespeichert: IP-Adresse, Datum und Uhrzeit, Browser-Typ und Betriebssystem, abgerufene Seite. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Die Daten werden nach 7 Tagen gelöscht.</div>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Newsletter-Anmeldung</div>
+      <div class="value">Wenn Sie sich für unseren werktäglichen Newsletter anmelden, verarbeiten wir Ihre E-Mail-Adresse und ggf. Ihren Vornamen sowie Unternehmen zum Zweck des Newsletter-Versands. Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Sie können den Newsletter jederzeit über den Abmeldelink im Newsletter abbestellen.</div>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Hosting &amp; CDN</div>
+      <div class="value">Diese Plattform wird über GitHub Pages (GitHub Inc., USA) ausgeliefert. Beim Aufruf werden technische Verbindungsdaten an GitHub übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer stabilen Website). GitHub-Datenschutz: <a href="https://docs.github.com/site-policy/privacy-policies" target="_blank" rel="noopener">docs.github.com/site-policy/privacy-policies</a>.</div>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Externe Inhalte</div>
+      <div class="value">Wir verlinken auf externe Quellen (Bitkom, KfW, Mittelstand-Heute, Simon-Kucher u. a.). Beim Klick auf solche Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.</div>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Ihre Rechte</div>
+      <div class="value">Sie haben jederzeit das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Wenden Sie sich dafür an <a href="mailto:kontakt@b77.de">kontakt@b77.de</a>. Beschwerden können Sie an die zuständige Aufsichtsbehörde richten — für B77 ist dies der Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen.</div>
+    </div>
+
+    <div class="info-block">
+      <div class="label">Cookies</div>
+      <div class="value">Diese Plattform setzt keine Tracking-Cookies und nutzt kein Web-Analytics. Es werden ausschließlich technisch notwendige Cookies verwendet, die für den Betrieb der Seite erforderlich sind.</div>
+    </div>
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--muted); margin-top: 32px;">Diese Datenschutzerklärung wird laufend an aktuelle rechtliche Anforderungen angepasst. Stand: Mai 2026.</p>
+  </div>
+</section>
+
+</div>
+
+<!-- STICKY NEWSLETTER WIDGET — auf jeder Seite sichtbar -->
+<aside class="nl-widget" id="nlWidget" aria-label="Newsletter Anmeldung">
+  <button class="close" id="nlClose" aria-label="Schließen">×</button>
+  <div class="kicker">Werktägliches Briefing</div>
+  <div class="title">Acht Minuten <em>Vorsprung pro Woche.</em></div>
+  <form class="row" id="nlWidgetForm" onsubmit="return submitNlWidget(event)" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+    <input type="hidden" name="_subject" value="Sales Intelligence Newsletter Anmeldung">
+    <input type="hidden" name="_replyto" value="ben@b77.de">
+    <input type="email" name="email" placeholder="Ihre E-Mail" required>
+    <button type="submit">Abonnieren</button>
+  </form>
+  <div class="fine">Kostenfrei. Mit einem Klick abbestellbar. <a data-link="newsletter">Mehr erfahren →</a></div>
+  <div class="success-state">
+    <div class="ok-title">Danke!</div>
+    <div class="ok-text">Bitte bestätigen Sie Ihre Anmeldung in der E-Mail, die wir gerade gesendet haben.</div>
+  </div>
+</aside>
+
+<footer>
+  <div class="inner">
+    <div>
+      <div class="brand-foot">Sales <em>Intelligence.</em></div>
+      <p>Das werktägliche Magazin für Künstliche Intelligenz im Vertrieb des deutschen Mittelstands. Eine Plattform für Vertriebsentscheider, Sales Operations und alle, die wissen wollen, was wirklich funktioniert.</p>
+      <div class="imprint">
+        <strong>Herausgeber</strong><br>
+        B77 GmbH · Sitz Siegen<br>
+        In Kooperation mit Quoodix<br>
+        Erscheint werktäglich
+      </div>
+    </div>
+    <div>
+      <h5>Rubriken</h5>
+      <a data-link="schwerpunkt">Schwerpunkt</a>
+      <a data-link="cases">Cases</a>
+      <a data-link="tools">Tools</a>
+      <a data-link="daten">Daten</a>
+      <a data-link="magazin">Magazin</a>
+      <a data-link="newsletter">Newsletter</a>
+    </div>
+    <div>
+      <h5>Quellen &amp; Methodik</h5>
+      <a href="https://www.bitkom.org" target="_blank" rel="noopener">Bitkom Studienberichte</a>
+      <a href="https://www.kfw.de" target="_blank" rel="noopener">KfW Mittelstandspanel</a>
+      <a href="https://www.mittelstand-heute.com" target="_blank" rel="noopener">Mittelstand-Heute</a>
+      <a href="https://www.simon-kucher.com" target="_blank" rel="noopener">Simon-Kucher Insights</a>
+      <a>Eigene Recherche &amp; Pilot-Programme</a>
+    </div>
+    <div>
+      <h5>Kontakt</h5>
+      <a href="mailto:kontakt@b77.de">kontakt@b77.de</a>
+      <a data-link="kontakt">Kontaktseite</a>
+      <a href="https://www.b77.de" target="_blank" rel="noopener">B77 GmbH</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 B77 GmbH · Siegen · Alle Rechte vorbehalten</span>
+    <span>
+      <a data-link="impressum" style="display:inline; padding:0;">Impressum</a> ·
+      <a data-link="datenschutz" style="display:inline; padding:0;">Datenschutz</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.main-nav a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === name);
+  });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (window.location.hash !== '#' + name) {
+    history.replaceState(null, '', '#' + name);
+  }
+  if (name === 'daten') initDatenCharts();
+  if (name === 'tools') initToolsChart();
+}
+document.querySelectorAll('.main-nav a').forEach(a => {
+  if (a.dataset.page) a.addEventListener('click', () => showPage(a.dataset.page));
+});
+document.querySelectorAll('[data-link]').forEach(a => {
+  a.style.cursor = 'pointer';
+  a.addEventListener('click', () => showPage(a.dataset.link));
+});
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#','');
+  if (hash && document.getElementById('page-' + hash)) showPage(hash);
+});
+
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('formFields').style.display = 'none';
+  document.getElementById('successMsg').classList.add('show');
+  return false;
+}
+function submitMiniForm(e) {
+  e.preventDefault();
+  showPage('newsletter');
+  return false;
+}
+function submitNlWidget(e) {
+  e.preventDefault();
+  document.getElementById('nlWidget').classList.add('success');
+  setTimeout(() => {
+    document.getElementById('nlWidget').classList.add('hidden');
+  }, 4000);
+  return false;
+}
+document.getElementById('nlClose').addEventListener('click', () => {
+  document.getElementById('nlWidget').classList.add('hidden');
+});
+
+const BRAND = { ink: '#0a0a0a', accent: '#0096C7', accent_bright: '#5DEAFF', ink2: '#2a2a2a', muted: '#8a8a8a', hair: '#e5e5e5' };
+
+let _datenInit = false;
+function initDatenCharts() {
+  if (_datenInit || typeof Chart === 'undefined') return;
+  _datenInit = true;
+  Chart.defaults.font.family = 'Iowan Old Style, Charter, Georgia, serif';
+  Chart.defaults.color = BRAND.ink2;
+
+  new Chart(document.getElementById('adoptionChart'), {
+    type: 'line',
+    data: {
+      labels: ['2023','2024','2025','2026'],
+      datasets: [{
+        label: 'KI im Kerngeschäft', data: [11, 22, 32, 41],
+        borderColor: BRAND.accent, backgroundColor: 'rgba(0,150,199,0.12)',
+        tension: 0.35, fill: true, borderWidth: 3, pointRadius: 5, pointBackgroundColor: BRAND.accent,
+      },{
+        label: 'KI in Diskussion', data: [20, 30, 42, 48],
+        borderColor: BRAND.ink, backgroundColor: 'transparent',
+        borderDash: [4,4], tension: 0.35, fill: false, borderWidth: 2, pointRadius: 4, pointBackgroundColor: BRAND.ink,
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 12 }, color: BRAND.ink2 } } },
+      scales: { y: { beginAtZero: true, max: 60, ticks: { callback: v => v + '%', color: BRAND.muted }, grid: { color: BRAND.hair } },
+                x: { ticks: { color: BRAND.muted }, grid: { display: false } } } }
+  });
+
+  new Chart(document.getElementById('roiChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Recherchezeit','Forecast','Reply-Rate','Win-Rate','Cycle Time','Lead-Vol.'],
+      datasets: [{ label: 'Effekt (%)', data: [-34, 22, 130, 14, -22, 41],
+        backgroundColor: ctx => ctx.raw > 0 ? BRAND.accent : BRAND.ink, borderWidth: 0 }]
+    },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { callback: v => v + '%', color: BRAND.muted }, grid: { color: BRAND.hair } },
+                y: { ticks: { color: BRAND.ink2 }, grid: { display: false } } } }
+  });
+
+  new Chart(document.getElementById('toolsDistChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['CRM-Plattformen','Outreach / SDR','Conversation','Forecasting','Voice / Chat','DACH-Spez.'],
+      datasets: [{ data: [32, 19, 14, 12, 13, 10],
+        backgroundColor: [BRAND.accent,'rgba(0,150,199,0.78)','rgba(0,150,199,0.6)','rgba(0,150,199,0.45)','rgba(0,150,199,0.32)','rgba(10,10,10,0.55)'],
+        borderColor: '#ffffff', borderWidth: 2 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, cutout: '58%',
+      plugins: { legend: { position: 'right', labels: { font: { size: 12 }, color: BRAND.ink2, boxWidth: 14 } } } }
+  });
+
+  new Chart(document.getElementById('sizeChart'), {
+    type: 'bar',
+    data: {
+      labels: ['<50 MA','50–250 MA','250–500 MA','>500 MA'],
+      datasets: [{ label: '2024', data: [10, 22, 38, 52], backgroundColor: 'rgba(10,10,10,0.45)' },
+                 { label: '2026', data: [27, 41, 55, 68], backgroundColor: BRAND.accent }]
+    },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 12 }, color: BRAND.ink2 } } },
+      scales: { y: { beginAtZero: true, max: 80, ticks: { callback: v => v + '%', color: BRAND.muted }, grid: { color: BRAND.hair } },
+                x: { ticks: { color: BRAND.ink2 }, grid: { display: false } } } }
+  });
+}
+
+let _toolsInit = false;
+function initToolsChart() {
+  if (_toolsInit || typeof Chart === 'undefined') return;
+  _toolsInit = true;
+  new Chart(document.getElementById('toolsCategoryChart'), {
+    type: 'polarArea',
+    data: {
+      labels: ['HubSpot','Pipedrive','Dealcode','MS Copilot','Apollo','moin.ai','Gong','Brevo','11x.ai','Make.com'],
+      datasets: [{
+        data: [9.2, 8.9, 9.0, 8.7, 8.4, 8.3, 8.6, 8.1, 7.8, 7.9],
+        backgroundColor: ['rgba(0,150,199,0.92)','rgba(0,150,199,0.84)','rgba(0,150,199,0.76)','rgba(0,150,199,0.68)','rgba(0,150,199,0.6)','rgba(0,150,199,0.52)','rgba(0,150,199,0.44)','rgba(0,150,199,0.38)','rgba(0,150,199,0.32)','rgba(0,150,199,0.26)'],
+        borderColor: '#ffffff', borderWidth: 2
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { font: { size: 11 }, color: BRAND.ink2, boxWidth: 12 } } },
+      scales: { r: { beginAtZero: true, max: 10, grid: { color: BRAND.hair }, ticks: { display: false }, angleLines: { color: BRAND.hair } } } }
+  });
+}
+</script>
+</body>
+</html>
