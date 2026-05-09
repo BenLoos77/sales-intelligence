@@ -2664,37 +2664,42 @@ window.addEventListener('load', () => {
   if (hash && document.getElementById('page-' + hash)) showPage(hash);
 });
 
-// Brevo nimmt POST-Requests von beliebigen Origins an. Mit no-cors können wir
-// das Formular im Hintergrund absenden und zeigen eine eigene Erfolgsmeldung.
+// Brevo erwartet application/x-www-form-urlencoded, nicht multipart/form-data.
+// Mit URLSearchParams encoded und no-cors gesendet — dann nimmt Brevo es korrekt an.
+function brevoSubmit(form) {
+  const params = new URLSearchParams();
+  new FormData(form).forEach((value, key) => params.append(key, value));
+  return fetch(form.action, {
+    method: 'POST',
+    body: params,
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+  });
+}
 function submitForm(e) {
   e.preventDefault();
-  const form = e.target;
-  fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
-    .finally(() => {
-      document.getElementById('formFields').style.display = 'none';
-      document.getElementById('successMsg').classList.add('show');
-    });
+  brevoSubmit(e.target).finally(() => {
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  });
   return false;
 }
 function submitMiniForm(e) {
   e.preventDefault();
   const form = e.target;
-  fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
-    .finally(() => {
-      form.innerHTML = '<div style="font-family: var(--serif); color: var(--ink-soft); padding: 8px 14px;"><em>Danke!</em> Bitte bestätigen Sie Ihre Anmeldung in der E-Mail.</div>';
-    });
+  brevoSubmit(form).finally(() => {
+    form.innerHTML = '<div style="font-family: var(--serif); color: var(--ink-soft); padding: 8px 14px;"><em>Danke!</em> Bitte bestätigen Sie Ihre Anmeldung in der E-Mail.</div>';
+  });
   return false;
 }
 function submitNlWidget(e) {
   e.preventDefault();
-  const form = e.target;
-  fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
-    .finally(() => {
-      document.getElementById('nlWidget').classList.add('success');
-      setTimeout(() => {
-        document.getElementById('nlWidget').classList.add('hidden');
-      }, 4500);
-    });
+  brevoSubmit(e.target).finally(() => {
+    document.getElementById('nlWidget').classList.add('success');
+    setTimeout(() => {
+      document.getElementById('nlWidget').classList.add('hidden');
+    }, 4500);
+  });
   return false;
 }
 document.getElementById('nlClose').addEventListener('click', () => {
