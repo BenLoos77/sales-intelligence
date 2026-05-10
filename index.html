@@ -1595,7 +1595,7 @@ footer .legal {
       <div class="kicker">Die aktuelle Sales Intelligence</div>
       <h2>Der Mittelstand zieht nach — <em>schneller, als die Schlagzeilen vermuten.</em></h2>
       <p class="lead">41 Prozent der deutschen Mittelständler nutzen KI heute produktiv. Bis 2028 werden es über 70 Prozent sein. Im Vertrieb holen kleinere Unternehmen sogar schneller auf als Konzerne. Eine Bestandsaufnahme aus der Praxis — und das, was Mittelstands-Entscheider jetzt anschalten müssen.</p>
-      <span class="cta" data-link="schwerpunkt">Schwerpunkt lesen</span>
+      <a class="cta" id="latestArticleCta" href="#schwerpunkt" data-link="schwerpunkt">Schwerpunkt lesen</a>
     </div>
   </section>
 
@@ -2740,7 +2740,22 @@ function showPage(name) {
   if (name === 'start') renderLatest();
 }
 // Trigger on initial load too
-window.addEventListener('load', () => { renderLatest(); });
+window.addEventListener('load', async () => {
+  renderLatest();
+  // Cover-Hero CTA dynamisch auf neuesten Artikel verlinken
+  const articles = await loadArticles();
+  if (articles.length > 0) {
+    const cta = document.getElementById('latestArticleCta');
+    if (cta) {
+      cta.href = articles[0].url;
+      cta.removeAttribute('data-link');
+      cta.addEventListener('click', (e) => {
+        // Allow normal nav to standalone article
+        e.stopPropagation();
+      });
+    }
+  }
+});
 document.querySelectorAll('.main-nav a').forEach(a => {
   if (a.dataset.page) a.addEventListener('click', () => showPage(a.dataset.page));
 });
