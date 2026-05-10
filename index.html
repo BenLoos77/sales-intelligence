@@ -1241,6 +1241,90 @@ footer .legal {
 }
 
 /* ============================================================
+   ARCHIVE LIST
+   ============================================================ */
+.archive-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px 48px; }
+.archive-item {
+  display: flex; flex-direction: column; cursor: pointer;
+  border-top: 1px solid var(--ink); padding-top: 24px;
+  transition: padding 0.2s;
+}
+.archive-item a { display: flex; flex-direction: column; gap: 18px; }
+.archive-item:hover { padding-left: 8px; }
+.archive-item:hover h3 { color: var(--accent); }
+.archive-item .thumb {
+  aspect-ratio: 16 / 10;
+  background: var(--issue);
+  position: relative;
+  overflow: hidden;
+}
+.archive-item .thumb svg { width: 100%; height: 100%; }
+.archive-item .meta {
+  font-family: var(--serif); font-style: italic;
+  font-size: 15px; color: var(--ink-soft2);
+}
+.archive-item h3 {
+  font-family: var(--serif-display); font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--ink); margin: 0; transition: color 0.15s;
+}
+.archive-item h3 em { font-style: italic; }
+.archive-item p {
+  font-family: var(--serif); font-size: 16px;
+  line-height: 1.55; color: var(--ink-soft); margin: 0;
+}
+.archive-item.latest { grid-column: 1 / -1; }
+.archive-item.latest .thumb { aspect-ratio: 21 / 9; }
+.archive-item.latest h3 { font-size: clamp(36px, 4vw, 56px); }
+
+@media (max-width: 800px) {
+  .archive-list { grid-template-columns: 1fr; gap: 40px; }
+  .archive-item.latest { grid-column: auto; }
+  .archive-item.latest .thumb { aspect-ratio: 16 / 10; }
+}
+
+/* Latest-articles teaser block on homepage */
+.latest-block {
+  margin-top: 96px;
+  padding-top: 48px;
+  border-top: 1px solid var(--ink);
+}
+.latest-block .head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: baseline;
+  margin-bottom: 32px;
+}
+.latest-block .head .label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 17px; color: var(--ink-soft);
+}
+.latest-block .head h3 {
+  font-family: var(--serif-display); font-weight: 400;
+  font-size: clamp(36px, 4vw, 56px); letter-spacing: -0.025em;
+  line-height: 1; color: var(--ink); margin: 0;
+}
+.latest-block .head h3 em { font-style: italic; }
+.latest-block .head .more {
+  font-family: var(--serif); font-style: italic;
+  font-size: 16px; color: var(--accent); cursor: pointer;
+}
+.latest-block .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 32px;
+}
+@media (max-width: 900px) {
+  .latest-block .grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .latest-block .grid { grid-template-columns: 1fr; }
+  .latest-block .head { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ============================================================
    INFO PAGES (Impressum / Kontakt / Datenschutz)
    ============================================================ */
 .info-page { max-width: 820px; }
@@ -1466,7 +1550,7 @@ footer .legal {
     <a data-page="cases">Cases</a>
     <a data-page="tools">Tools</a>
     <a data-page="daten">Daten</a>
-    <a data-page="magazin">Magazin</a>
+    <a data-page="archiv">Archiv</a>
   </nav>
 </header>
 
@@ -1621,6 +1705,18 @@ footer .legal {
     </article>
   </section>
 
+  <!-- LETZTE BEITRÄGE — Teaser aus dem Archiv -->
+  <section class="latest-block">
+    <div class="head">
+      <span class="label">Aus dem Archiv</span>
+      <h3>Letzte <em>Beiträge.</em></h3>
+      <span class="more" data-link="archiv">Alle Beiträge →</span>
+    </div>
+    <div id="latest-grid" class="grid">
+      <p style="font-family: var(--serif); color: var(--muted); font-style: italic; grid-column: 1/-1;">Lade letzte Beiträge …</p>
+    </div>
+  </section>
+
   <!-- IN DIESER AUSGABE / TOC -->
   <section class="toc-section">
     <div class="section-band">
@@ -1663,11 +1759,11 @@ footer .legal {
         </div>
         <span class="pg">36</span>
       </div>
-      <div class="toc-row" data-link="magazin">
+      <div class="toc-row" data-link="archiv">
         <span class="num">05</span>
         <div>
-          <h4>Magazin: Editorial, Interview, Streitschrift</h4>
-          <p>Drei Stimmen aus dem Mittelstand. Eine gemeinsame These.</p>
+          <h4>Archiv: Alle bisherigen Schwerpunkte</h4>
+          <p>Chronologisch. Jeder Beitrag mit eigener URL — bleibt dauerhaft erreichbar.</p>
         </div>
         <span class="pg">44</span>
       </div>
@@ -2233,87 +2329,21 @@ footer .legal {
 </section>
 
 <!-- ============================================
-     PAGE: MAGAZIN
+     PAGE: ARCHIV — alle bisherigen Schwerpunkte
      ============================================ -->
-<section class="page" id="page-magazin">
+<section class="page" id="page-archiv">
   <div class="section-band">
     <div>
-      <div class="band-eyebrow">Magazin · Mai 2026</div>
-      <h2>Drei Stimmen. <em>Eine These.</em></h2>
+      <div class="band-eyebrow">Archiv</div>
+      <h2>Alle <em>Schwerpunkte.</em></h2>
     </div>
-    <div class="band-meta">Lange Form<br>Drei Beiträge</div>
+    <div class="band-meta">Chronologisch<br>Jeder Beitrag dauerhaft erreichbar</div>
   </div>
 
-  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 80px;">Editorial, Streitschrift, Interview — die langen Texte unserer Plattform. Für alle, die wissen wollen, was unter der Tool-Oberfläche im Mittelstand wirklich passiert.</p>
+  <p class="standfirst" style="font-family: var(--serif); font-size: 21px; line-height: 1.55; color: var(--ink-soft); max-width: 76ch; margin-bottom: 56px;">Jeder Tagesschwerpunkt bleibt unter eigener URL dauerhaft online. Frühere Beiträge sind chronologisch geordnet — neueste oben.</p>
 
-  <div class="magazin-layout">
-    <div>
-      <article class="editorial-feature">
-        <div class="tag">Editorial · Die Redaktion</div>
-        <h3>Wer 2026 noch debattiert, ob KI in den Mittelstands-Vertrieb gehört, hat das <em>Spielfeld bereits verlassen.</em></h3>
-        <p class="standfirst">Es gibt diese Konferenzen, auf denen Mittelstands-Geschäftsführer mit verschränkten Armen erklären, warum „der direkte Draht zum Kunden" das Wichtigste sei. Sie haben Recht. Und sie verstehen die Frage nicht.</p>
-        <div class="body">
-          <p>Niemand ersetzt die zwanzigjährige Beziehung zum Stammkunden. Niemand ersetzt das Gespür, wann ein Werkzeugmaschinenkunde tatsächlich kaufbereit ist. Was ersetzt wird, ist das Vorglühen: die zwei Stunden Account-Recherche, die drei Versuche eine Telefonnummer zu finden, die fünfzehnte Variation derselben Follow-up-Mail.</p>
-          <div class="pull">Wer 2024 gezögert hat, war vorsichtig. Wer 2025 gezögert hat, war konservativ. Wer 2026 noch zögert, ist abgehängt — und merkt es noch nicht.</div>
-          <p>Diese Plattform ist die Antwort auf einen einfachen Anspruch: Täglich verstehen, was sich bewegt, was funktioniert und was Quatsch ist. Damit Mittelstandsentscheider in fünfzehn Minuten sehen, was sonst eine Woche Recherche kostet.</p>
-          <p>Wir orientieren uns an drei einfachen Regeln. Erstens: Keine Pressemitteilungen, nur Substanz. Zweitens: Zahlen mit Quelle. Drittens: Wenn wir uns irren, korrigieren wir uns.</p>
-        </div>
-      </article>
-
-      <div class="interview-section">
-        <div class="pre">Interview · Aus der Praxis</div>
-        <h3>„Wir haben drei <em>Tools</em> ausgemustert, bevor wir das Vierte verstanden hatten."</h3>
-        <p style="font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 36px; max-width: 820px;">Ein Vertriebsleiter eines mittelständischen Maschinenbauers über teure Lehrgeld-Phasen, das fehlende KPI-Setup und warum die Antwort am Ende eine Datenmodell-Frage war. Auszug aus einem Hintergrundgespräch.</p>
-
-        <div class="qa">
-          <span class="q">F</span>
-          <div class="qtext">Sie haben drei KI-Tools im Vertrieb getestet, bevor das vierte produktiv ging. Was war der Fehler?</div>
-        </div>
-        <div class="qa">
-          <span class="a">A</span>
-          <div class="atext">Wir haben Tools gekauft, ohne den Prozess davor zu sortieren. Das klingt jetzt offensichtlich — war es im Moment der Entscheidung aber nicht. Jeder Anbieter zeigt eine Demo, in der alles funktioniert. Niemand zeigt, was in den ersten drei Monaten passiert, wenn die CRM-Daten unsauber sind und die Mitarbeiter nicht wissen, was die KPI eigentlich ist.</div>
-        </div>
-        <div class="qa">
-          <span class="q">F</span>
-          <div class="qtext">Was hat dann den Durchbruch gebracht?</div>
-        </div>
-        <div class="qa">
-          <span class="a">A</span>
-          <div class="atext">Wir haben das Tool-Projekt für drei Monate gestoppt und stattdessen am Datenmodell gearbeitet. Verantwortlichkeiten, Pflichtfelder, Pipeline-Disziplin. Erst danach haben wir das vierte Tool eingeführt — und es lief in vier Wochen. Die Lektion: Datenqualität ist die Voraussetzung, nicht das Nebenprodukt.</div>
-        </div>
-        <div class="qa">
-          <span class="q">F</span>
-          <div class="qtext">Welche Empfehlung geben Sie heute weiter?</div>
-        </div>
-        <div class="qa">
-          <span class="a">A</span>
-          <div class="atext">Erst der Prozess, dann das Tool. Erst die KPI, dann die Software. Und niemals zwei Tools gleichzeitig einführen. Das ist der schnellste Weg, eine Vertriebsmannschaft zu verlieren.</div>
-        </div>
-      </div>
-    </div>
-
-    <aside class="magazin-side">
-      <div class="side-card">
-        <div class="tag">Glosse · Vertriebsalltag</div>
-        <h4>„Wir haben da mal ein <em>KI-Tool</em> eingeführt"</h4>
-        <p>Ein Satz, der in deutschen Mittelstands-Vorständen 2025 noch Bewunderung erntete und 2026 nichts mehr bedeutet. Was zählt, ist nicht die Einführung — sondern die Veränderung, die danach passiert.</p>
-      </div>
-      <div class="side-card">
-        <div class="tag">Streitschrift · Pro &amp; Contra</div>
-        <h4>Brauchen Mittelständler <em>noch SDRs?</em></h4>
-        <p>Pro: Junior-Vertriebler lernen den Beruf am Telefon. Contra: KI macht 80 Prozent der SDR-Arbeit besser. Die Wahrheit liegt nicht in der Mitte, sondern davor.</p>
-      </div>
-      <div class="side-card">
-        <div class="tag">Reportage · Praxis</div>
-        <h4>Ein Tag bei einem deutschen <em>AI-Sales-Anbieter</em></h4>
-        <p>Wir haben einen Tag in der Dealcode-Redaktion verbracht. Was wir mitnehmen: Hochwertige KI im Vertrieb sieht weniger glamourös aus, als der Markt suggeriert.</p>
-      </div>
-      <div class="side-card">
-        <div class="tag">Empfehlung · Lesetipps</div>
-        <h4>Drei Bücher <em>zum Thema</em></h4>
-        <p>„Vertrieb für Hidden Champions" (Hermann Simon), „No Forms. No Spam." (Latane Conant) und Bitkoms aktueller KI-Studienbericht. Was die Bücher gemein haben: Sie kommen ohne Hype aus.</p>
-      </div>
-    </aside>
+  <div id="archive-list" class="archive-list">
+    <p style="font-family: var(--serif); color: var(--muted); font-style: italic;">Lade Archiv …</p>
   </div>
 </section>
 
@@ -2610,7 +2640,7 @@ footer .legal {
       <a data-link="cases">Cases</a>
       <a data-link="tools">Tools</a>
       <a data-link="daten">Daten</a>
-      <a data-link="magazin">Magazin</a>
+      <a data-link="archiv">Archiv</a>
       <a data-link="newsletter">Newsletter</a>
     </div>
     <div>
@@ -2638,6 +2668,61 @@ footer .legal {
 </footer>
 
 <script>
+// ============================================================
+// ARTICLES — load /articles.json and render
+// ============================================================
+let _articlesCache = null;
+async function loadArticles() {
+  if (_articlesCache) return _articlesCache;
+  try {
+    const r = await fetch('/articles.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('articles.json not found');
+    _articlesCache = await r.json();
+  } catch (e) {
+    console.warn('Konnte articles.json nicht laden:', e);
+    _articlesCache = [];
+  }
+  return _articlesCache;
+}
+function articleCardHTML(a) {
+  const thumb = a.cover_svg
+    ? a.cover_svg
+    : `<svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="380" fill="${a.color || '#5DEAFF'}"/><text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+  return `
+    <article class="archive-item">
+      <a href="${a.url}">
+        <div class="thumb">${thumb}</div>
+        <div class="meta">${a.date_display} · ${a.eyebrow || 'Schwerpunkt'}</div>
+        <h3>${a.title}</h3>
+        <p>${a.deck}</p>
+      </a>
+    </article>`;
+}
+async function renderArchive() {
+  const articles = await loadArticles();
+  const container = document.getElementById('archive-list');
+  if (!container) return;
+  if (articles.length === 0) {
+    container.innerHTML = '<p style="font-family: var(--serif); color: var(--muted); font-style: italic;">Noch keine Beiträge im Archiv.</p>';
+    return;
+  }
+  // Latest = full width, rest = 2-column
+  const [latest, ...rest] = articles;
+  container.innerHTML = `<article class="archive-item latest"><a href="${latest.url}"><div class="thumb">${latest.cover_svg || ''}</div><div class="meta">${latest.date_display} · ${latest.eyebrow || 'Schwerpunkt'}</div><h3>${latest.title}</h3><p>${latest.deck}</p></a></article>` + rest.map(articleCardHTML).join('');
+}
+async function renderLatest() {
+  const articles = await loadArticles();
+  const container = document.getElementById('latest-grid');
+  if (!container) return;
+  // Skip first (latest) = it's already featured in cover-hero. Show next 3.
+  const teasers = articles.slice(1, 4);
+  if (teasers.length === 0) {
+    container.innerHTML = '<p style="font-family: var(--serif); color: var(--muted); font-style: italic; grid-column: 1/-1;">Mehr Beiträge folgen in den nächsten Tagen.</p>';
+    return;
+  }
+  container.innerHTML = teasers.map(articleCardHTML).join('');
+}
+
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('page-' + name);
@@ -2651,7 +2736,11 @@ function showPage(name) {
   }
   if (name === 'daten') initDatenCharts();
   if (name === 'tools') initToolsChart();
+  if (name === 'archiv') renderArchive();
+  if (name === 'start') renderLatest();
 }
+// Trigger on initial load too
+window.addEventListener('load', () => { renderLatest(); });
 document.querySelectorAll('.main-nav a').forEach(a => {
   if (a.dataset.page) a.addEventListener('click', () => showPage(a.dataset.page));
 });
