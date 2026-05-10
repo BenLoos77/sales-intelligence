@@ -2675,11 +2675,12 @@ let _articlesCache = null;
 async function loadArticles() {
   if (_articlesCache) return _articlesCache;
   try {
-    const r = await fetch('/articles.json', { cache: 'no-cache' });
-    if (!r.ok) throw new Error('articles.json not found');
+    const r = await fetch('articles.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('articles.json HTTP ' + r.status);
     _articlesCache = await r.json();
+    console.log('[SI] Articles geladen:', _articlesCache.length);
   } catch (e) {
-    console.warn('Konnte articles.json nicht laden:', e);
+    console.error('[SI] Konnte articles.json nicht laden:', e);
     _articlesCache = [];
   }
   return _articlesCache;
