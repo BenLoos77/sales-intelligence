@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sales-intelligence.b77.de/</loc>
+    <lastmod>2026-05-11T06:00:00+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sales-intelligence.b77.de/articles/2026-05-11-achtzig-tage-ai-act-vertriebsleiter.html</loc>
+    <lastmod>2026-05-11T06:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sales-intelligence.b77.de/articles/2026-05-10-mittelstand-zieht-nach.html</loc>
+    <lastmod>2026-05-10T06:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
