@@ -1,5 +1,19 @@
 [
   {
+    "slug": "autonome-sdr-datenstand",
+    "date": "2026-05-13",
+    "date_display": "13. Mai 2026",
+    "iso_date": "2026-05-13T06:00:00+02:00",
+    "url": "/articles/2026-05-13-autonome-sdr-datenstand.html",
+    "title": "Der autonome SDR. Warum jeder <em>zweite Pilot</em> am Datenstand scheitert.",
+    "deck": "Der Sales-Agent steht überall vor der Tür. Doch nur ein Drittel der Mittelständler hat die Datenbasis, auf der er sauber arbeiten kann.",
+    "eyebrow": "Schwerpunkt",
+    "kpi": "42 %",
+    "color": "#5DEAFF",
+    "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#5DEAFF\"/><text x=\"40\" y=\"60\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT · 13. MAI 2026</text><text x=\"40\" y=\"170\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"90\" fill=\"#0a0a0a\" letter-spacing=\"-3\">42 %</text><text x=\"40\" y=\"205\" font-family=\"Helvetica\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">DATENQUALITÄT ALS TOP-HEMMNIS</text><line x1=\"40\" y1=\"235\" x2=\"560\" y2=\"235\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"235\" x2=\"120\" y2=\"235\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"280\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Vor dem Agenten steht</text><text x=\"40\" y=\"310\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">der Daten-Audit.</text><rect x=\"40\" y=\"332\" width=\"20\" height=\"20\" fill=\"#0096C7\"/><text x=\"72\" y=\"348\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">AGENTIC AI · MITTELSTAND</text></svg>",
+    "reading_time": "7 Minuten"
+  },
+  {
     "slug": "achtzig-tage-ai-act-vertriebsleiter",
     "date": "2026-05-11",
     "date_display": "11. Mai 2026",
