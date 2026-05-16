@@ -1,5 +1,19 @@
 [
   {
+    "slug": "quartalsende-geschaetzt-umsatzprognose",
+    "date": "2026-05-16",
+    "date_display": "16. Mai 2026",
+    "iso_date": "2026-05-16T06:00:00+02:00",
+    "url": "/articles/2026-05-16-quartalsende-geschaetzt-umsatzprognose.html",
+    "title": "Quartalsende, <em>geschätzt.</em> Was KI an der Umsatzprognose im Mittelstand ändert.",
+    "deck": "Die Umsatzprognose ist seit Jahren die schwächste Disziplin im B2B-Vertrieb. KI-Modelle versprechen mehr Treffsicherheit. Wo der Mittelstand 2026 ansetzen kann, und woran die meisten Pilotprojekte scheitern.",
+    "eyebrow": "Schwerpunkt",
+    "kpi": "55 → 75 %",
+    "color": "#5DEAFF",
+    "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#5DEAFF\"/><text x=\"40\" y=\"60\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT · 16. MAI 2026</text><text x=\"40\" y=\"175\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"82\" fill=\"#0a0a0a\" letter-spacing=\"-3\">55→75 %</text><text x=\"40\" y=\"210\" font-family=\"Helvetica\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">PROGNOSE-TREFFSICHERHEIT · KI-PILOTEN</text><line x1=\"40\" y1=\"240\" x2=\"560\" y2=\"240\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"240\" x2=\"120\" y2=\"240\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"285\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Vom Bauchgefühl zur</text><text x=\"40\" y=\"315\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">belastbaren Zahl.</text><rect x=\"40\" y=\"335\" width=\"20\" height=\"20\" fill=\"#0096C7\"/><text x=\"72\" y=\"351\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">UMSATZPROGNOSE · MITTELSTAND</text></svg>",
+    "reading_time": "7 Minuten"
+  },
+  {
     "slug": "fuenf-prozent-luecke-vertrieb-ki",
     "date": "2026-05-14",
     "date_display": "14. Mai 2026",
