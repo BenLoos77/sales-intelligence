@@ -1,5 +1,19 @@
 [
   {
+    "slug": "drei-punkte-marge-ki-pricing",
+    "date": "2026-05-17",
+    "date_display": "17. Mai 2026",
+    "iso_date": "2026-05-17T06:00:00+02:00",
+    "url": "/articles/2026-05-17-drei-punkte-marge-ki-pricing.html",
+    "title": "Drei Punkte Marge. Was <em>KI im B2B-Preis</em> wirklich liefert.",
+    "deck": "Zwei bis fünf Prozentpunkte EBITDA-Marge: Was die Pricing-Berater nüchtern in Aussicht stellen, ist im Maschinenbau gerade jetzt ein handfester Hebel. Wenn drei Voraussetzungen stimmen.",
+    "eyebrow": "Schwerpunkt",
+    "kpi": "2–5 Pkt.",
+    "color": "#5DEAFF",
+    "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#5DEAFF\"/><text x=\"40\" y=\"60\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT · 17. MAI 2026</text><text x=\"40\" y=\"175\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"78\" fill=\"#0a0a0a\" letter-spacing=\"-3\">+2–5 Pkt.</text><text x=\"40\" y=\"210\" font-family=\"Helvetica\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">EBITDA-MARGE · KI-PREISGESTALTUNG</text><line x1=\"40\" y1=\"240\" x2=\"560\" y2=\"240\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"240\" x2=\"120\" y2=\"240\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"285\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Vom Rabatt nach Bauchgefühl</text><text x=\"40\" y=\"315\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">zum kalibrierten Preisband.</text><rect x=\"40\" y=\"335\" width=\"20\" height=\"20\" fill=\"#0096C7\"/><text x=\"72\" y=\"351\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">PRICING · MASCHINENBAU</text></svg>",
+    "reading_time": "7 Minuten"
+  },
+  {
     "slug": "quartalsende-geschaetzt-umsatzprognose",
     "date": "2026-05-16",
     "date_display": "16. Mai 2026",
