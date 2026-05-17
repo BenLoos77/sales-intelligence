@@ -1730,14 +1730,14 @@ footer .legal {
       <div class="band-meta">Täglich aktualisiert<br>Stand · 13. Mai 2026</div>
     </div>
     <div class="toc-list">
-      <div class="toc-row" data-link="schwerpunkt">
+      <a class="toc-row" id="toc-schwerpunkt" href="#schwerpunkt" data-link="schwerpunkt">
         <span class="num">01</span>
         <div>
-          <h4>Schwerpunkt: Der autonome SDR — und sein Datenproblem</h4>
-          <p>42 Prozent der Mittelständler scheitern an der Datenqualität, bevor der Sales-Agent eine Mail schreibt. Drei Engpässe, drei Vorarbeiten — eine kurze Inventur.</p>
+          <h4 id="toc-schwerpunkt-title">Schwerpunkt: Lade aktuellen Beitrag …</h4>
+          <p id="toc-schwerpunkt-deck">Der jüngste Tagesschwerpunkt wird hier geladen.</p>
         </div>
-        <span class="pg">04</span>
-      </div>
+        <span class="pg" id="toc-schwerpunkt-date">heute</span>
+      </a>
       <div class="toc-row" data-link="cases">
         <span class="num">02</span>
         <div>
@@ -2707,6 +2707,22 @@ async function renderArchive() {
   const [latest, ...rest] = articles;
   container.innerHTML = `<article class="archive-item latest"><a href="${latest.url}"><div class="thumb">${latest.cover_svg || ''}</div><div class="meta">${latest.date_display} · ${latest.eyebrow || 'Schwerpunkt'}</div><h3>${latest.title}</h3><p>${latest.deck}</p></a></article>` + rest.map(articleCardHTML).join('');
 }
+async function renderTocSchwerpunkt() {
+  const articles = await loadArticles();
+  if (articles.length === 0) return;
+  const a = articles[0];
+  const titleEl = document.getElementById('toc-schwerpunkt-title');
+  const deckEl = document.getElementById('toc-schwerpunkt-deck');
+  const dateEl = document.getElementById('toc-schwerpunkt-date');
+  const rowEl = document.getElementById('toc-schwerpunkt');
+  if (titleEl) titleEl.innerHTML = 'Schwerpunkt: ' + (a.title.replace(/<\/?em>/g, ''));
+  if (deckEl) deckEl.textContent = a.deck;
+  if (dateEl) dateEl.textContent = a.date_display.replace(/\s\d{4}$/, '');
+  if (rowEl) {
+    rowEl.href = a.url;
+    rowEl.removeAttribute('data-link');
+  }
+}
 async function renderLatest() {
   const articles = await loadArticles();
   const container = document.getElementById('latest-grid');
@@ -2734,11 +2750,12 @@ function showPage(name) {
   if (name === 'daten') initDatenCharts();
   if (name === 'tools') initToolsChart();
   if (name === 'archiv') renderArchive();
-  if (name === 'start') renderLatest();
+  if (name === 'start') { renderLatest(); renderTocSchwerpunkt(); }
 }
 // Trigger on initial load too
 window.addEventListener('load', async () => {
   renderLatest();
+  renderTocSchwerpunkt();
   // Cover-Hero CTA dynamisch auf neuesten Artikel verlinken
   const articles = await loadArticles();
   if (articles.length > 0) {
