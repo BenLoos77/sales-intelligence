@@ -1,5 +1,19 @@
 [
     {
+        "slug": "ki-gespraechsanalyse-vertrieb-strafrecht",
+        "date": "2026-05-20",
+        "date_display": "20. Mai 2026",
+        "iso_date": "2026-05-20T06:00:00+02:00",
+        "url": "/articles/2026-05-20-ki-gespraechsanalyse-vertrieb-strafrecht.html",
+        "title": "Die KI <em>hört mit.</em> Warum Gesprächsanalyse im Vertrieb an einem Satz Strafrecht hängt.",
+        "deck": "Gesprächsanalyse heißt: Die KI hört im Verkaufsgespräch mit, transkribiert, wertet aus. US-Vertriebe melden zehn bis achtzehn Prozent höhere Abschlussquoten. Im Mittelstand entscheidet aber nicht die Software, sondern eine saubere Einwilligung — und wer ohne sie mitschneidet, riskiert mehr als ein Bußgeld.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "§ 201",
+        "color": "#5DEAFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#5DEAFF\"/><text x=\"40\" y=\"60\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT · 20. MAI 2026</text><text x=\"40\" y=\"190\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"104\" fill=\"#0a0a0a\" letter-spacing=\"-3\">§ 201</text><text x=\"40\" y=\"224\" font-family=\"Helvetica\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">STGB · MITSCHNITT NUR MIT EINWILLIGUNG</text><line x1=\"40\" y1=\"252\" x2=\"560\" y2=\"252\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"252\" x2=\"120\" y2=\"252\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"297\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Erst das Ja des Kunden.</text><text x=\"40\" y=\"325\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Dann die Gesprächsanalyse.</text><rect x=\"40\" y=\"342\" width=\"20\" height=\"20\" fill=\"#0096C7\"/><text x=\"72\" y=\"358\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">CONVERSATION INTELLIGENCE · VERTRIEB</text></svg>",
+        "reading_time": "6 Minuten"
+    },
+    {
         "slug": "zehn-prozent-mehr-umsatz-predictive-maintenance",
         "date": "2026-05-19",
         "date_display": "19. Mai 2026",
