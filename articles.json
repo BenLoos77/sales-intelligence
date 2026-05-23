@@ -1,5 +1,19 @@
 [
     {
+        "slug": "pilot-bestanden-ki-vertrieb-90-tage",
+        "date": "2026-05-23",
+        "date_display": "23. Mai 2026",
+        "iso_date": "2026-05-23T06:00:00+02:00",
+        "url": "/articles/2026-05-23-pilot-bestanden-ki-vertrieb-90-tage.html",
+        "title": "<em>Pilot bestanden</em>, Projekt gescheitert. Was KI im Vertrieb nach 90 Tagen fehlt.",
+        "deck": "Die Bitkom-Studie 2026 zählt die schärfste KI-Adoption seit Beginn der Erhebung — 41 Prozent nutzen, 88 Prozent davon im Kundenkontakt. Gartner erwartet zugleich, dass bis Jahresende fast ein Drittel aller Projekte mit generativer KI nach dem Pilot eingestellt wird. Woran es im Vertrieb liegt: an der Datengrundlage, an unklaren Zuständigkeiten und an einem Team, das niemand mitgenommen hat.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "3 / 10",
+        "color": "#5DEAFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#5DEAFF\"/><text x=\"40\" y=\"60\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT · 23. MAI 2026</text><text x=\"40\" y=\"185\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"96\" fill=\"#0a0a0a\" letter-spacing=\"-3\">3 / 10</text><text x=\"40\" y=\"220\" font-family=\"Helvetica\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">KI-PROJEKTE ENDEN NACH DEM PILOT</text><line x1=\"40\" y1=\"248\" x2=\"560\" y2=\"248\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"248\" x2=\"120\" y2=\"248\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"293\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Der Pilot beweist die Technik.</text><text x=\"40\" y=\"321\" font-family=\"Iowan Old Style, Georgia, serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Den Betrieb beweist er nicht.</text><rect x=\"40\" y=\"338\" width=\"20\" height=\"20\" fill=\"#0096C7\"/><text x=\"72\" y=\"354\" font-family=\"Helvetica\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">PILOT VS. REGELBETRIEB · VERTRIEB</text></svg>",
+        "reading_time": "6 Minuten"
+    },
+    {
         "slug": "ki-gespraechsanalyse-vertrieb-strafrecht",
         "date": "2026-05-20",
         "date_display": "20. Mai 2026",
