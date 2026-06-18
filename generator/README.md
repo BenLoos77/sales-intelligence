@@ -21,9 +21,9 @@ Das Skript:
 5. ersetzt in **`index.html`** den Cover-/Teaser-Block und den eingebetteten
    Schwerpunkt-Artikel (zwischen den `SI:*`-Markern) und aktualisiert „Stand · …".
 
-Statt direkt live zu gehen, legt die Action das Ergebnis als **Pull Request** an.
-Du prüfst Zahlen/Quellen und mergest mit einem Klick → GitHub Pages veröffentlicht
-automatisch.
+Die Action committet das Ergebnis **direkt auf `main`** — GitHub Pages
+veröffentlicht es ohne weiteres Zutun. (Alternative siehe „Stellschrauben":
+PR-Review statt Direkt-Veröffentlichung.)
 
 ## Einmalige Einrichtung
 
@@ -33,10 +33,9 @@ automatisch.
    - Name: `ANTHROPIC_API_KEY`
    - Wert: dein Anthropic-API-Key (console.anthropic.com → API Keys)
 
-2. **Actions dürfen PRs anlegen**
+2. **Actions dürfen auf `main` schreiben**
    *Settings* → *Actions* → *General* → *Workflow permissions* →
-   „Read and write permissions" **und** Häkchen bei
-   „Allow GitHub Actions to create and approve pull requests" → *Save*.
+   „Read and write permissions" → *Save*.
 
 Danach läuft alles automatisch. Ein Lauf lässt sich jederzeit manuell auslösen:
 *Actions* → *Daily Sales Intelligence* → *Run workflow*.
@@ -66,13 +65,13 @@ Test-Änderungen vor dem Commit zurücksetzen mit
 | Modell | `SI_MODEL`-Env oder Default `claude-sonnet-4-6` in `generate.py` |
 | Tonalität / Themen / Quellen | `build_prompt()` in `generate.py` |
 | SVG-Layout, Templates | `build_*`-Funktionen in `generate.py` |
-| Direkt live statt PR | im Workflow den PR-Schritt durch `git commit && git push` ersetzen |
+| PR-Review statt direkt | im Workflow den Push-Schritt durch `peter-evans/create-pull-request@v6` ersetzen |
 
 ## Wichtig
 
-- **Idempotent:** Existiert für den Tag schon ein Beitrag, passiert nichts (kein PR).
+- **Idempotent:** Existiert für den Tag schon ein Beitrag, passiert nichts (kein Commit).
 - **Statistiken prüfen:** Der Prompt fordert belegbare Zahlen mit benannten Quellen,
-  trotzdem kann ein Sprachmodell Zahlen erfinden. Deshalb der PR-Review-Schritt —
-  bitte vor dem Merge kurz gegenlesen.
+  trotzdem kann ein Sprachmodell Zahlen erfinden. Da direkt veröffentlicht wird, am
+  besten morgens kurz auf die Live-Seite schauen (oder auf PR-Review umstellen).
 - Die `SI:*`-Marker in `index.html` **nicht entfernen** — daran erkennt der Generator,
   welche Bereiche er ersetzen darf.
