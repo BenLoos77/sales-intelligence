@@ -1,0 +1,63 @@
+name: Daily Sales Intelligence
+
+# Erzeugt jeden Morgen den Tagesschwerpunkt und legt ihn als Pull Request
+# zur Freigabe an (Merge → GitHub Pages deployt automatisch).
+
+on:
+  schedule:
+    # 04:00 UTC = 06:00 Berlin (Sommerzeit) / 05:00 Berlin (Winterzeit).
+    - cron: "0 4 * * *"
+  workflow_dispatch: {}   # erlaubt manuelles Auslösen über den Actions-Tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: daily-article
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Abhängigkeiten installieren
+        run: pip install -r generator/requirements.txt
+
+      - name: Artikel generieren
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python generator/generate.py
+
+      - name: Pull Request anlegen
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: si-daily/${{ steps.gen.outputs.article_date }}
+          delete-branch: true
+          commit-message: "Daily ${{ steps.gen.outputs.article_date }}: ${{ steps.gen.outputs.article_title }}"
+          author: "Sales Intelligence Bot <kontakt@b77.de>"
+          committer: "Sales Intelligence Bot <kontakt@b77.de>"
+          title: "Daily ${{ steps.gen.outputs.article_date }}: ${{ steps.gen.outputs.article_title }}"
+          labels: daily
+          body: |
+            Automatisch generierter Tagesschwerpunkt für **${{ steps.gen.outputs.article_date }}**.
+
+            **Bitte vor dem Merge kurz prüfen:**
+            - Stimmen die genannten **Statistiken und Quellen**? (Gartner, Bitkom, BCG …)
+            - Liest sich Schlagzeile, Vorspann und Text sauber?
+            - Sehen die SVG-Illustrationen (Cover / Hero / inline-fig) im Vorschau-Deploy gut aus?
+
+            Geänderte Dateien: ein neuer Artikel in `articles/`, `articles.json`, `index.html`.
+
+            Merge → GitHub Pages veröffentlicht automatisch.
+
+            _Wenn an einem Tag bereits ein Beitrag existiert, erzeugt der Lauf nichts und es entsteht kein PR._
