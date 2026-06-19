@@ -27,6 +27,8 @@ import argparse
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -53,11 +55,10 @@ ACCENT_DEEP = "#0096C7"
 # erzeugt und die Artikelseite nutzt die Browser-Vorlesefunktion.
 TTS_MODEL = os.environ.get("SI_TTS_MODEL", "gpt-4o-mini-tts")
 TTS_VOICE = os.environ.get("SI_TTS_VOICE", "onyx")
-TTS_SPEED = float(os.environ.get("SI_TTS_SPEED", "1.12"))  # nur für tts-1-Fallback
+TTS_SPEED = float(os.environ.get("SI_TTS_SPEED", "1.12"))  # via ffmpeg atempo
 TTS_INSTRUCTIONS = (
     "Lies den Text sachlich und deutlich auf Hochdeutsch — im Stil eines "
-    "seriösen Wirtschaftsmagazins, in zügigem, flüssigem Tempo "
-    "(etwas schneller als gemächlich, aber nicht hektisch)."
+    "seriösen Wirtschaftsmagazins."
 )
 
 MONTHS_DE = [
@@ -468,9 +469,7 @@ def _split_text(text: str, limit: int = 3500) -> list[str]:
 def _tts_chunk(text: str, key: str, model: str) -> bytes:
     body = {"model": model, "voice": TTS_VOICE, "input": text, "response_format": "mp3"}
     if model.startswith("gpt-4o"):
-        body["instructions"] = TTS_INSTRUCTIONS  # Tempo via Anweisung
-    else:
-        body["speed"] = TTS_SPEED  # tts-1/-hd unterstützen speed
+        body["instructions"] = TTS_INSTRUCTIONS
     req = urllib.request.Request(
         "https://api.openai.com/v1/audio/speech",
         data=json.dumps(body).encode("utf-8"),
@@ -485,9 +484,26 @@ def _tts_chunk(text: str, key: str, model: str) -> bytes:
         raise RuntimeError(f"HTTP {e.code}: {detail}")
 
 
+def _speed_up(mp3: bytes, factor: float) -> bytes:
+    """Beschleunigt die MP3 tonhöhen-erhaltend per ffmpeg (atempo).
+    Ohne ffmpeg oder bei Fehler: Original zurück (kein Abbruch)."""
+    if abs(factor - 1.0) < 0.01 or not shutil.which("ffmpeg"):
+        return mp3
+    try:
+        p = subprocess.run(
+            ["ffmpeg", "-loglevel", "error", "-i", "pipe:0",
+             "-filter:a", f"atempo={factor}", "-b:a", "128k", "-f", "mp3", "pipe:1"],
+            input=mp3, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
+        )
+        return p.stdout or mp3
+    except Exception as e:  # noqa: BLE001
+        print(f"[TTS] ffmpeg-Tempo übersprungen: {e}", file=sys.stderr)
+        return mp3
+
+
 def synthesize_audio(narration: str, out_path: Path) -> bool:
     """Erzeugt eine MP3. Fehlt der Key oder schlägt es fehl: False (kein Abbruch).
-    Bei Modell-Problemen automatischer Fallback auf tts-1."""
+    Bei Modell-Problemen automatischer Fallback auf tts-1. Tempo via ffmpeg."""
     synthesize_audio.last_error = None
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
@@ -498,8 +514,9 @@ def synthesize_audio(narration: str, out_path: Path) -> bool:
     for model in models:
         try:
             audio = b"".join(_tts_chunk(p, key, model) for p in parts)
+            audio = _speed_up(audio, TTS_SPEED)
             out_path.write_bytes(audio)
-            print(f"[TTS] Audio: {out_path.name} via {model} ({len(parts)} Segmente, {len(audio)//1024} KB)")
+            print(f"[TTS] Audio: {out_path.name} via {model} x{TTS_SPEED} ({len(parts)} Seg., {len(audio)//1024} KB)")
             return True
         except Exception as e:  # noqa: BLE001
             synthesize_audio.last_error = f"{model}: {e}"
