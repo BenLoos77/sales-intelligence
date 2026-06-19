@@ -8,9 +8,10 @@
   function init() {
     var body = document.querySelector(".article-body");
     if (!body) return;
-    var anchor = document.querySelector(".article-byline") ||
+    // Direkt unter die Schlagzeile — dort wird der Button am ehesten gefunden.
+    var anchor = document.querySelector(".article-title") ||
                  document.querySelector(".article-standfirst") ||
-                 document.querySelector(".article-title");
+                 document.querySelector(".article-byline");
     if (!anchor) return;
 
     var audioEl = document.getElementById("ra-audio");
@@ -33,7 +34,7 @@
     var css = document.createElement("style");
     css.id = "ra-style";
     css.textContent =
-      ".ra-bar{display:flex;align-items:center;gap:14px;margin:22px 0 4px;flex-wrap:wrap}" +
+      ".ra-bar{display:flex;align-items:center;gap:14px;margin:20px 0 26px;flex-wrap:wrap}" +
       ".ra-btn{display:inline-flex;align-items:center;gap:10px;cursor:pointer;" +
       "font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.12em;" +
       "text-transform:uppercase;font-weight:600;color:var(--ink,#0a0a0a);background:transparent;" +

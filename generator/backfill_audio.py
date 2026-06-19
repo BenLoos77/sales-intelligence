@@ -60,26 +60,32 @@ def main() -> int:
         print("[Backfill] FEHLER: OPENAI_API_KEY nicht gesetzt.", file=sys.stderr)
         return 1
 
+    force = os.environ.get("SI_BACKFILL_FORCE", "").lower() in ("1", "true", "yes")
+    if force:
+        print("[Backfill] FORCE — vorhandene MP3s werden neu erzeugt.")
+
     done = skipped = failed = 0
     last_err = None
     for f in sorted(ARTICLES.glob("*.html")):
         h = f.read_text(encoding="utf-8")
-        if 'id="ra-audio"' in h:
+        has_tag = 'id="ra-audio"' in h
+        mp3 = f.with_suffix(".mp3")
+        if has_tag and mp3.exists() and not force:
             skipped += 1
             continue
-        mp3 = f.with_suffix(".mp3")
-        if not mp3.exists():
+        if force or not mp3.exists():
             narration = extract_narration(h)
             if not narration or not synthesize_audio(narration, mp3):
                 failed += 1
                 last_err = getattr(synthesize_audio, "last_error", None) or "unbekannt"
                 continue
-        tag = f'<audio id="ra-audio" src="/articles/{mp3.name}" preload="none"></audio>'
-        if '<div class="article-image">' in h:
-            h = h.replace('<div class="article-image">', tag + '\n\n  <div class="article-image">', 1)
-        else:
-            h = h.replace("</main>", tag + "\n</main>", 1)
-        f.write_text(h, encoding="utf-8")
+        if not has_tag:
+            tag = f'<audio id="ra-audio" src="/articles/{mp3.name}" preload="none"></audio>'
+            if '<div class="article-image">' in h:
+                h = h.replace('<div class="article-image">', tag + '\n\n  <div class="article-image">', 1)
+            else:
+                h = h.replace("</main>", tag + "\n</main>", 1)
+            f.write_text(h, encoding="utf-8")
         done += 1
         print("[Backfill] OK:", f.name)
 

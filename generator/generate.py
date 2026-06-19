@@ -53,9 +53,11 @@ ACCENT_DEEP = "#0096C7"
 # erzeugt und die Artikelseite nutzt die Browser-Vorlesefunktion.
 TTS_MODEL = os.environ.get("SI_TTS_MODEL", "gpt-4o-mini-tts")
 TTS_VOICE = os.environ.get("SI_TTS_VOICE", "onyx")
+TTS_SPEED = float(os.environ.get("SI_TTS_SPEED", "1.12"))  # nur für tts-1-Fallback
 TTS_INSTRUCTIONS = (
-    "Lies den Text ruhig, sachlich und deutlich auf Hochdeutsch — "
-    "im Stil eines seriösen Wirtschaftsmagazins."
+    "Lies den Text sachlich und deutlich auf Hochdeutsch — im Stil eines "
+    "seriösen Wirtschaftsmagazins, in zügigem, flüssigem Tempo "
+    "(etwas schneller als gemächlich, aber nicht hektisch)."
 )
 
 MONTHS_DE = [
@@ -466,7 +468,9 @@ def _split_text(text: str, limit: int = 3500) -> list[str]:
 def _tts_chunk(text: str, key: str, model: str) -> bytes:
     body = {"model": model, "voice": TTS_VOICE, "input": text, "response_format": "mp3"}
     if model.startswith("gpt-4o"):
-        body["instructions"] = TTS_INSTRUCTIONS
+        body["instructions"] = TTS_INSTRUCTIONS  # Tempo via Anweisung
+    else:
+        body["speed"] = TTS_SPEED  # tts-1/-hd unterstützen speed
     req = urllib.request.Request(
         "https://api.openai.com/v1/audio/speech",
         data=json.dumps(body).encode("utf-8"),

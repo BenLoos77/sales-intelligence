@@ -4,7 +4,12 @@ name: Backfill Vorlese-Audio
 # Artikel und bindet sie ein. Idempotent — fertige Artikel werden übersprungen.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Vorhandene MP3s neu erzeugen (z. B. nach Tempo-Änderung)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -24,6 +29,7 @@ jobs:
       - name: Audio erzeugen
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SI_BACKFILL_FORCE: ${{ inputs.force }}
         run: python generator/backfill_audio.py
 
       - name: Committen
