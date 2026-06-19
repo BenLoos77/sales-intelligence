@@ -7,6 +7,10 @@ on:
   schedule:
     # 04:00 UTC = 06:00 Berlin (Sommerzeit) / 05:00 Berlin (Winterzeit).
     - cron: "0 4 * * *"
+    # Fallback um 10:00 UTC (12:00 Berlin), falls GitHub den ersten Lauf
+    # verschluckt. Der Generator ist idempotent — existiert der Beitrag
+    # schon, passiert nichts.
+    - cron: "0 10 * * *"
   workflow_dispatch: {}   # erlaubt manuelles Auslösen über den Actions-Tab
 
 permissions:
@@ -38,6 +42,9 @@ jobs:
         run: python generator/generate.py
 
       - name: Direkt auf main veröffentlichen
+        env:
+          ART_DATE: ${{ steps.gen.outputs.article_date }}
+          ART_TITLE: ${{ steps.gen.outputs.article_title }}
         run: |
           if [ -z "$(git status --porcelain)" ]; then
             echo "Keine Änderungen — heute existiert bereits ein Beitrag, nichts zu tun."
@@ -46,5 +53,5 @@ jobs:
           git config user.name "Sales Intelligence Bot"
           git config user.email "kontakt@b77.de"
           git add -A
-          git commit -m "Daily ${{ steps.gen.outputs.article_date }}: ${{ steps.gen.outputs.article_title }}"
+          git commit -m "Daily ${ART_DATE}: ${ART_TITLE}"
           git push
