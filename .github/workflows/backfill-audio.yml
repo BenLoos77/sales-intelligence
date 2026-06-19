@@ -27,6 +27,7 @@ jobs:
         run: python generator/backfill_audio.py
 
       - name: Committen
+        if: always()
         run: |
           if [ -z "$(git status --porcelain)" ]; then
             echo "Nichts zu committen."

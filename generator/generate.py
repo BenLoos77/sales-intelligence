@@ -28,6 +28,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from datetime import datetime
 from pathlib import Path
@@ -462,9 +463,9 @@ def _split_text(text: str, limit: int = 3500) -> list[str]:
     return chunks
 
 
-def _tts_chunk(text: str, key: str) -> bytes:
-    body = {"model": TTS_MODEL, "voice": TTS_VOICE, "input": text, "response_format": "mp3"}
-    if TTS_MODEL.startswith("gpt-4o"):
+def _tts_chunk(text: str, key: str, model: str) -> bytes:
+    body = {"model": model, "voice": TTS_VOICE, "input": text, "response_format": "mp3"}
+    if model.startswith("gpt-4o"):
         body["instructions"] = TTS_INSTRUCTIONS
     req = urllib.request.Request(
         "https://api.openai.com/v1/audio/speech",
@@ -472,25 +473,40 @@ def _tts_chunk(text: str, key: str) -> bytes:
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=180) as r:
-        return r.read()
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            return r.read()
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace")[:400]
+        raise RuntimeError(f"HTTP {e.code}: {detail}")
 
 
 def synthesize_audio(narration: str, out_path: Path) -> bool:
-    """Erzeugt eine MP3. Fehlt der Key oder schlägt es fehl: False (kein Abbruch)."""
+    """Erzeugt eine MP3. Fehlt der Key oder schlägt es fehl: False (kein Abbruch).
+    Bei Modell-Problemen automatischer Fallback auf tts-1."""
+    synthesize_audio.last_error = None
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         print("[TTS] OPENAI_API_KEY nicht gesetzt — überspringe Audio (Browser-Vorlesen bleibt).")
         return False
-    try:
-        parts = _split_text(narration)
-        audio = b"".join(_tts_chunk(p, key) for p in parts)
-        out_path.write_bytes(audio)
-        print(f"[TTS] Audio: {out_path.name} ({len(parts)} Segmente, {len(audio)//1024} KB)")
-        return True
-    except Exception as e:  # noqa: BLE001
-        print(f"[TTS] FEHLER — überspringe Audio: {e}", file=sys.stderr)
-        return False
+    parts = _split_text(narration)
+    models = [TTS_MODEL] + (["tts-1"] if TTS_MODEL != "tts-1" else [])
+    for model in models:
+        try:
+            audio = b"".join(_tts_chunk(p, key, model) for p in parts)
+            out_path.write_bytes(audio)
+            print(f"[TTS] Audio: {out_path.name} via {model} ({len(parts)} Segmente, {len(audio)//1024} KB)")
+            return True
+        except Exception as e:  # noqa: BLE001
+            synthesize_audio.last_error = f"{model}: {e}"
+            print(f"[TTS] FEHLER ({model}): {e}", file=sys.stderr)
+            # Bei Quota/Auth-Fehlern bringt der Fallback nichts → abbrechen.
+            if not any(s in str(e) for s in ("400", "404", "model", "invalid_request")):
+                break
+    return False
+
+
+synthesize_audio.last_error = None
 
 
 def render_and_write(data: dict, run_date: datetime) -> dict:

@@ -61,6 +61,7 @@ def main() -> int:
         return 1
 
     done = skipped = failed = 0
+    last_err = None
     for f in sorted(ARTICLES.glob("*.html")):
         h = f.read_text(encoding="utf-8")
         if 'id="ra-audio"' in h:
@@ -71,6 +72,7 @@ def main() -> int:
             narration = extract_narration(h)
             if not narration or not synthesize_audio(narration, mp3):
                 failed += 1
+                last_err = getattr(synthesize_audio, "last_error", None) or "unbekannt"
                 continue
         tag = f'<audio id="ra-audio" src="/articles/{mp3.name}" preload="none"></audio>'
         if '<div class="article-image">' in h:
@@ -82,6 +84,17 @@ def main() -> int:
         print("[Backfill] OK:", f.name)
 
     print(f"[Backfill] fertig — {done} erzeugt, {skipped} bereits vorhanden, {failed} Fehler.")
+
+    err_file = ROOT / "generator" / "backfill-error.txt"
+    if failed and done == 0:
+        # Totalausfall: Fehler festhalten (lesbar via API) und rot werden.
+        err_file.write_text(
+            f"{failed} Artikel fehlgeschlagen.\nLetzter Fehler:\n{last_err}\n", encoding="utf-8"
+        )
+        print(f"[Backfill] TOTALAUSFALL — letzter Fehler: {last_err}", file=sys.stderr)
+        return 1
+    if err_file.exists():
+        err_file.unlink()  # voriger Fehler behoben
     return 0
 
 
