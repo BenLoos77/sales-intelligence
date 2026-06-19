@@ -1,0 +1,39 @@
+name: Backfill Vorlese-Audio
+
+# Einmalig manuell auszulösen: erzeugt nachträglich MP3s für bestehende
+# Artikel und bindet sie ein. Idempotent — fertige Artikel werden übersprungen.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Audio erzeugen
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python generator/backfill_audio.py
+
+      - name: Committen
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nichts zu committen."
+            exit 0
+          fi
+          git config user.name "Sales Intelligence Bot"
+          git config user.email "kontakt@b77.de"
+          git add -A
+          git commit -m "Backfill: Vorlese-Audio für bestehende Artikel"
+          git push
