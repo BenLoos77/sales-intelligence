@@ -5,13 +5,13 @@ name: Daily Sales Intelligence
 
 on:
   schedule:
-    # 04:00 UTC = 06:00 Berlin (Sommerzeit) / 05:00 Berlin (Winterzeit).
-    - cron: "0 4 * * *"
-    # Fallback um 10:00 UTC (12:00 Berlin), falls GitHub den ersten Lauf
-    # verschluckt. Der Generator ist idempotent — existiert der Beitrag
-    # schon, passiert nichts.
+    # Primär wird dieser Workflow vom Vercel-Cron (b77, 04:00 UTC) per
+    # workflow_dispatch ausgelöst — GitHubs eigener Cron ist unzuverlässig.
+    # Dieser Lauf um 10:00 UTC (12:00 Berlin) ist nur der Fallback, falls der
+    # Vercel-Trigger ausfällt. Idempotent — existiert der Beitrag schon,
+    # passiert nichts.
     - cron: "0 10 * * *"
-  workflow_dispatch: {}   # erlaubt manuelles Auslösen über den Actions-Tab
+  workflow_dispatch: {}   # manuell + vom Vercel-Cron ausgelöst
 
 permissions:
   contents: write
