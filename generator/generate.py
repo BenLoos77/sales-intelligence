@@ -28,6 +28,7 @@ import json
 import os
 import re
 import sys
+import urllib.request
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -46,6 +47,15 @@ MODEL = os.environ.get("SI_MODEL", "claude-sonnet-4-6")
 BERLIN = ZoneInfo("Europe/Berlin")
 ACCENT = "#5DEAFF"          # Marken-Cyan
 ACCENT_DEEP = "#0096C7"
+
+# Text-to-Speech (OpenAI). Optional: ohne OPENAI_API_KEY wird kein Audio
+# erzeugt und die Artikelseite nutzt die Browser-Vorlesefunktion.
+TTS_MODEL = os.environ.get("SI_TTS_MODEL", "gpt-4o-mini-tts")
+TTS_VOICE = os.environ.get("SI_TTS_VOICE", "onyx")
+TTS_INSTRUCTIONS = (
+    "Lies den Text ruhig, sachlich und deutlich auf Hochdeutsch — "
+    "im Stil eines seriösen Wirtschaftsmagazins."
+)
 
 MONTHS_DE = [
     "", "Januar", "Februar", "März", "April", "Mai", "Juni",
@@ -420,6 +430,69 @@ def call_claude(date_display: str, recent: list[dict]) -> dict:
 # --------------------------------------------------------------------------
 
 
+# --------------------------------------------------------------------------
+# Vorlese-Audio (OpenAI TTS)
+# --------------------------------------------------------------------------
+
+
+def build_narration(data: dict) -> str:
+    """Reiner Vorlesetext: Schlagzeile, Vorspann, Fließtext (ohne Grafiken)."""
+    parts = [strip_tags(data["title_html"]), strip_tags(data["deck"])]
+    for block in data["body"]:
+        if block.get("type") in ("p", "h3", "pullquote"):
+            parts.append(strip_tags(block["html"]))
+    return "\n\n".join(p for p in parts if p)
+
+
+def _split_text(text: str, limit: int = 3500) -> list[str]:
+    """Zerlegt den Text in Stücke <= limit Zeichen (OpenAI-Grenze 4096)."""
+    chunks, cur = [], ""
+    for para in text.split("\n\n"):
+        if len(para) > limit:
+            for sent in re.split(r"(?<=[.!?]) ", para):
+                if cur and len(cur) + len(sent) + 1 > limit:
+                    chunks.append(cur.strip()); cur = ""
+                cur += sent + " "
+        else:
+            if cur and len(cur) + len(para) + 2 > limit:
+                chunks.append(cur.strip()); cur = ""
+            cur += para + "\n\n"
+    if cur.strip():
+        chunks.append(cur.strip())
+    return chunks
+
+
+def _tts_chunk(text: str, key: str) -> bytes:
+    body = {"model": TTS_MODEL, "voice": TTS_VOICE, "input": text, "response_format": "mp3"}
+    if TTS_MODEL.startswith("gpt-4o"):
+        body["instructions"] = TTS_INSTRUCTIONS
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/audio/speech",
+        data=json.dumps(body).encode("utf-8"),
+        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=180) as r:
+        return r.read()
+
+
+def synthesize_audio(narration: str, out_path: Path) -> bool:
+    """Erzeugt eine MP3. Fehlt der Key oder schlägt es fehl: False (kein Abbruch)."""
+    key = os.environ.get("OPENAI_API_KEY")
+    if not key:
+        print("[TTS] OPENAI_API_KEY nicht gesetzt — überspringe Audio (Browser-Vorlesen bleibt).")
+        return False
+    try:
+        parts = _split_text(narration)
+        audio = b"".join(_tts_chunk(p, key) for p in parts)
+        out_path.write_bytes(audio)
+        print(f"[TTS] Audio: {out_path.name} ({len(parts)} Segmente, {len(audio)//1024} KB)")
+        return True
+    except Exception as e:  # noqa: BLE001
+        print(f"[TTS] FEHLER — überspringe Audio: {e}", file=sys.stderr)
+        return False
+
+
 def render_and_write(data: dict, run_date: datetime) -> dict:
     date = run_date.strftime("%Y-%m-%d")
     date_display = german_date(run_date)
@@ -434,9 +507,19 @@ def render_and_write(data: dict, run_date: datetime) -> dict:
     body_html = build_body_html(data, date_display)
     cover_svg = build_cover_svg(data["cover_svg"], date_display, color)
 
+    # 0) Vorlese-Audio (optional)
+    ARTICLES_DIR.mkdir(exist_ok=True)
+    audio_name = f"{date}-{slug}.mp3"
+    audio_ok = synthesize_audio(build_narration(data), ARTICLES_DIR / audio_name)
+    audio_tag = (
+        f'<audio id="ra-audio" src="/articles/{audio_name}" preload="none"></audio>'
+        if audio_ok else ""
+    )
+
     # 1) Standalone-Artikel aus Template
     tpl = ARTICLE_TEMPLATE.read_text(encoding="utf-8")
     repl = {
+        "AUDIO_TAG": audio_tag,
         "TITLE_PLAIN": strip_tags(data["title_html"]),
         "DECK_PLAIN": strip_tags(data["deck"]),
         "URL": url,

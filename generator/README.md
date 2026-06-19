@@ -37,6 +37,13 @@ PR-Review statt Direkt-Veröffentlichung.)
    *Settings* → *Actions* → *General* → *Workflow permissions* →
    „Read and write permissions" → *Save*.
 
+3. **(Optional) Vorlese-Audio** — Secret `OPENAI_API_KEY`
+   Ohne diesen Key wird kein Audio erzeugt; die Artikelseite nutzt dann die
+   Browser-Vorlesefunktion (Web Speech API). Mit Key generiert der Daily-Lauf
+   pro Artikel eine MP3 (OpenAI TTS, `gpt-4o-mini-tts`, Stimme `onyx`) neben
+   den Artikel (`articles/<datum>-<slug>.mp3`); der „Vorlesen"-Button spielt
+   sie automatisch ab. Stimme/Modell über Env `SI_TTS_VOICE` / `SI_TTS_MODEL`.
+
 Danach läuft alles automatisch. Ein Lauf lässt sich jederzeit manuell auslösen:
 *Actions* → *Daily Sales Intelligence* → *Run workflow*.
 
