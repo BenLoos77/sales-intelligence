@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 722, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 708, in main
+    result = render_and_write(data, run_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 544, in render_and_write
+    body_html = build_body_html(data, date_display)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 197, in build_body_html
+    t = block.get("type")
+        ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
