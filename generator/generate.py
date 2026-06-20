@@ -167,7 +167,7 @@ def build_inline_fig(fig: dict) -> str:
     parts = [
         '    <div class="inline-fig">',
         '      <svg viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">',
-        f'        <text x="0" y="18" font-family="Helvetica" font-size="12" fill="{ACCENT_DEEP}" letter-spacing="3" font-weight="600">{svg_text(fig["title_caps"])}</text>',
+        f'        <text x="0" y="18" font-family="Helvetica" font-size="12" fill="{ACCENT_DEEP}" letter-spacing="3" font-weight="600">{svg_text(fig.get("title_caps", ""))}</text>',
         '        <line x1="0" y1="38" x2="1000" y2="38" stroke="#0a0a0a" opacity="0.25"/>',
         '        <line x1="330" y1="62" x2="330" y2="288" stroke="#0a0a0a" opacity="0.15"/>',
         '        <line x1="690" y1="62" x2="690" y2="288" stroke="#0a0a0a" opacity="0.15"/>',
@@ -194,23 +194,31 @@ def build_inline_fig(fig: dict) -> str:
 def build_body_html(data: dict, date_display: str) -> str:
     out = []
     for block in data["body"]:
+        # Robust gegen Schema-Ausreißer des Modells: bloßer String → Absatz.
+        if isinstance(block, str):
+            block = {"type": "p", "html": block}
+        if not isinstance(block, dict):
+            continue
         t = block.get("type")
-        if t == "p":
-            out.append(f'    <p>{html_text(block["html"])}</p>')
-        elif t == "h3":
-            out.append(f'    <h3>{html_text(block["html"])}</h3>')
+        html = block.get("html", "")
+        if t == "h3":
+            if html:
+                out.append(f'    <h3>{html_text(html)}</h3>')
         elif t == "pullquote":
-            src = block.get("source") or f"Editorial · Sales Intelligence · {date_display}"
-            out.append(
-                '    <div class="pullquote">\n'
-                f'      {html_text(block["html"])}\n'
-                f'      <span class="source">{svg_text(src)}</span>\n'
-                "    </div>"
-            )
+            if html:
+                src = block.get("source") or f"Editorial · Sales Intelligence · {date_display}"
+                out.append(
+                    '    <div class="pullquote">\n'
+                    f'      {html_text(html)}\n'
+                    f'      <span class="source">{svg_text(src)}</span>\n'
+                    "    </div>"
+                )
         elif t == "inline_fig":
             out.append(build_inline_fig(block))
         else:
-            raise RuntimeError(f"Unbekannter Block-Typ: {t!r}")
+            # "p" oder unbekannter Typ mit Text → als Absatz (kein Absturz).
+            if html:
+                out.append(f'    <p>{html_text(html)}</p>')
     # Abschluss-Byline mit Quellen
     sources = svg_text(data.get("sources", ""))
     out.append(
@@ -443,8 +451,10 @@ def build_narration(data: dict) -> str:
     """Reiner Vorlesetext: Schlagzeile, Vorspann, Fließtext (ohne Grafiken)."""
     parts = [strip_tags(data["title_html"]), strip_tags(data["deck"])]
     for block in data["body"]:
-        if block.get("type") in ("p", "h3", "pullquote"):
-            parts.append(strip_tags(block["html"]))
+        if isinstance(block, str):
+            parts.append(strip_tags(block))
+        elif isinstance(block, dict) and block.get("type") in ("p", "h3", "pullquote"):
+            parts.append(strip_tags(block.get("html", "")))
     return "\n\n".join(p for p in parts if p)
 
 
