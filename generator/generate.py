@@ -718,4 +718,16 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except Exception:  # noqa: BLE001
+        import traceback
+        tb = traceback.format_exc()
+        try:
+            (Path(__file__).resolve().parent / "daily-error.txt").write_text(tb, encoding="utf-8")
+        except Exception:  # noqa: BLE001
+            pass
+        print(tb, file=sys.stderr)
+        sys.exit(1)

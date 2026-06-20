@@ -56,3 +56,14 @@ jobs:
           git add -A
           git commit -m "Daily ${ART_DATE}: ${ART_TITLE}"
           git push
+
+      - name: Fehlerbericht festhalten (bei Fehlschlag)
+        if: failure()
+        run: |
+          if [ -f generator/daily-error.txt ]; then
+            git config user.name "Sales Intelligence Bot"
+            git config user.email "kontakt@b77.de"
+            git add -f generator/daily-error.txt
+            git commit -m "Daily-Lauf fehlgeschlagen — Fehlerbericht" || exit 0
+            git push || true
+          fi
