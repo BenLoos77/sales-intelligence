@@ -112,12 +112,12 @@ def build_cover_svg(c: dict, date_display: str, color: str) -> str:
         '<svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">'
         f'<rect width="600" height="380" fill="{color}"/>'
         f'<text x="40" y="60" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">{eyebrow}</text>'
-        f'<text x="40" y="185" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="900" font-size="90" fill="#EAF2F5" letter-spacing="-3">{svg_text(c["kpi"])}</text>'
+        f'<text x="40" y="185" font-family="Space Grotesk, sans-serif" font-style="italic" font-weight="900" font-size="90" fill="#EAF2F5" letter-spacing="-3">{svg_text(c["kpi"])}</text>'
         f'<text x="40" y="220" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="2">{svg_text(c["caps_line"])}</text>'
         '<line x1="40" y1="248" x2="560" y2="248" stroke="#EAF2F5" opacity="0.2"/>'
         '<line x1="40" y1="248" x2="120" y2="248" stroke="#EAF2F5" stroke-width="2"/>'
-        f'<text x="40" y="293" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="22" fill="#EAF2F5">{svg_text(c["italic1"])}</text>'
-        f'<text x="40" y="321" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="22" fill="#EAF2F5">{svg_text(c["italic2"])}</text>'
+        f'<text x="40" y="293" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="22" fill="#EAF2F5">{svg_text(c["italic1"])}</text>'
+        f'<text x="40" y="321" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="22" fill="#EAF2F5">{svg_text(c["italic2"])}</text>'
         f'<rect x="40" y="338" width="20" height="20" fill="{ACCENT_DEEP}"/>'
         f'<text x="72" y="354" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">{svg_text(c["bottom_caps"])}</text>'
         "</svg>"
@@ -144,19 +144,19 @@ def build_hero_svg(h: dict, gid: str, color: str) -> str:
         "  </defs>\n"
         f'  <rect width="1280" height="720" fill="url(#{gid})"/>\n'
         f'  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="6" font-weight="600">{svg_text(h["top_caps"])}</text>\n'
-        f'  <text x="80" y="320" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="{big_size}" fill="#EAF2F5" letter-spacing="-8">{svg_text(big)}</text>\n'
-        f'  <text x="{units_x}" y="320" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">{svg_text(h.get("big_units", "/ 100"))}</text>\n'
+        f'  <text x="80" y="320" font-family="Space Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="{big_size}" fill="#EAF2F5" letter-spacing="-8">{svg_text(big)}</text>\n'
+        f'  <text x="{units_x}" y="320" font-family="Space Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">{svg_text(h.get("big_units", "/ 100"))}</text>\n'
         f'  <text x="80" y="372" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="600">{svg_text(h["caption_caps"])}</text>\n'
         '  <line x1="80" y1="414" x2="1200" y2="414" stroke="#EAF2F5" opacity="0.2"/>\n'
         '  <line x1="80" y1="414" x2="200" y2="414" stroke="#EAF2F5" stroke-width="2"/>\n'
-        f'  <text x="80" y="472" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">{svg_text(h["italic1"])}</text>\n'
-        f'  <text x="80" y="510" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">{svg_text(h["italic2"])}</text>\n'
+        f'  <text x="80" y="472" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">{svg_text(h["italic1"])}</text>\n'
+        f'  <text x="80" y="510" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">{svg_text(h["italic2"])}</text>\n'
         '  <rect x="80" y="559" width="430" height="108" fill="#11181f"/>\n'
-        f'  <text x="295" y="604" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="36" fill="{ACCENT}" text-anchor="middle">{svg_text(h["box_value"])}</text>\n'
+        f'  <text x="295" y="604" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="36" fill="{ACCENT}" text-anchor="middle">{svg_text(h["box_value"])}</text>\n'
         f'  <text x="295" y="638" font-family="Space Mono, monospace" font-size="11" fill="{ACCENT}" text-anchor="middle" letter-spacing="3" font-weight="600">{svg_text(h["box_caps"])}</text>\n'
-        f'  <text x="560" y="588" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h["right1"])}</text>\n'
-        f'  <text x="560" y="618" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h["right2"])}</text>\n'
-        f'  <text x="560" y="648" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h.get("right3", ""))}</text>\n'
+        f'  <text x="560" y="588" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h["right1"])}</text>\n'
+        f'  <text x="560" y="618" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h["right2"])}</text>\n'
+        f'  <text x="560" y="648" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h.get("right3", ""))}</text>\n'
         f'  <text x="80" y="703" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="500">{svg_text(h["source_caps"])}</text>\n'
         "</svg>"
     )
@@ -175,10 +175,10 @@ def build_inline_fig(fig: dict) -> str:
     line_ys = [214, 236, 258, 280]
     for i, col in enumerate(cols):
         x = [0, 360, 720][i]
-        parts.append(f'        <text x="{x}" y="138" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="80" fill="#EAF2F5">{svg_text(col.get("num", ""))}</text>')
-        parts.append(f'        <text x="{x}" y="178" font-family="'Space Grotesk', sans-serif" font-size="21" fill="#EAF2F5">{svg_text(col.get("head", ""))}</text>')
+        parts.append(f'        <text x="{x}" y="138" font-family="Space Grotesk, sans-serif" font-style="italic" font-size="80" fill="#EAF2F5">{svg_text(col.get("num", ""))}</text>')
+        parts.append(f'        <text x="{x}" y="178" font-family="Space Grotesk, sans-serif" font-size="21" fill="#EAF2F5">{svg_text(col.get("head", ""))}</text>')
         for ly, line in zip(line_ys, col.get("lines", [])[:4]):
-            parts.append(f'        <text x="{x}" y="{ly}" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#C3CCD2">{svg_text(line)}</text>')
+            parts.append(f'        <text x="{x}" y="{ly}" font-family="Space Grotesk, sans-serif" font-size="15" fill="#C3CCD2">{svg_text(line)}</text>')
     parts.append("      </svg>")
     if fig.get("cap"):
         parts.append(f'      <div class="cap">{svg_text(fig["cap"])}</div>')
@@ -191,9 +191,38 @@ def build_inline_fig(fig: dict) -> str:
 # --------------------------------------------------------------------------
 
 
+def normalize_body(data: dict) -> list:
+    """Body robust zu einer Liste von Blöcken normalisieren.
+
+    Schützt gegen Modell-Ausreißer: Liefert das Modell den Body als
+    JSON-*String* (statt als Array), darf NIEMALS zeichenweise iteriert
+    werden (sonst entsteht ein <p> pro Zeichen). Reihenfolge der Fälle:
+    echte Liste/Dict → direkt; JSON-String → parsen; kaputtes JSON →
+    tolerante Block-Extraktion; sonst → ganzer Text als ein Absatz.
+    """
+    body = data.get("body")
+    if isinstance(body, list):
+        return body
+    if isinstance(body, dict):
+        return [body]
+    if isinstance(body, str):
+        s = body.strip()
+        try:
+            parsed = json.loads(s)
+            return parsed if isinstance(parsed, list) else [parsed]
+        except Exception:
+            blocks = re.findall(
+                r'\{\s*"type"\s*:\s*"([^"]+)"\s*,\s*"html"\s*:\s*"(.*?)"\s*\}\s*(?=[,\]])',
+                s, re.S)
+            if blocks:
+                return [{"type": t, "html": h} for t, h in blocks]
+            return [{"type": "p", "html": s}] if s else []
+    return []
+
+
 def build_body_html(data: dict, date_display: str) -> str:
     out = []
-    for block in data["body"]:
+    for block in normalize_body(data):
         # Robust gegen Schema-Ausreißer des Modells: bloßer String → Absatz.
         if isinstance(block, str):
             block = {"type": "p", "html": block}
@@ -251,11 +280,11 @@ def build_featured(data: dict, date_display: str, url: str) -> str:
             <defs>
               <path id="circle" d="M 180,180 m -135,0 a 135,135 0 1,1 270,0 a 135,135 0 1,1 -270,0" />
             </defs>
-            <text fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="400">
+            <text fill="#ffffff" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="400">
               <textPath href="#circle" startOffset="2%">{svg_text(cov["curved_title"])}</textPath>
             </text>
-            <text x="180" y="160" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="46" fill="#ffffff" text-anchor="middle">{svg_text(cov["kpi"])}</text>
-            <text x="180" y="200" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="20" fill="#ffffff" text-anchor="middle">{svg_text(cov["subtitle"])}</text>
+            <text x="180" y="160" font-family="Space Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="46" fill="#ffffff" text-anchor="middle">{svg_text(cov["kpi"])}</text>
+            <text x="180" y="200" font-family="Space Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="20" fill="#ffffff" text-anchor="middle">{svg_text(cov["subtitle"])}</text>
           </svg>
         </div>
         <div class="cover-bottom">sales-intel.de · KI im Vertrieb · Mittelstand-Edition</div>
@@ -450,7 +479,7 @@ def call_claude(date_display: str, recent: list[dict]) -> dict:
 def build_narration(data: dict) -> str:
     """Reiner Vorlesetext: Schlagzeile, Vorspann, Fließtext (ohne Grafiken)."""
     parts = [strip_tags(data["title_html"]), strip_tags(data["deck"])]
-    for block in data["body"]:
+    for block in normalize_body(data):
         if isinstance(block, str):
             parts.append(strip_tags(block))
         elif isinstance(block, dict) and block.get("type") in ("p", "h3", "pullquote"):
