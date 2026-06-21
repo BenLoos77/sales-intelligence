@@ -10,23 +10,23 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
 :root {
-  color-scheme: light;
-  --paper: #ffffff;
-  --paper-soft: #fafafa;
-  --ink: #0a0a0a;
-  --ink-soft: #2a2a2a;
-  --ink-soft2: #585858;
-  --muted: #8a8a8a;
-  --hair: #e5e5e5;
-  --hair-soft: #f0f0f0;
-  --accent: #0096C7;
-  --issue: #5DEAFF;
+  color-scheme: dark;
+  --paper: #050608;
+  --paper-soft: #0A1015;
+  --ink: #EAF2F5;
+  --ink-soft: #C3CCD2;
+  --ink-soft2: #AEB8C0;
+  --muted: #8e98a0;
+  --hair: rgba(255,255,255,.12);
+  --hair-soft: rgba(255,255,255,.06);
+  --accent: #00B4E6;
+  --issue: #5BD8FF;
   --issue-deep: #00b3d4;
   /* Serif as primary — brand eins style; cross-platform stack */
   --serif: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
   --serif-display: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
   --sans: -apple-system, "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  --mono: 'Space Mono', "SFMono-Regular", Menlo, monospace;
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
 }
@@ -144,7 +144,7 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
 }
 .cover-card {
-  background: var(--issue);
+  background: #0c141c;
   aspect-ratio: 3 / 4;
   position: relative;
   overflow: hidden;
@@ -152,12 +152,12 @@ img, svg { display: block; max-width: 100%; }
 .cover-card .cover-inner {
   position: absolute;
   inset: 28px;
-  background: var(--issue-deep);
+  background: #0c141c;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
-  color: var(--paper);
+  color: var(--ink);
   transform: rotate(-2deg) translate(8px, 14px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.12);
 }
@@ -230,8 +230,8 @@ img, svg { display: block; max-width: 100%; }
 }
 .featured-text .cta {
   display: inline-block;
-  background: var(--ink);
-  color: var(--paper);
+  background: #0A1015;
+  color: var(--ink);
   padding: 14px 28px;
   font-family: var(--sans);
   font-size: 15px;
@@ -287,11 +287,11 @@ img, svg { display: block; max-width: 100%; }
 .art-card:hover h3 { color: var(--accent); }
 
 /* Visual color treatments per card */
-.visual.cyan { background: var(--issue); }
-.visual.cyan-deep { background: var(--issue-deep); }
-.visual.dark { background: var(--ink); }
-.visual.cream { background: #f4ede0; }
-.visual.gray { background: #d8dde0; }
+.visual.cyan { background: #0c141c; }
+.visual.cyan-deep { background: #0c141c; }
+.visual.dark { background: #0A1015; }
+.visual.cream { background: #11181f; }
+.visual.gray { background: #0f1620; }
 
 /* ============================================================
    IN DIESER AUSGABE — Editorial TOC
@@ -386,7 +386,7 @@ img, svg { display: block; max-width: 100%; }
    NEWSLETTER STRIP — kostenfrei, kompakt
    ============================================================ */
 .nl-strip {
-  background: var(--issue);
+  background: #0c141c;
   padding: 56px var(--gutter);
   margin: 0 calc(var(--gutter) * -1);
   display: grid;
@@ -438,8 +438,8 @@ img, svg { display: block; max-width: 100%; }
 }
 .nl-strip .form-mini input::placeholder { color: var(--muted); }
 .nl-strip .form-mini button {
-  background: var(--ink);
-  color: var(--paper);
+  background: #0A1015;
+  color: var(--ink);
   border: none;
   padding: 12px 20px;
   font-family: var(--sans);
@@ -597,7 +597,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .cases-feature .vis {
   aspect-ratio: 4 / 5;
-  background: var(--issue);
+  background: #0c141c;
   position: relative;
   overflow: hidden;
 }
@@ -1137,8 +1137,8 @@ img, svg { display: block; max-width: 100%; }
 .signup-form button {
   width: 100%;
   padding: 16px;
-  background: var(--ink);
-  color: var(--paper);
+  background: #0A1015;
+  color: var(--ink);
   border: none;
   font-family: var(--sans);
   font-weight: 500;
@@ -1187,8 +1187,8 @@ img, svg { display: block; max-width: 100%; }
    FOOTER
    ============================================================ */
 footer {
-  background: var(--ink);
-  color: #cccccc;
+  background: #0A1015;
+  color: #AEB8C0;
   padding: 80px var(--gutter) 32px;
   margin-top: 0;
 }
@@ -1199,28 +1199,28 @@ footer .inner {
   grid-template-columns: 2fr 1fr 1fr 1.2fr;
   gap: 56px;
   padding-bottom: 56px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #C3CCD2;
 }
 footer .brand-foot {
   font-family: var(--serif-display);
   font-size: clamp(36px, 3.6vw, 52px);
   font-weight: 400;
   margin-bottom: 22px;
-  color: var(--paper);
+  color: var(--ink);
   letter-spacing: -0.02em;
   line-height: 0.95;
 }
 footer .brand-foot em { font-style: italic; }
-footer p { font-size: 15px; line-height: 1.6; color: #cccccc; margin: 0 0 12px; font-family: var(--serif); }
+footer p { font-size: 15px; line-height: 1.6; color: #AEB8C0; margin: 0 0 12px; font-family: var(--serif); }
 footer .imprint {
   font-family: var(--mono);
   font-size: 11px;
   line-height: 1.7;
-  color: #aaaaaa;
+  color: #8e98a0;
   letter-spacing: 0.04em;
   margin-top: 18px;
 }
-footer .imprint strong { color: var(--paper); font-weight: 700; }
+footer .imprint strong { color: var(--ink); font-weight: 700; }
 footer h5 {
   font-family: var(--serif);
   font-style: italic;
@@ -1229,7 +1229,7 @@ footer h5 {
   margin: 0 0 18px;
   font-weight: 400;
 }
-footer a { color: #cccccc; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
+footer a { color: #AEB8C0; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
 footer a:hover { color: var(--issue); }
 footer .legal {
   max-width: var(--maxw);
@@ -1238,7 +1238,7 @@ footer .legal {
   justify-content: space-between;
   font-family: var(--sans);
   font-size: 12px;
-  color: #888;
+  color: #8e98a0;
   flex-wrap: wrap;
   gap: 16px;
 }
@@ -1257,7 +1257,7 @@ footer .legal {
 .archive-item:hover h3 { color: var(--accent); }
 .archive-item .thumb {
   aspect-ratio: 16 / 10;
-  background: var(--issue);
+  background: #0c141c;
   position: relative;
   overflow: hidden;
 }
@@ -1404,8 +1404,8 @@ footer .legal {
   bottom: 24px;
   right: 24px;
   z-index: 200;
-  background: var(--ink);
-  color: var(--paper);
+  background: #0A1015;
+  color: var(--ink);
   padding: 22px 26px 20px;
   max-width: 360px;
   box-shadow: 0 18px 48px rgba(0,0,0,0.18);
@@ -1419,7 +1419,7 @@ footer .legal {
   right: 12px;
   background: none;
   border: none;
-  color: var(--paper);
+  color: var(--ink);
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
@@ -1464,8 +1464,8 @@ footer .legal {
 }
 .nl-widget input::placeholder { color: var(--muted); font-style: italic; }
 .nl-widget button {
-  background: var(--ink);
-  color: var(--paper);
+  background: #0A1015;
+  color: var(--ink);
   border: none;
   padding: 10px 16px;
   font-family: var(--sans);
@@ -1538,6 +1538,10 @@ footer .legal {
   .qa { grid-template-columns: 1fr; gap: 8px; }
   .nl-widget { left: 16px; right: 16px; bottom: 16px; max-width: none; }
 }
+
+/* === Dark-Theme Kontrast-Fix === */
+.side-nl button,.nl-widget button{background:var(--accent);color:#050608;}
+.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:#050608;}
 </style>
 </head>
 <body>
@@ -1584,11 +1588,11 @@ footer .legal {
             <defs>
               <path id="circle" d="M 180,180 m -135,0 a 135,135 0 1,1 270,0 a 135,135 0 1,1 -270,0" />
             </defs>
-            <text fill="#ffffff" font-family="Iowan Old Style, Georgia, serif" font-size="24" font-weight="400">
+            <text fill="#EAF2F5" font-family="Iowan Old Style, Georgia, serif" font-size="24" font-weight="400">
               <textPath href="#circle" startOffset="2%">KI-Tools im Vertrieb: Wenn die Mannschaft nicht mitzieht</textPath>
             </text>
-            <text x="180" y="160" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="46" fill="#ffffff" text-anchor="middle">~ 40 %</text>
-            <text x="180" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="20" fill="#ffffff" text-anchor="middle">der Vertriebsmitarbeiter nutzen KI-Tools regelmäßig</text>
+            <text x="180" y="160" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="46" fill="#EAF2F5" text-anchor="middle">~ 40 %</text>
+            <text x="180" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="20" fill="#EAF2F5" text-anchor="middle">der Vertriebsmitarbeiter nutzen KI-Tools regelmäßig</text>
           </svg>
         </div>
         <div class="cover-bottom">sales-intel.de · KI im Vertrieb · Mittelstand-Edition</div>
@@ -1610,16 +1614,16 @@ footer .legal {
       <div class="kicker">Kostenlos lesbar</div>
       <div class="visual cyan">
         <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="400" height="540" fill="#5DEAFF"/>
-          <text x="34" y="80" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="100" font-weight="400" fill="#0a0a0a" letter-spacing="-3">+34%</text>
-          <text x="34" y="115" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" font-weight="500">QUALIFIZIERTE LEADS · 6 MONATE</text>
-          <line x1="34" y1="140" x2="366" y2="140" stroke="#0a0a0a" opacity="0.15"/>
-          <line x1="34" y1="140" x2="100" y2="140" stroke="#0a0a0a" stroke-width="2"/>
-          <text x="34" y="280" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#0a0a0a" letter-spacing="-1">Werkzeug-</text>
-          <text x="34" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#0a0a0a" letter-spacing="-1">maschinen-</text>
-          <text x="34" y="360" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#0a0a0a" letter-spacing="-1">bauer aus BW.</text>
-          <text x="34" y="490" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" font-weight="500" opacity="0.7">320 MITARBEITER · 12 VERTRIEBLER</text>
-          <text x="34" y="510" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" font-weight="500" opacity="0.7">HUBSPOT BREEZE + DEALCODE</text>
+          <rect width="400" height="540" fill="#0c141c"/>
+          <text x="34" y="80" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="100" font-weight="400" fill="#EAF2F5" letter-spacing="-3">+34%</text>
+          <text x="34" y="115" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="2" font-weight="500">QUALIFIZIERTE LEADS · 6 MONATE</text>
+          <line x1="34" y1="140" x2="366" y2="140" stroke="#EAF2F5" opacity="0.15"/>
+          <line x1="34" y1="140" x2="100" y2="140" stroke="#EAF2F5" stroke-width="2"/>
+          <text x="34" y="280" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#EAF2F5" letter-spacing="-1">Werkzeug-</text>
+          <text x="34" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#EAF2F5" letter-spacing="-1">maschinen-</text>
+          <text x="34" y="360" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="40" fill="#EAF2F5" letter-spacing="-1">bauer aus BW.</text>
+          <text x="34" y="490" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="2" font-weight="500" opacity="0.7">320 MITARBEITER · 12 VERTRIEBLER</text>
+          <text x="34" y="510" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="2" font-weight="500" opacity="0.7">HUBSPOT BREEZE + DEALCODE</text>
         </svg>
       </div>
       <h3>Werkzeugmaschinen-Mittelstand: <em>Wenn der Vertrieb plötzlich</em> 34 Prozent mehr qualifizierte Leads schafft.</h3>
@@ -1630,27 +1634,27 @@ footer .legal {
       <div class="kicker">Kostenlos lesbar</div>
       <div class="visual cream">
         <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="400" height="540" fill="#f4ede0"/>
+          <rect width="400" height="540" fill="#11181f"/>
           <g transform="translate(34,60)">
-            <text font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">10 Werkzeuge</text>
-            <text y="36" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">für den</text>
-            <text y="72" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">Mittelstand.</text>
+            <text font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5" font-weight="400">10 Werkzeuge</text>
+            <text y="36" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5" font-weight="400">für den</text>
+            <text y="72" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5" font-weight="400">Mittelstand.</text>
           </g>
           <g transform="translate(34,200)">
-            <text font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">01 — HubSpot Breeze</text>
-            <text y="22" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">02 — Pipedrive AI</text>
-            <text y="44" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">03 — Dealcode</text>
-            <text y="66" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">04 — MS Copilot</text>
-            <text y="88" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">05 — Apollo.io</text>
-            <text y="110" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">06 — moin.ai</text>
-            <text y="132" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">07 — Gong</text>
-            <text y="154" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">08 — Brevo</text>
-            <text y="176" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">09 — 11x.ai</text>
-            <text y="198" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#2a2a2a">10 — Make.com</text>
+            <text font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">01 — HubSpot Breeze</text>
+            <text y="22" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">02 — Pipedrive AI</text>
+            <text y="44" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">03 — Dealcode</text>
+            <text y="66" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">04 — MS Copilot</text>
+            <text y="88" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">05 — Apollo.io</text>
+            <text y="110" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">06 — moin.ai</text>
+            <text y="132" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">07 — Gong</text>
+            <text y="154" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">08 — Brevo</text>
+            <text y="176" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">09 — 11x.ai</text>
+            <text y="198" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#C3CCD2">10 — Make.com</text>
           </g>
-          <line x1="34" y1="445" x2="366" y2="445" stroke="#0a0a0a" opacity="0.2"/>
-          <text x="34" y="475" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0096C7">Geordnet nach</text>
-          <text x="34" y="500" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0096C7">Vertriebsprozess.</text>
+          <line x1="34" y1="445" x2="366" y2="445" stroke="#EAF2F5" opacity="0.2"/>
+          <text x="34" y="475" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#00B4E6">Geordnet nach</text>
+          <text x="34" y="500" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#00B4E6">Vertriebsprozess.</text>
         </svg>
       </div>
       <h3>Zehn Werkzeuge — <em>geordnet nach Vertriebsprozess.</em></h3>
@@ -1661,27 +1665,27 @@ footer .legal {
       <div class="kicker">Kostenlos lesbar</div>
       <div class="visual gray">
         <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="400" height="540" fill="#d8dde0"/>
-          <text x="34" y="80" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">KI-Adoption</text>
-          <text x="34" y="106" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">Mittelstand</text>
-          <text x="34" y="132" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a" font-weight="400">2023 – 2026.</text>
+          <rect width="400" height="540" fill="#0f1620"/>
+          <text x="34" y="80" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5" font-weight="400">KI-Adoption</text>
+          <text x="34" y="106" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5" font-weight="400">Mittelstand</text>
+          <text x="34" y="132" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5" font-weight="400">2023 – 2026.</text>
 
           <!-- Big trend line -->
           <g transform="translate(34,200)">
-            <line x1="0" y1="220" x2="332" y2="220" stroke="#0a0a0a" opacity="0.3"/>
-            <line x1="0" y1="0" x2="0" y2="220" stroke="#0a0a0a" opacity="0.3"/>
-            <polyline points="0,180 110,140 220,90 332,40" fill="none" stroke="#0a0a0a" stroke-width="2.5"/>
-            <circle cx="0" cy="180" r="6" fill="#0a0a0a"/>
-            <circle cx="110" cy="140" r="6" fill="#0a0a0a"/>
-            <circle cx="220" cy="90" r="6" fill="#0a0a0a"/>
-            <circle cx="332" cy="40" r="9" fill="#0096C7"/>
-            <text x="0" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2023</text>
-            <text x="105" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2024</text>
-            <text x="215" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2025</text>
-            <text x="320" y="245" font-family="Helvetica" font-size="11" fill="#0a0a0a">2026</text>
-            <text x="332" y="25" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0096C7" text-anchor="end" font-weight="400">41%</text>
+            <line x1="0" y1="220" x2="332" y2="220" stroke="#EAF2F5" opacity="0.3"/>
+            <line x1="0" y1="0" x2="0" y2="220" stroke="#EAF2F5" opacity="0.3"/>
+            <polyline points="0,180 110,140 220,90 332,40" fill="none" stroke="#EAF2F5" stroke-width="2.5"/>
+            <circle cx="0" cy="180" r="6" fill="#EAF2F5"/>
+            <circle cx="110" cy="140" r="6" fill="#EAF2F5"/>
+            <circle cx="220" cy="90" r="6" fill="#EAF2F5"/>
+            <circle cx="332" cy="40" r="9" fill="#00B4E6"/>
+            <text x="0" y="245" font-family="Helvetica" font-size="11" fill="#EAF2F5">2023</text>
+            <text x="105" y="245" font-family="Helvetica" font-size="11" fill="#EAF2F5">2024</text>
+            <text x="215" y="245" font-family="Helvetica" font-size="11" fill="#EAF2F5">2025</text>
+            <text x="320" y="245" font-family="Helvetica" font-size="11" fill="#EAF2F5">2026</text>
+            <text x="332" y="25" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#00B4E6" text-anchor="end" font-weight="400">41%</text>
           </g>
-          <text x="34" y="500" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="2" opacity="0.6">QUELLE · BITKOM + KFW</text>
+          <text x="34" y="500" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="2" opacity="0.6">QUELLE · BITKOM + KFW</text>
         </svg>
       </div>
       <h3>Wie schnell der deutsche Mittelstand <em>wirklich aufholt.</em></h3>
@@ -1692,16 +1696,16 @@ footer .legal {
       <div class="kicker">Angebot</div>
       <div class="visual dark">
         <svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="400" height="540" fill="#0a0a0a"/>
+          <rect width="400" height="540" fill="#EAF2F5"/>
           <g transform="rotate(-4 200 200)">
-            <rect x="40" y="80" width="280" height="380" fill="#5DEAFF"/>
-            <rect x="48" y="92" width="264" height="20" fill="#0a0a0a"/>
-            <text x="60" y="180" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#0a0a0a" font-weight="400">Briefing</text>
-            <text x="60" y="220" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#0a0a0a" font-weight="400">+ Whitepaper</text>
-            <text x="60" y="280" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0a0a0a">Wöchentlich.</text>
-            <text x="60" y="305" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0a0a0a">8 Minuten.</text>
-            <text x="60" y="330" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0a0a0a">Kostenfrei.</text>
-            <text x="60" y="430" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">B77.SI</text>
+            <rect x="40" y="80" width="280" height="380" fill="#0c141c"/>
+            <rect x="48" y="92" width="264" height="20" fill="#EAF2F5"/>
+            <text x="60" y="180" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#EAF2F5" font-weight="400">Briefing</text>
+            <text x="60" y="220" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#EAF2F5" font-weight="400">+ Whitepaper</text>
+            <text x="60" y="280" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#EAF2F5">Wöchentlich.</text>
+            <text x="60" y="305" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#EAF2F5">8 Minuten.</text>
+            <text x="60" y="330" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#EAF2F5">Kostenfrei.</text>
+            <text x="60" y="430" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">B77.SI</text>
           </g>
         </svg>
       </div>
@@ -1817,31 +1821,31 @@ footer .legal {
     </div>
   </div>
 
-    <div class="article-image" style="background: var(--issue);">
+    <div class="article-image" style="background: #0c141c;">
 <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <pattern id="grid20260621" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <rect width="40" height="40" fill="#5DEAFF"/>
-      <line x1="0" y1="0" x2="40" y2="0" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
-      <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
+      <rect width="40" height="40" fill="#5BD8FF"/>
+      <line x1="0" y1="0" x2="40" y2="0" stroke="#EAF2F5" stroke-width="0.5" opacity="0.18"/>
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#EAF2F5" stroke-width="0.5" opacity="0.18"/>
     </pattern>
   </defs>
   <rect width="1280" height="720" fill="url(#grid20260621)"/>
-  <text x="80" y="110" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-ADOPTION IM B2B-VERTRIEB</text>
-  <text x="80" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="200" fill="#0a0a0a" letter-spacing="-8">40</text>
-  <text x="330" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-4">%</text>
-  <text x="80" y="372" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">ANTEIL VERTRIEBSMITARBEITER MIT REGELMÄSSIGER KI-NUTZUNG</text>
-  <line x1="80" y1="414" x2="1200" y2="414" stroke="#0a0a0a" opacity="0.2"/>
-  <line x1="80" y1="414" x2="200" y2="414" stroke="#0a0a0a" stroke-width="2"/>
-  <text x="80" y="472" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#0a0a0a">Lizenzen gekauft, Dashboards live –</text>
-  <text x="80" y="510" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#0a0a0a">der Außendienst greift dennoch zur Tabelle.</text>
-  <rect x="80" y="559" width="430" height="108" fill="#0a0a0a"/>
-  <text x="295" y="604" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#5DEAFF" text-anchor="middle">&lt; 3 Mon.</text>
-  <text x="295" y="638" font-family="Helvetica" font-size="11" fill="#5DEAFF" text-anchor="middle" letter-spacing="3" font-weight="600">MEDIAN BIS ZUM ADOPTION-ABBRUCH</text>
-  <text x="560" y="588" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">Schulung ≠ Nutzung</text>
-  <text x="560" y="618" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">Führung entscheidet</text>
-  <text x="560" y="648" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">Prozess vor Tool</text>
-  <text x="80" y="703" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE &#183; SALESFORCE STATE OF SALES 2025 &#183; GARTNER 2025</text>
+  <text x="80" y="110" font-family="Helvetica" font-size="13" fill="#EAF2F5" letter-spacing="6" font-weight="600">KI-ADOPTION IM B2B-VERTRIEB</text>
+  <text x="80" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="200" fill="#EAF2F5" letter-spacing="-8">40</text>
+  <text x="330" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">%</text>
+  <text x="80" y="372" font-family="Helvetica" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="600">ANTEIL VERTRIEBSMITARBEITER MIT REGELMÄSSIGER KI-NUTZUNG</text>
+  <line x1="80" y1="414" x2="1200" y2="414" stroke="#EAF2F5" opacity="0.2"/>
+  <line x1="80" y1="414" x2="200" y2="414" stroke="#EAF2F5" stroke-width="2"/>
+  <text x="80" y="472" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#EAF2F5">Lizenzen gekauft, Dashboards live –</text>
+  <text x="80" y="510" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#EAF2F5">der Außendienst greift dennoch zur Tabelle.</text>
+  <rect x="80" y="559" width="430" height="108" fill="#EAF2F5"/>
+  <text x="295" y="604" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">&lt; 3 Mon.</text>
+  <text x="295" y="638" font-family="Helvetica" font-size="11" fill="#5BD8FF" text-anchor="middle" letter-spacing="3" font-weight="600">MEDIAN BIS ZUM ADOPTION-ABBRUCH</text>
+  <text x="560" y="588" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">Schulung ≠ Nutzung</text>
+  <text x="560" y="618" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">Führung entscheidet</text>
+  <text x="560" y="648" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">Prozess vor Tool</text>
+  <text x="80" y="703" font-family="Helvetica" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="500">QUELLE &#183; SALESFORCE STATE OF SALES 2025 &#183; GARTNER 2025</text>
 </svg>
   </div>
 
@@ -17392,22 +17396,22 @@ footer .legal {
   <article class="cases-feature">
     <div class="vis">
       <svg viewBox="0 0 600 750" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-        <rect width="600" height="750" fill="#5DEAFF"/>
-        <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">FEATURED CASE · 01</text>
-        <text x="40" y="110" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#0a0a0a">Maschinenbauer · Baden-Württemberg</text>
-        <text x="40" y="280" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="160" fill="#0a0a0a" letter-spacing="-8">+34%</text>
-        <text x="40" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">qualifizierte Leads · sechs Monate</text>
-        <line x1="40" y1="360" x2="560" y2="360" stroke="#0a0a0a" opacity="0.2"/>
-        <line x1="40" y1="360" x2="120" y2="360" stroke="#0a0a0a" stroke-width="2"/>
-        <text x="40" y="430" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.7" letter-spacing="2">VORHER · MANUELLE RECHERCHE</text>
-        <rect x="40" y="448" width="500" height="22" fill="#0a0a0a" opacity="0.3"/>
-        <text x="550" y="464" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0a0a0a">42 Min/Lead</text>
-        <text x="40" y="510" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.7" letter-spacing="2">NACHHER · AGENTIC OUTREACH</text>
-        <rect x="40" y="528" width="96" height="22" fill="#0a0a0a"/>
-        <text x="146" y="544" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0a0a0a">8 Min/Lead</text>
-        <line x1="40" y1="640" x2="560" y2="640" stroke="#0a0a0a" opacity="0.3"/>
-        <text x="40" y="670" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0a0a0a">HubSpot Breeze + Dealcode</text>
-        <text x="40" y="700" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.7" letter-spacing="2">320 MA · 12 VERTRIEBSMITARBEITER · SEIT Q4/2025</text>
+        <rect width="600" height="750" fill="#0c141c"/>
+        <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">FEATURED CASE · 01</text>
+        <text x="40" y="110" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#EAF2F5">Maschinenbauer · Baden-Württemberg</text>
+        <text x="40" y="280" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="160" fill="#EAF2F5" letter-spacing="-8">+34%</text>
+        <text x="40" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">qualifizierte Leads · sechs Monate</text>
+        <line x1="40" y1="360" x2="560" y2="360" stroke="#EAF2F5" opacity="0.2"/>
+        <line x1="40" y1="360" x2="120" y2="360" stroke="#EAF2F5" stroke-width="2"/>
+        <text x="40" y="430" font-family="Helvetica" font-size="11" fill="#EAF2F5" opacity="0.7" letter-spacing="2">VORHER · MANUELLE RECHERCHE</text>
+        <rect x="40" y="448" width="500" height="22" fill="#EAF2F5" opacity="0.3"/>
+        <text x="550" y="464" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#EAF2F5">42 Min/Lead</text>
+        <text x="40" y="510" font-family="Helvetica" font-size="11" fill="#EAF2F5" opacity="0.7" letter-spacing="2">NACHHER · AGENTIC OUTREACH</text>
+        <rect x="40" y="528" width="96" height="22" fill="#EAF2F5"/>
+        <text x="146" y="544" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#EAF2F5">8 Min/Lead</text>
+        <line x1="40" y1="640" x2="560" y2="640" stroke="#EAF2F5" opacity="0.3"/>
+        <text x="40" y="670" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#EAF2F5">HubSpot Breeze + Dealcode</text>
+        <text x="40" y="700" font-family="Helvetica" font-size="11" fill="#EAF2F5" opacity="0.7" letter-spacing="2">320 MA · 12 VERTRIEBSMITARBEITER · SEIT Q4/2025</text>
       </svg>
     </div>
     <div class="body">
@@ -17426,12 +17430,12 @@ footer .legal {
     <article class="case-tile">
       <div class="vis cream">
         <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="580" height="360" fill="#f4ede0"/>
-          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 02 · B2B-GROSSHANDEL · NRW · 180 MA</text>
-          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">+8h</text>
-          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">pro Innendienst-Mitarbeiter pro Woche</text>
-          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
-          <text x="40" y="310" font-family="Helvetica" font-size="11" fill="#0a0a0a" opacity="0.6" letter-spacing="2">MICROSOFT COPILOT IN OUTLOOK / TEAMS</text>
+          <rect width="580" height="360" fill="#11181f"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">CASE 02 · B2B-GROSSHANDEL · NRW · 180 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#EAF2F5" letter-spacing="-6">+8h</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5">pro Innendienst-Mitarbeiter pro Woche</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#EAF2F5" opacity="0.2"/>
+          <text x="40" y="310" font-family="Helvetica" font-size="11" fill="#EAF2F5" opacity="0.6" letter-spacing="2">MICROSOFT COPILOT IN OUTLOOK / TEAMS</text>
         </svg>
       </div>
       <div class="kicker">B2B-Großhandel · NRW</div>
@@ -17443,12 +17447,12 @@ footer .legal {
     <article class="case-tile">
       <div class="vis gray">
         <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="580" height="360" fill="#d8dde0"/>
-          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 03 · SAAS · HAMBURG · 95 MA</text>
-          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">+22%</text>
-          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">Forecast-Genauigkeit pro Quartal</text>
-          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
-          <polyline points="40,330 130,318 220,304 310,290 400,278 490,266 540,258" fill="none" stroke="#0096C7" stroke-width="2.5"/>
+          <rect width="580" height="360" fill="#0f1620"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">CASE 03 · SAAS · HAMBURG · 95 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#EAF2F5" letter-spacing="-6">+22%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5">Forecast-Genauigkeit pro Quartal</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#EAF2F5" opacity="0.2"/>
+          <polyline points="40,330 130,318 220,304 310,290 400,278 490,266 540,258" fill="none" stroke="#00B4E6" stroke-width="2.5"/>
         </svg>
       </div>
       <div class="kicker">SaaS-Mittelstand · Hamburg</div>
@@ -17460,18 +17464,18 @@ footer .legal {
     <article class="case-tile">
       <div class="vis cyan">
         <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="580" height="360" fill="#5DEAFF"/>
-          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 04 · IT-DIENSTLEISTER · MÜNCHEN · 65 MA</text>
-          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">×2,3</text>
-          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">Reply-Rate beim Cold-Outreach</text>
-          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
+          <rect width="580" height="360" fill="#0c141c"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">CASE 04 · IT-DIENSTLEISTER · MÜNCHEN · 65 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#EAF2F5" letter-spacing="-6">×2,3</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5">Reply-Rate beim Cold-Outreach</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#EAF2F5" opacity="0.2"/>
           <g transform="translate(40,304)">
-            <rect width="60" height="40" fill="none" stroke="#0a0a0a" opacity="0.5"/>
-            <path d="M0 0 L30 20 L60 0" fill="none" stroke="#0a0a0a" opacity="0.5"/>
-            <rect x="80" width="60" height="40" fill="#0a0a0a"/>
-            <path d="M80 0 L110 20 L140 0" fill="none" stroke="#5DEAFF" stroke-width="1.5"/>
-            <rect x="160" width="60" height="40" fill="#0a0a0a"/>
-            <path d="M160 0 L190 20 L220 0" fill="none" stroke="#5DEAFF" stroke-width="1.5"/>
+            <rect width="60" height="40" fill="none" stroke="#EAF2F5" opacity="0.5"/>
+            <path d="M0 0 L30 20 L60 0" fill="none" stroke="#EAF2F5" opacity="0.5"/>
+            <rect x="80" width="60" height="40" fill="#EAF2F5"/>
+            <path d="M80 0 L110 20 L140 0" fill="none" stroke="#5BD8FF" stroke-width="1.5"/>
+            <rect x="160" width="60" height="40" fill="#EAF2F5"/>
+            <path d="M160 0 L190 20 L220 0" fill="none" stroke="#5BD8FF" stroke-width="1.5"/>
           </g>
         </svg>
       </div>
@@ -17484,18 +17488,18 @@ footer .legal {
     <article class="case-tile">
       <div class="vis dark">
         <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="580" height="360" fill="#0a0a0a"/>
-          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#5DEAFF" letter-spacing="3" font-weight="500">CASE 05 · MASCHINENBAU · BAYERN · 220 MA</text>
-          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#5DEAFF" letter-spacing="-6">+24%</text>
-          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#ffffff">Cross-Selling über Predictive Maintenance</text>
-          <line x1="40" y1="280" x2="540" y2="280" stroke="#5DEAFF" opacity="0.4"/>
+          <rect width="580" height="360" fill="#EAF2F5"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#5BD8FF" letter-spacing="3" font-weight="500">CASE 05 · MASCHINENBAU · BAYERN · 220 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#5BD8FF" letter-spacing="-6">+24%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5">Cross-Selling über Predictive Maintenance</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#5BD8FF" opacity="0.4"/>
           <g transform="translate(40,304)">
-            <rect width="60" height="40" fill="none" stroke="#5DEAFF" stroke-width="1.5"/>
-            <circle cx="30" cy="20" r="9" fill="#5DEAFF"/>
-            <text x="30" y="25" font-family="Helvetica" font-size="13" fill="#0a0a0a" text-anchor="middle" font-weight="900">!</text>
+            <rect width="60" height="40" fill="none" stroke="#5BD8FF" stroke-width="1.5"/>
+            <circle cx="30" cy="20" r="9" fill="#5BD8FF"/>
+            <text x="30" y="25" font-family="Helvetica" font-size="13" fill="#EAF2F5" text-anchor="middle" font-weight="900">!</text>
           </g>
-          <text x="120" y="318" font-family="Helvetica" font-size="11" fill="#5DEAFF" letter-spacing="3" font-weight="600">PREDICTIVE</text>
-          <text x="120" y="336" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#ffffff">Service-Lead</text>
+          <text x="120" y="318" font-family="Helvetica" font-size="11" fill="#5BD8FF" letter-spacing="3" font-weight="600">PREDICTIVE</text>
+          <text x="120" y="336" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="16" fill="#EAF2F5">Service-Lead</text>
         </svg>
       </div>
       <div class="kicker">Maschinenbau · Bayern</div>
@@ -17508,20 +17512,20 @@ footer .legal {
       <div class="vis cyan-deep" style="background:#00b3d4;">
         <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
           <rect width="580" height="360" fill="#00b3d4"/>
-          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#ffffff" letter-spacing="3" font-weight="500">CASE 06 · INDUSTRIE-GROSSHANDEL · HESSEN · 140 MA</text>
-          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#ffffff" letter-spacing="-6">−68%</text>
-          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#ffffff">Angebotserstellungs-Zeit</text>
-          <line x1="40" y1="280" x2="540" y2="280" stroke="#ffffff" opacity="0.4"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">CASE 06 · INDUSTRIE-GROSSHANDEL · HESSEN · 140 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#EAF2F5" letter-spacing="-6">−68%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5">Angebotserstellungs-Zeit</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#EAF2F5" opacity="0.4"/>
           <g transform="translate(40,300)">
-            <rect width="20" height="20" fill="#ffffff"/>
-            <rect x="28" width="20" height="20" fill="#ffffff" opacity="0.78"/>
-            <rect x="56" width="20" height="20" fill="#ffffff" opacity="0.62"/>
-            <rect x="84" width="20" height="20" fill="#ffffff" opacity="0.5"/>
-            <rect x="112" width="20" height="20" fill="#ffffff" opacity="0.4"/>
-            <rect x="140" width="20" height="20" fill="#ffffff" opacity="0.32"/>
-            <rect x="168" width="20" height="20" fill="#ffffff" opacity="0.25"/>
-            <rect x="196" width="20" height="20" fill="#ffffff" opacity="0.18"/>
-            <text x="240" y="18" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#ffffff" font-weight="400">12.000+ Produkte</text>
+            <rect width="20" height="20" fill="#EAF2F5"/>
+            <rect x="28" width="20" height="20" fill="#EAF2F5" opacity="0.78"/>
+            <rect x="56" width="20" height="20" fill="#EAF2F5" opacity="0.62"/>
+            <rect x="84" width="20" height="20" fill="#EAF2F5" opacity="0.5"/>
+            <rect x="112" width="20" height="20" fill="#EAF2F5" opacity="0.4"/>
+            <rect x="140" width="20" height="20" fill="#EAF2F5" opacity="0.32"/>
+            <rect x="168" width="20" height="20" fill="#EAF2F5" opacity="0.25"/>
+            <rect x="196" width="20" height="20" fill="#EAF2F5" opacity="0.18"/>
+            <text x="240" y="18" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5" font-weight="400">12.000+ Produkte</text>
           </g>
         </svg>
       </div>
@@ -17534,14 +17538,14 @@ footer .legal {
     <article class="case-tile">
       <div class="vis gray">
         <svg viewBox="0 0 580 360" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-          <rect width="580" height="360" fill="#d8dde0"/>
-          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="500">CASE 07 · VERSICHERUNG · BW · 110 MA</text>
-          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#0a0a0a" letter-spacing="-6">+41%</text>
-          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#0a0a0a">qualifizierte Anfragen · DSGVO-first</text>
-          <line x1="40" y1="280" x2="540" y2="280" stroke="#0a0a0a" opacity="0.2"/>
+          <rect width="580" height="360" fill="#0f1620"/>
+          <text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="500">CASE 07 · VERSICHERUNG · BW · 110 MA</text>
+          <text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="120" fill="#EAF2F5" letter-spacing="-6">+41%</text>
+          <text x="40" y="240" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="18" fill="#EAF2F5">qualifizierte Anfragen · DSGVO-first</text>
+          <line x1="40" y1="280" x2="540" y2="280" stroke="#EAF2F5" opacity="0.2"/>
           <g transform="translate(40,304)">
-            <text font-family="Iowan Old Style, Georgia, serif" font-size="22" fill="#0a0a0a" font-weight="400">DE  ·  AT  ·  CH</text>
-            <line x1="0" y1="14" x2="170" y2="14" stroke="#0096C7" stroke-width="2"/>
+            <text font-family="Iowan Old Style, Georgia, serif" font-size="22" fill="#EAF2F5" font-weight="400">DE  ·  AT  ·  CH</text>
+            <line x1="0" y1="14" x2="170" y2="14" stroke="#00B4E6" stroke-width="2"/>
           </g>
         </svg>
       </div>
@@ -18158,7 +18162,7 @@ async function loadArticles() {
 function articleCardHTML(a) {
   const thumb = a.cover_svg
     ? a.cover_svg
-    : `<svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="380" fill="${a.color || '#5DEAFF'}"/><text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+    : `<svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="380" fill="${a.color || '#0c141c'}"/><text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="68" fill="#EAF2F5" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
   return `
     <article class="archive-item">
       <a href="${a.url}">
@@ -18298,7 +18302,7 @@ document.getElementById('nlClose').addEventListener('click', () => {
   document.getElementById('nlWidget').classList.add('hidden');
 });
 
-const BRAND = { ink: '#0a0a0a', accent: '#0096C7', accent_bright: '#5DEAFF', ink2: '#2a2a2a', muted: '#8a8a8a', hair: '#e5e5e5' };
+const BRAND = { ink: '#EAF2F5', accent: '#00B4E6', accent_bright: '#5BD8FF', ink2: '#C3CCD2', muted: '#8e98a0', hair: '#222b33' };
 
 let _datenInit = false;
 function initDatenCharts() {
@@ -18346,7 +18350,7 @@ function initDatenCharts() {
       labels: ['CRM-Plattformen','Outreach / SDR','Conversation','Forecasting','Voice / Chat','DACH-Spez.'],
       datasets: [{ data: [32, 19, 14, 12, 13, 10],
         backgroundColor: [BRAND.accent,'rgba(0,150,199,0.78)','rgba(0,150,199,0.6)','rgba(0,150,199,0.45)','rgba(0,150,199,0.32)','rgba(10,10,10,0.55)'],
-        borderColor: '#ffffff', borderWidth: 2 }]
+        borderColor: '#EAF2F5', borderWidth: 2 }]
     },
     options: { responsive: true, maintainAspectRatio: false, cutout: '58%',
       plugins: { legend: { position: 'right', labels: { font: { size: 12 }, color: BRAND.ink2, boxWidth: 14 } } } }
@@ -18377,7 +18381,7 @@ function initToolsChart() {
       datasets: [{
         data: [9.2, 8.9, 9.0, 8.7, 8.4, 8.3, 8.6, 8.1, 7.8, 7.9],
         backgroundColor: ['rgba(0,150,199,0.92)','rgba(0,150,199,0.84)','rgba(0,150,199,0.76)','rgba(0,150,199,0.68)','rgba(0,150,199,0.6)','rgba(0,150,199,0.52)','rgba(0,150,199,0.44)','rgba(0,150,199,0.38)','rgba(0,150,199,0.32)','rgba(0,150,199,0.26)'],
-        borderColor: '#ffffff', borderWidth: 2
+        borderColor: '#EAF2F5', borderWidth: 2
       }]
     },
     options: { responsive: true, maintainAspectRatio: false,

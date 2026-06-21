@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="shortcut icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="apple-touch-icon" href="https://b77.de/assets/B77_Logo_black.png">
@@ -21,22 +22,22 @@
 <!-- ARTICLE_META_END -->
 <style>
 :root {
-  color-scheme: light;
-  --paper: #ffffff;
-  --paper-soft: #fafafa;
-  --ink: #0a0a0a;
-  --ink-soft: #2a2a2a;
-  --ink-soft2: #585858;
-  --muted: #8a8a8a;
-  --hair: #e5e5e5;
-  --hair-soft: #f0f0f0;
-  --accent: #0096C7;
-  --issue: #5DEAFF;
-  --issue-deep: #00b3d4;
-  --serif: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
-  --serif-display: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
-  --sans: -apple-system, "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+  --paper: #050608;
+  --paper-soft: #0A1015;
+  --ink: #EAF2F5;
+  --ink-soft: #C3CCD2;
+  --ink-soft2: #AEB8C0;
+  --muted: #8e98a0;
+  --hair: rgba(255,255,255,.12);
+  --hair-soft: rgba(255,255,255,.06);
+  --accent: #00B4E6;
+  --issue: #5BD8FF;
+  --issue-deep: #5BD8FF;
+  --serif: 'Space Grotesk', sans-serif;
+  --serif-display: 'Anton', sans-serif;
+  --sans: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+  --mono: 'Space Mono', "SFMono-Regular", Menlo, monospace;
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
 }
@@ -103,7 +104,7 @@ a { color: inherit; text-decoration: none; }
 .article-image {
   width: 100%; max-width: 1080px; aspect-ratio: 16 / 9;
   margin: 0 0 56px; position: relative; overflow: hidden;
-  background: var(--issue);
+  background: #0c141c;
 }
 
 /* Two-column layout: article + sidebar */
@@ -181,7 +182,7 @@ a { color: inherit; text-decoration: none; }
 .side-teaser h4 em { font-style: italic; }
 .side-teaser:hover h4 { color: var(--accent); }
 .side-nl {
-  background: var(--issue); padding: 24px 22px;
+  background: #0c141c; padding: 24px 22px;
 }
 .side-nl .kicker {
   font-family: var(--serif); font-style: italic; font-size: 13px;
@@ -202,7 +203,7 @@ a { color: inherit; text-decoration: none; }
 }
 .side-nl input::placeholder { color: var(--muted); font-style: italic; }
 .side-nl button {
-  background: var(--ink); color: var(--paper); border: none; padding: 12px;
+  background: #0A1015; color: var(--ink); border: none; padding: 12px;
   font-family: var(--sans); font-size: 13px; font-weight: 500;
   letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
   transition: background 0.15s;
@@ -229,7 +230,7 @@ a { color: inherit; text-decoration: none; }
 }
 .related-card { display: flex; flex-direction: column; gap: 18px; }
 .related-card .thumb {
-  aspect-ratio: 4 / 3; background: var(--issue);
+  aspect-ratio: 4 / 3; background: #0c141c;
   position: relative; overflow: hidden;
 }
 .related-card .thumb svg { width: 100%; height: 100%; }
@@ -250,37 +251,37 @@ a { color: inherit; text-decoration: none; }
 
 /* Footer */
 footer {
-  background: var(--ink); color: #cccccc;
+  background: #0A1015; color: #AEB8C0;
   padding: 80px var(--gutter) 32px; margin-top: 80px;
   border-top: 1px solid var(--ink);
 }
 footer .inner {
   max-width: var(--maxw); margin: 0 auto;
   display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
-  gap: 56px; padding-bottom: 56px; border-bottom: 1px solid #333;
+  gap: 56px; padding-bottom: 56px; border-bottom: 1px solid #C3CCD2;
 }
 footer .brand-foot {
   font-family: var(--serif-display); font-size: clamp(36px, 3.6vw, 52px);
-  font-weight: 400; margin-bottom: 22px; color: var(--paper);
+  font-weight: 400; margin-bottom: 22px; color: var(--ink);
   letter-spacing: -0.02em; line-height: 0.95;
 }
 footer .brand-foot em { font-style: italic; }
-footer p { font-size: 15px; line-height: 1.6; color: #cccccc; margin: 0 0 12px; font-family: var(--serif); }
+footer p { font-size: 15px; line-height: 1.6; color: #AEB8C0; margin: 0 0 12px; font-family: var(--serif); }
 footer .imprint {
   font-family: var(--mono); font-size: 11px; line-height: 1.7;
-  color: #aaaaaa; letter-spacing: 0.04em; margin-top: 18px;
+  color: #8e98a0; letter-spacing: 0.04em; margin-top: 18px;
 }
-footer .imprint strong { color: var(--paper); font-weight: 700; }
+footer .imprint strong { color: var(--ink); font-weight: 700; }
 footer h5 {
   font-family: var(--serif); font-style: italic; font-size: 18px;
   color: var(--issue); margin: 0 0 18px; font-weight: 400;
 }
-footer a { color: #cccccc; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
+footer a { color: #AEB8C0; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
 footer a:hover { color: var(--issue); }
 footer .legal {
   max-width: var(--maxw); margin: 28px auto 0;
   display: flex; justify-content: space-between;
-  font-family: var(--sans); font-size: 12px; color: #888;
+  font-family: var(--sans); font-size: 12px; color: #8e98a0;
   flex-wrap: wrap; gap: 16px;
 }
 
@@ -301,7 +302,7 @@ footer .legal {
 /* Sticky NL Widget — unten rechts */
 .nl-widget {
   position: fixed; bottom: 24px; right: 24px; z-index: 200;
-  background: var(--ink); color: var(--paper);
+  background: #0A1015; color: var(--ink);
   padding: 22px 26px 20px; max-width: 360px;
   box-shadow: 0 18px 48px rgba(0,0,0,0.18); font-family: var(--serif);
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -309,7 +310,7 @@ footer .legal {
 .nl-widget.hidden { transform: translateY(120%); opacity: 0; pointer-events: none; }
 .nl-widget .close {
   position: absolute; top: 10px; right: 12px; background: none; border: none;
-  color: var(--paper); font-size: 22px; line-height: 1; cursor: pointer;
+  color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer;
   opacity: 0.6; transition: opacity 0.15s; padding: 4px 8px; font-family: var(--sans);
 }
 .nl-widget .close:hover { opacity: 1; }
@@ -318,7 +319,7 @@ footer .legal {
 .nl-widget .title em { font-style: italic; }
 .nl-widget form { display: flex; gap: 6px; background: var(--paper); padding: 6px 6px 6px 14px; align-items: center; }
 .nl-widget input { flex: 1; border: none; outline: none; font-family: var(--serif); font-size: 15px; background: transparent; color: var(--ink); padding: 8px 0; min-width: 0; }
-.nl-widget button { background: var(--ink); color: var(--paper); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.nl-widget button { background: #0A1015; color: var(--ink); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
 .nl-widget button:hover { background: var(--accent); }
 .nl-widget .fine { font-family: var(--serif); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.45; }
 .nl-widget.success form, .nl-widget.success .title, .nl-widget.success .kicker { display: none; }
@@ -330,6 +331,10 @@ footer .legal {
 @media (max-width: 640px) {
   .nl-widget { left: 16px; right: 16px; bottom: 16px; max-width: none; }
 }
+
+/* === Dark-Theme Kontrast-Fix === */
+.side-nl button,.nl-widget button{background:var(--accent);color:#050608;}
+.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:#050608;}
 </style>
 </head>
 <body>
@@ -367,25 +372,25 @@ footer .legal {
   <div class="article-image"><svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
   <defs>
     <pattern id="dots18mai" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-      <rect width="22" height="22" fill="#5DEAFF"/>
-      <circle cx="11" cy="11" r="0.8" fill="#0a0a0a" opacity="0.15"/>
+      <rect width="22" height="22" fill="#5BD8FF"/>
+      <circle cx="11" cy="11" r="0.8" fill="#EAF2F5" opacity="0.15"/>
     </pattern>
   </defs>
   <rect width="1280" height="720" fill="url(#dots18mai)"/>
-  <text x="80" y="110" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">CRM-MODERNISIERUNG · MITTELSTAND 2026</text>
-  <text x="80" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="240" fill="#0a0a0a" letter-spacing="-8">7 / 10</text>
-  <text x="80" y="365" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">CRM-EINFÜHRUNGEN VERFEHLEN IHRE ZIELE · BITKOM · GARTNER · SPRINGER</text>
-  <line x1="80" y1="405" x2="1200" y2="405" stroke="#0a0a0a" opacity="0.2"/>
-  <line x1="80" y1="405" x2="200" y2="405" stroke="#0a0a0a" stroke-width="2"/>
-  <text x="80" y="465" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#0a0a0a">Drei Brüche, ohne die kein System läuft:</text>
-  <text x="80" y="503" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#0a0a0a">Stammdaten · Prozesse · Verantwortung.</text>
-  <rect x="80" y="555" width="380" height="110" fill="#0a0a0a"/>
-  <text x="270" y="600" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#5DEAFF" text-anchor="middle">67 % zu 91 %</text>
-  <text x="270" y="635" font-family="Helvetica" font-size="11" fill="#5DEAFF" text-anchor="middle" letter-spacing="3" font-weight="600">CRM-NUTZUNG · DEUTSCHLAND ZU USA</text>
-  <text x="500" y="585" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">Die Werkzeuge taugen heute. Was fehlt,</text>
-  <text x="500" y="615" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">ist die Person, die das System verantwortet.</text>
-  <text x="500" y="645" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600" opacity="0.7">BITKOM · GARTNER · SPRINGER SALES EXCELLENCE 2026</text>
-  <text x="80" y="700" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE · BITKOM STUDIENBERICHT 2026 · ABBILDUNG TITEL</text>
+  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="6" font-weight="600">CRM-MODERNISIERUNG · MITTELSTAND 2026</text>
+  <text x="80" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="240" fill="#EAF2F5" letter-spacing="-8">7 / 10</text>
+  <text x="80" y="365" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="600">CRM-EINFÜHRUNGEN VERFEHLEN IHRE ZIELE · BITKOM · GARTNER · SPRINGER</text>
+  <line x1="80" y1="405" x2="1200" y2="405" stroke="#EAF2F5" opacity="0.2"/>
+  <line x1="80" y1="405" x2="200" y2="405" stroke="#EAF2F5" stroke-width="2"/>
+  <text x="80" y="465" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">Drei Brüche, ohne die kein System läuft:</text>
+  <text x="80" y="503" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">Stammdaten · Prozesse · Verantwortung.</text>
+  <rect x="80" y="555" width="380" height="110" fill="#EAF2F5"/>
+  <text x="270" y="600" font-family="Archivo, sans-serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">67 % zu 91 %</text>
+  <text x="270" y="635" font-family="Space Mono, monospace" font-size="11" fill="#5BD8FF" text-anchor="middle" letter-spacing="3" font-weight="600">CRM-NUTZUNG · DEUTSCHLAND ZU USA</text>
+  <text x="500" y="585" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Die Werkzeuge taugen heute. Was fehlt,</text>
+  <text x="500" y="615" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">ist die Person, die das System verantwortet.</text>
+  <text x="500" y="645" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600" opacity="0.7">BITKOM · GARTNER · SPRINGER SALES EXCELLENCE 2026</text>
+  <text x="80" y="700" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="500">QUELLE · BITKOM STUDIENBERICHT 2026 · ABBILDUNG TITEL</text>
 </svg></div>
 
   <div class="article-layout">
@@ -543,7 +548,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#5DEAFF'}"/><text x="40" y="80" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#0c141c'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#EAF2F5" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>

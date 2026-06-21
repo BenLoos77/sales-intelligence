@@ -48,8 +48,8 @@ ARTICLES_DIR = ROOT / "articles"
 
 MODEL = os.environ.get("SI_MODEL", "claude-sonnet-4-6")
 BERLIN = ZoneInfo("Europe/Berlin")
-ACCENT = "#5DEAFF"          # Marken-Cyan
-ACCENT_DEEP = "#0096C7"
+ACCENT = "#5BD8FF"          # Marken-Cyan hell (Hyperdrive)
+ACCENT_DEEP = "#00B4E6"
 
 # Text-to-Speech (OpenAI). Optional: ohne OPENAI_API_KEY wird kein Audio
 # erzeugt und die Artikelseite nutzt die Browser-Vorlesefunktion.
@@ -111,15 +111,15 @@ def build_cover_svg(c: dict, date_display: str, color: str) -> str:
     return (
         '<svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">'
         f'<rect width="600" height="380" fill="{color}"/>'
-        f'<text x="40" y="60" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">{eyebrow}</text>'
-        f'<text x="40" y="185" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="900" font-size="90" fill="#0a0a0a" letter-spacing="-3">{svg_text(c["kpi"])}</text>'
-        f'<text x="40" y="220" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="2">{svg_text(c["caps_line"])}</text>'
-        '<line x1="40" y1="248" x2="560" y2="248" stroke="#0a0a0a" opacity="0.2"/>'
-        '<line x1="40" y1="248" x2="120" y2="248" stroke="#0a0a0a" stroke-width="2"/>'
-        f'<text x="40" y="293" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0a0a0a">{svg_text(c["italic1"])}</text>'
-        f'<text x="40" y="321" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="22" fill="#0a0a0a">{svg_text(c["italic2"])}</text>'
+        f'<text x="40" y="60" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">{eyebrow}</text>'
+        f'<text x="40" y="185" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="900" font-size="90" fill="#EAF2F5" letter-spacing="-3">{svg_text(c["kpi"])}</text>'
+        f'<text x="40" y="220" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="2">{svg_text(c["caps_line"])}</text>'
+        '<line x1="40" y1="248" x2="560" y2="248" stroke="#EAF2F5" opacity="0.2"/>'
+        '<line x1="40" y1="248" x2="120" y2="248" stroke="#EAF2F5" stroke-width="2"/>'
+        f'<text x="40" y="293" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="22" fill="#EAF2F5">{svg_text(c["italic1"])}</text>'
+        f'<text x="40" y="321" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="22" fill="#EAF2F5">{svg_text(c["italic2"])}</text>'
         f'<rect x="40" y="338" width="20" height="20" fill="{ACCENT_DEEP}"/>'
-        f'<text x="72" y="354" font-family="Helvetica" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">{svg_text(c["bottom_caps"])}</text>'
+        f'<text x="72" y="354" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">{svg_text(c["bottom_caps"])}</text>'
         "</svg>"
     )
 
@@ -138,26 +138,26 @@ def build_hero_svg(h: dict, gid: str, color: str) -> str:
         "  <defs>\n"
         f'    <pattern id="{gid}" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">\n'
         f'      <rect width="40" height="40" fill="{color}"/>\n'
-        '      <line x1="0" y1="0" x2="40" y2="0" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>\n'
-        '      <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>\n'
+        '      <line x1="0" y1="0" x2="40" y2="0" stroke="#EAF2F5" stroke-width="0.5" opacity="0.18"/>\n'
+        '      <line x1="0" y1="0" x2="0" y2="40" stroke="#EAF2F5" stroke-width="0.5" opacity="0.18"/>\n'
         "    </pattern>\n"
         "  </defs>\n"
         f'  <rect width="1280" height="720" fill="url(#{gid})"/>\n'
-        f'  <text x="80" y="110" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">{svg_text(h["top_caps"])}</text>\n'
-        f'  <text x="80" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="{big_size}" fill="#0a0a0a" letter-spacing="-8">{svg_text(big)}</text>\n'
-        f'  <text x="{units_x}" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-4">{svg_text(h.get("big_units", "/ 100"))}</text>\n'
-        f'  <text x="80" y="372" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">{svg_text(h["caption_caps"])}</text>\n'
-        '  <line x1="80" y1="414" x2="1200" y2="414" stroke="#0a0a0a" opacity="0.2"/>\n'
-        '  <line x1="80" y1="414" x2="200" y2="414" stroke="#0a0a0a" stroke-width="2"/>\n'
-        f'  <text x="80" y="472" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#0a0a0a">{svg_text(h["italic1"])}</text>\n'
-        f'  <text x="80" y="510" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#0a0a0a">{svg_text(h["italic2"])}</text>\n'
-        '  <rect x="80" y="559" width="430" height="108" fill="#0a0a0a"/>\n'
-        f'  <text x="295" y="604" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="{ACCENT}" text-anchor="middle">{svg_text(h["box_value"])}</text>\n'
-        f'  <text x="295" y="638" font-family="Helvetica" font-size="11" fill="{ACCENT}" text-anchor="middle" letter-spacing="3" font-weight="600">{svg_text(h["box_caps"])}</text>\n'
-        f'  <text x="560" y="588" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">{svg_text(h["right1"])}</text>\n'
-        f'  <text x="560" y="618" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">{svg_text(h["right2"])}</text>\n'
-        f'  <text x="560" y="648" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#0a0a0a">{svg_text(h.get("right3", ""))}</text>\n'
-        f'  <text x="80" y="703" font-family="Helvetica" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">{svg_text(h["source_caps"])}</text>\n'
+        f'  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="6" font-weight="600">{svg_text(h["top_caps"])}</text>\n'
+        f'  <text x="80" y="320" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="{big_size}" fill="#EAF2F5" letter-spacing="-8">{svg_text(big)}</text>\n'
+        f'  <text x="{units_x}" y="320" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">{svg_text(h.get("big_units", "/ 100"))}</text>\n'
+        f'  <text x="80" y="372" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="600">{svg_text(h["caption_caps"])}</text>\n'
+        '  <line x1="80" y1="414" x2="1200" y2="414" stroke="#EAF2F5" opacity="0.2"/>\n'
+        '  <line x1="80" y1="414" x2="200" y2="414" stroke="#EAF2F5" stroke-width="2"/>\n'
+        f'  <text x="80" y="472" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">{svg_text(h["italic1"])}</text>\n'
+        f'  <text x="80" y="510" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">{svg_text(h["italic2"])}</text>\n'
+        '  <rect x="80" y="559" width="430" height="108" fill="#11181f"/>\n'
+        f'  <text x="295" y="604" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="36" fill="{ACCENT}" text-anchor="middle">{svg_text(h["box_value"])}</text>\n'
+        f'  <text x="295" y="638" font-family="Space Mono, monospace" font-size="11" fill="{ACCENT}" text-anchor="middle" letter-spacing="3" font-weight="600">{svg_text(h["box_caps"])}</text>\n'
+        f'  <text x="560" y="588" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h["right1"])}</text>\n'
+        f'  <text x="560" y="618" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h["right2"])}</text>\n'
+        f'  <text x="560" y="648" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">{svg_text(h.get("right3", ""))}</text>\n'
+        f'  <text x="80" y="703" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="500">{svg_text(h["source_caps"])}</text>\n'
         "</svg>"
     )
 
@@ -167,18 +167,18 @@ def build_inline_fig(fig: dict) -> str:
     parts = [
         '    <div class="inline-fig">',
         '      <svg viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">',
-        f'        <text x="0" y="18" font-family="Helvetica" font-size="12" fill="{ACCENT_DEEP}" letter-spacing="3" font-weight="600">{svg_text(fig.get("title_caps", ""))}</text>',
-        '        <line x1="0" y1="38" x2="1000" y2="38" stroke="#0a0a0a" opacity="0.25"/>',
-        '        <line x1="330" y1="62" x2="330" y2="288" stroke="#0a0a0a" opacity="0.15"/>',
-        '        <line x1="690" y1="62" x2="690" y2="288" stroke="#0a0a0a" opacity="0.15"/>',
+        f'        <text x="0" y="18" font-family="Space Mono, monospace" font-size="12" fill="{ACCENT_DEEP}" letter-spacing="3" font-weight="600">{svg_text(fig.get("title_caps", ""))}</text>',
+        '        <line x1="0" y1="38" x2="1000" y2="38" stroke="#EAF2F5" opacity="0.25"/>',
+        '        <line x1="330" y1="62" x2="330" y2="288" stroke="#EAF2F5" opacity="0.15"/>',
+        '        <line x1="690" y1="62" x2="690" y2="288" stroke="#EAF2F5" opacity="0.15"/>',
     ]
     line_ys = [214, 236, 258, 280]
     for i, col in enumerate(cols):
         x = [0, 360, 720][i]
-        parts.append(f'        <text x="{x}" y="138" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="80" fill="#0a0a0a">{svg_text(col.get("num", ""))}</text>')
-        parts.append(f'        <text x="{x}" y="178" font-family="Iowan Old Style, Georgia, serif" font-size="21" fill="#0a0a0a">{svg_text(col.get("head", ""))}</text>')
+        parts.append(f'        <text x="{x}" y="138" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="80" fill="#EAF2F5">{svg_text(col.get("num", ""))}</text>')
+        parts.append(f'        <text x="{x}" y="178" font-family="'Space Grotesk', sans-serif" font-size="21" fill="#EAF2F5">{svg_text(col.get("head", ""))}</text>')
         for ly, line in zip(line_ys, col.get("lines", [])[:4]):
-            parts.append(f'        <text x="{x}" y="{ly}" font-family="Iowan Old Style, Georgia, serif" font-size="15" fill="#2a2a2a">{svg_text(line)}</text>')
+            parts.append(f'        <text x="{x}" y="{ly}" font-family="'Space Grotesk', sans-serif" font-size="15" fill="#C3CCD2">{svg_text(line)}</text>')
     parts.append("      </svg>")
     if fig.get("cap"):
         parts.append(f'      <div class="cap">{svg_text(fig["cap"])}</div>')
@@ -251,11 +251,11 @@ def build_featured(data: dict, date_display: str, url: str) -> str:
             <defs>
               <path id="circle" d="M 180,180 m -135,0 a 135,135 0 1,1 270,0 a 135,135 0 1,1 -270,0" />
             </defs>
-            <text fill="#ffffff" font-family="Iowan Old Style, Georgia, serif" font-size="24" font-weight="400">
+            <text fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-size="24" font-weight="400">
               <textPath href="#circle" startOffset="2%">{svg_text(cov["curved_title"])}</textPath>
             </text>
-            <text x="180" y="160" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="46" fill="#ffffff" text-anchor="middle">{svg_text(cov["kpi"])}</text>
-            <text x="180" y="200" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="20" fill="#ffffff" text-anchor="middle">{svg_text(cov["subtitle"])}</text>
+            <text x="180" y="160" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="46" fill="#ffffff" text-anchor="middle">{svg_text(cov["kpi"])}</text>
+            <text x="180" y="200" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="20" fill="#ffffff" text-anchor="middle">{svg_text(cov["subtitle"])}</text>
           </svg>
         </div>
         <div class="cover-bottom">sales-intel.de · KI im Vertrieb · Mittelstand-Edition</div>
@@ -309,7 +309,7 @@ ARTICLE_SCHEMA = {
         "deck": {"type": "string", "description": "2–3 Sätze Vorspann/Standfirst"},
         "reading_time": {"type": "string", "description": "z.B. '6 Minuten'"},
         "kpi": {"type": "string", "description": "Leitkennzahl, z.B. '88 / 100' oder '41 %'"},
-        "color": {"type": "string", "description": "Akzentfarbe Hex, Standard #5DEAFF"},
+        "color": {"type": "string", "description": "Akzentfarbe Hex, Standard #5BD8FF"},
         "sources": {"type": "string", "description": "Quellenzeile, ' · '-getrennt, mit Jahreszahlen"},
         "cover": {
             "type": "object",
@@ -412,7 +412,7 @@ einprägsam sein und im Text hergeleitet werden.
 FORM: Schlagzeile mit genau einem <em>…</em>. Im Fließtext sparsam <em> für Betonung. \
 Alle GROSS-Felder wirklich in Großbuchstaben. Halte SVG-Textzeilen kurz (Cover-Italics ≤ ~48 Zeichen, \
 Hero-Italics ≤ ~62 Zeichen, inline_fig-Zeilen ≤ ~30 Zeichen), damit nichts aus dem Rahmen läuft. \
-Akzentfarbe #5DEAFF. Gib alles über das Werkzeug submit_article aus."""
+Akzentfarbe #5BD8FF. Gib alles über das Werkzeug submit_article aus."""
 
 
 def call_claude(date_display: str, recent: list[dict]) -> dict:
@@ -638,7 +638,7 @@ SAMPLE = {
     "deck": "KI-Werkzeuge im Vertrieb versprechen Tempo und Treffsicherheit. Doch die Hälfte der Projekte scheitert, bevor sie wirkt — nicht am Modell, sondern an den Daten, die es füttern. Eine Bestandsaufnahme für den Mittelstand.",
     "reading_time": "6 Minuten",
     "kpi": "60 %",
-    "color": "#5DEAFF",
+    "color": "#5BD8FF",
     "sources": "Gartner 2025 · Bitkom 2026 · McKinsey State of AI 2025 · Forrester 2026",
     "cover": {
         "curved_title": "Datenqualität im Vertrieb. Die unsichtbare Bremse jedes KI-Projekts.",
