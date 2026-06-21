@@ -31,9 +31,9 @@
   --muted: #8a8a8a;
   --hair: #e5e5e5;
   --hair-soft: #f0f0f0;
-  --accent: #C42E0C;
-  --issue: #F23B12;
-  --issue-deep: #F23B12;
+  --accent: #0096C7;
+  --issue: #5DEAFF;
+  --issue-deep: #5DEAFF;
   --serif: Archivo, sans-serif;
   --serif-display: Archivo, sans-serif;
   --sans: Archivo, -apple-system, system-ui, sans-serif;
@@ -368,7 +368,7 @@ footer .legal {
   <div class="article-image"><svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
   <defs>
     <pattern id="grid29mai" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <rect width="40" height="40" fill="#F23B12"/>
+      <rect width="40" height="40" fill="#5DEAFF"/>
       <line x1="0" y1="0" x2="40" y2="0" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
       <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
     </pattern>
@@ -384,8 +384,8 @@ footer .legal {
   <text x="80" y="470" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">KI liest die Anfrage, gleicht sie mit dem ERP ab,</text>
   <text x="80" y="508" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">schreibt den Entwurf. Den Preis vergibt der Mensch.</text>
   <rect x="80" y="557" width="380" height="108" fill="#0a0a0a"/>
-  <text x="270" y="602" font-family="Archivo, sans-serif" font-style="italic" font-size="36" fill="#F23B12" text-anchor="middle">−30 % / 2–4 Mon.</text>
-  <text x="270" y="636" font-family="Space Mono, monospace" font-size="11" fill="#F23B12" text-anchor="middle" letter-spacing="3" font-weight="600">AUFWAND · AMORTISATION</text>
+  <text x="270" y="602" font-family="Archivo, sans-serif" font-style="italic" font-size="36" fill="#5DEAFF" text-anchor="middle">−30 % / 2–4 Mon.</text>
+  <text x="270" y="636" font-family="Space Mono, monospace" font-size="11" fill="#5DEAFF" text-anchor="middle" letter-spacing="3" font-weight="600">AUFWAND · AMORTISATION</text>
   <text x="510" y="586" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Drei Bedingungen: gepflegte Stammdaten,</text>
   <text x="510" y="616" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">klare Trennung Standard / Sondergeschäft,</text>
   <text x="510" y="646" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">ein Innendienst, der das Werkzeug will.</text>
@@ -411,7 +411,7 @@ footer .legal {
 
     <div class="inline-fig">
       <svg viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="18" font-family="Space Mono, monospace" font-size="12" fill="#C42E0C" letter-spacing="3" font-weight="600">DREI BEDINGUNGEN — BEVOR DIE AUTOMATISIERUNG TRÄGT</text>
+        <text x="0" y="18" font-family="Space Mono, monospace" font-size="12" fill="#0096C7" letter-spacing="3" font-weight="600">DREI BEDINGUNGEN — BEVOR DIE AUTOMATISIERUNG TRÄGT</text>
         <line x1="0" y1="38" x2="1000" y2="38" stroke="#0a0a0a" opacity="0.25"/>
         <line x1="330" y1="62" x2="330" y2="288" stroke="#0a0a0a" opacity="0.15"/>
         <line x1="690" y1="62" x2="690" y2="288" stroke="#0a0a0a" opacity="0.15"/>
@@ -577,7 +577,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#F23B12'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#5DEAFF'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>

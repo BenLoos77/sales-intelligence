@@ -46,7 +46,7 @@
       ".ra-stop:hover{background:transparent;color:var(--ink,#0a0a0a);border-color:var(--ink,#0a0a0a)}" +
       ".ra-progress{font-family:'Space Mono', monospace;font-size:11px;" +
       "letter-spacing:.08em;color:var(--muted,#888);font-variant-numeric:tabular-nums}" +
-      ".ra-reading{background:rgba(196,46,12,.10);box-shadow:-10px 0 0 rgba(196,46,12,.10),10px 0 0 rgba(196,46,12,.10);" +
+      ".ra-reading{background:rgba(0,150,199,.10);box-shadow:-10px 0 0 rgba(0,150,199,.10),10px 0 0 rgba(0,150,199,.10);" +
       "border-radius:2px;transition:background .3s}";
     document.head.appendChild(css);
   }

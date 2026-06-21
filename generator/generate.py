@@ -48,8 +48,8 @@ ARTICLES_DIR = ROOT / "articles"
 
 MODEL = os.environ.get("SI_MODEL", "claude-sonnet-4-6")
 BERLIN = ZoneInfo("Europe/Berlin")
-ACCENT = "#F23B12"          # Marken-Orange (B_77)
-ACCENT_DEEP = "#C42E0C"
+ACCENT = "#5DEAFF"          # Marken-Cyan (B_77)
+ACCENT_DEEP = "#0096C7"
 
 # Text-to-Speech (OpenAI). Optional: ohne OPENAI_API_KEY wird kein Audio
 # erzeugt und die Artikelseite nutzt die Browser-Vorlesefunktion.
@@ -309,7 +309,7 @@ ARTICLE_SCHEMA = {
         "deck": {"type": "string", "description": "2–3 Sätze Vorspann/Standfirst"},
         "reading_time": {"type": "string", "description": "z.B. '6 Minuten'"},
         "kpi": {"type": "string", "description": "Leitkennzahl, z.B. '88 / 100' oder '41 %'"},
-        "color": {"type": "string", "description": "Akzentfarbe Hex, Standard #F23B12"},
+        "color": {"type": "string", "description": "Akzentfarbe Hex, Standard #5DEAFF"},
         "sources": {"type": "string", "description": "Quellenzeile, ' · '-getrennt, mit Jahreszahlen"},
         "cover": {
             "type": "object",
@@ -412,7 +412,7 @@ einprägsam sein und im Text hergeleitet werden.
 FORM: Schlagzeile mit genau einem <em>…</em>. Im Fließtext sparsam <em> für Betonung. \
 Alle GROSS-Felder wirklich in Großbuchstaben. Halte SVG-Textzeilen kurz (Cover-Italics ≤ ~48 Zeichen, \
 Hero-Italics ≤ ~62 Zeichen, inline_fig-Zeilen ≤ ~30 Zeichen), damit nichts aus dem Rahmen läuft. \
-Akzentfarbe #F23B12. Gib alles über das Werkzeug submit_article aus."""
+Akzentfarbe #5DEAFF. Gib alles über das Werkzeug submit_article aus."""
 
 
 def call_claude(date_display: str, recent: list[dict]) -> dict:
@@ -638,7 +638,7 @@ SAMPLE = {
     "deck": "KI-Werkzeuge im Vertrieb versprechen Tempo und Treffsicherheit. Doch die Hälfte der Projekte scheitert, bevor sie wirkt — nicht am Modell, sondern an den Daten, die es füttern. Eine Bestandsaufnahme für den Mittelstand.",
     "reading_time": "6 Minuten",
     "kpi": "60 %",
-    "color": "#F23B12",
+    "color": "#5DEAFF",
     "sources": "Gartner 2025 · Bitkom 2026 · McKinsey State of AI 2025 · Forrester 2026",
     "cover": {
         "curved_title": "Datenqualität im Vertrieb. Die unsichtbare Bremse jedes KI-Projekts.",
