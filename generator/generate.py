@@ -301,12 +301,15 @@ def build_featured(data: dict, date_display: str, url: str) -> str:
 """
 
 
-def build_schwerpunkt(data: dict, date_display: str, hero_svg: str, body_html: str) -> str:
+def build_schwerpunkt(data: dict, date_display: str, hero_svg: str, body_html: str,
+                      audio_tag: str = "") -> str:
+    # h1 trägt .article-title, damit read-aloud.js den Vorlese-Anker findet.
     return f"""
 <section class="page" id="page-schwerpunkt">
+  {audio_tag}
   <div class="article-hero">
     <div class="meta-line">{data["eyebrow"]} · {date_display} · Lesezeit {data["reading_time"]}</div>
-    <h1>{html_text(data["title_html"])}</h1>
+    <h1 class="article-title">{html_text(data["title_html"])}</h1>
     <p class="standfirst">{html_text(data["deck"])}</p>
     <div class="byline">
       <span>Redaktion · Sales Intelligence</span>
@@ -648,7 +651,7 @@ def render_and_write(data: dict, run_date: datetime) -> dict:
         idx,
         "<!-- SI:SCHWERPUNKT:START — automatisch täglich generiert, nicht von Hand bearbeiten -->",
         "<!-- SI:SCHWERPUNKT:END -->",
-        build_schwerpunkt(data, date_display, hero_svg, body_html),
+        build_schwerpunkt(data, date_display, hero_svg, body_html, audio_tag),
     )
     idx = replace_between(idx, "<!-- SI:STAND:START -->", "<!-- SI:STAND:END -->", date_display)
     INDEX_HTML.write_text(idx, encoding="utf-8")
