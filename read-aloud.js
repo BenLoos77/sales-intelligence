@@ -39,14 +39,14 @@
       "font-family:'Space Mono', monospace;font-size:12px;letter-spacing:.12em;" +
       "text-transform:uppercase;font-weight:600;color:var(--ink,#0a0a0a);background:transparent;" +
       "border:1.5px solid var(--ink,#0a0a0a);border-radius:999px;padding:11px 20px;transition:all .25s}" +
-      ".ra-btn:hover{background:var(--ink,#0a0a0a);color:var(--bg,#fff)}" +
+      ".ra-btn:hover{background:var(--accent,#00B4E6);border-color:var(--accent,#00B4E6);color:#050608}" +
       ".ra-btn svg{width:16px;height:16px;flex:none}" +
       ".ra-btn[hidden]{display:none}" +
-      ".ra-stop{border-color:rgba(0,0,0,.25);color:var(--muted,#666);padding:11px 14px}" +
+      ".ra-stop{border-color:rgba(255,255,255,.25);color:var(--muted,#8e98a0);padding:11px 14px}" +
       ".ra-stop:hover{background:transparent;color:var(--ink,#0a0a0a);border-color:var(--ink,#0a0a0a)}" +
       ".ra-progress{font-family:'Space Mono', monospace;font-size:11px;" +
       "letter-spacing:.08em;color:var(--muted,#888);font-variant-numeric:tabular-nums}" +
-      ".ra-reading{background:rgba(0,150,199,.10);box-shadow:-10px 0 0 rgba(0,150,199,.10),10px 0 0 rgba(0,150,199,.10);" +
+      ".ra-reading{background:rgba(0,180,230,.16);box-shadow:-10px 0 0 rgba(0,180,230,.16),10px 0 0 rgba(0,180,230,.16);" +
       "border-radius:2px;transition:background .3s}";
     document.head.appendChild(css);
   }
