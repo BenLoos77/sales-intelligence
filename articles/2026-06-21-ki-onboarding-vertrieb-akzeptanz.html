@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="shortcut icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="apple-touch-icon" href="https://b77.de/assets/B77_Logo_black.png">
@@ -33,9 +34,9 @@
   --accent: #00B4E6;
   --issue: #5BD8FF;
   --issue-deep: #00b3d4;
-  --serif: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
-  --serif-display: "Iowan Old Style", "Charter", "Georgia", "Times New Roman", Times, serif;
-  --sans: -apple-system, "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
+  --serif: 'Space Grotesk', sans-serif;
+  --serif-display: 'Anton', sans-serif;
+  --sans: 'Space Grotesk', -apple-system, system-ui, sans-serif;
   --mono: 'Space Mono', "SFMono-Regular", Menlo, monospace;
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
@@ -377,19 +378,19 @@ footer .legal {
   </defs>
   <rect width="1280" height="720" fill="url(#grid20260621)"/>
   <text x="80" y="110" font-family="Helvetica" font-size="13" fill="#EAF2F5" letter-spacing="6" font-weight="600">KI-ADOPTION IM B2B-VERTRIEB</text>
-  <text x="80" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="200" fill="#EAF2F5" letter-spacing="-8">40</text>
-  <text x="330" y="320" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">%</text>
+  <text x="80" y="320" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="200" fill="#EAF2F5" letter-spacing="-8">40</text>
+  <text x="330" y="320" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">%</text>
   <text x="80" y="372" font-family="Helvetica" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="600">ANTEIL VERTRIEBSMITARBEITER MIT REGELMÄSSIGER KI-NUTZUNG</text>
   <line x1="80" y1="414" x2="1200" y2="414" stroke="#EAF2F5" opacity="0.2"/>
   <line x1="80" y1="414" x2="200" y2="414" stroke="#EAF2F5" stroke-width="2"/>
-  <text x="80" y="472" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#EAF2F5">Lizenzen gekauft, Dashboards live –</text>
-  <text x="80" y="510" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="28" fill="#EAF2F5">der Außendienst greift dennoch zur Tabelle.</text>
+  <text x="80" y="472" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">Lizenzen gekauft, Dashboards live –</text>
+  <text x="80" y="510" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">der Außendienst greift dennoch zur Tabelle.</text>
   <rect x="80" y="559" width="430" height="108" fill="#EAF2F5"/>
-  <text x="295" y="604" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">&lt; 3 Mon.</text>
+  <text x="295" y="604" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">&lt; 3 Mon.</text>
   <text x="295" y="638" font-family="Helvetica" font-size="11" fill="#5BD8FF" text-anchor="middle" letter-spacing="3" font-weight="600">MEDIAN BIS ZUM ADOPTION-ABBRUCH</text>
-  <text x="560" y="588" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">Schulung ≠ Nutzung</text>
-  <text x="560" y="618" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">Führung entscheidet</text>
-  <text x="560" y="648" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-size="20" fill="#EAF2F5">Prozess vor Tool</text>
+  <text x="560" y="588" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Schulung ≠ Nutzung</text>
+  <text x="560" y="618" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Führung entscheidet</text>
+  <text x="560" y="648" font-family="'Space Grotesk', sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Prozess vor Tool</text>
   <text x="80" y="703" font-family="Helvetica" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="500">QUELLE &#183; SALESFORCE STATE OF SALES 2025 &#183; GARTNER 2025</text>
 </svg></div>
 
@@ -16046,7 +16047,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#0c141c'}"/><text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Iowan Old Style, Georgia, serif" font-style="italic" font-weight="400" font-size="68" fill="#EAF2F5" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#0c141c'}"/><text x="40" y="80" font-family="Helvetica" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#EAF2F5" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>
