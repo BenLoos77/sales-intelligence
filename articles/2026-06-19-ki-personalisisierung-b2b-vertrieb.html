@@ -22,15 +22,15 @@
 <!-- ARTICLE_META_END -->
 <style>
 :root {
-  color-scheme: dark;
-  --paper: #050608;
-  --paper-soft: #0A1015;
-  --ink: #EAF2F5;
-  --ink-soft: #C3CCD2;
-  --ink-soft2: #AEB8C0;
-  --muted: #8e98a0;
-  --hair: rgba(255,255,255,.12);
-  --hair-soft: rgba(255,255,255,.06);
+  color-scheme: light;
+  --paper: #ffffff;
+  --paper-soft: #fafafa;
+  --ink: #0a0a0a;
+  --ink-soft: #2a2a2a;
+  --ink-soft2: #585858;
+  --muted: #8a8a8a;
+  --hair: rgba(0,0,0,.12);
+  --hair-soft: rgba(0,0,0,.06);
   --accent: #00B4E6;
   --issue: #5BD8FF;
   --issue-deep: #5BD8FF;
@@ -104,7 +104,7 @@ a { color: inherit; text-decoration: none; }
 .article-image {
   width: 100%; max-width: 1080px; aspect-ratio: 16 / 9;
   margin: 0 0 56px; position: relative; overflow: hidden;
-  background: #0c141c;
+  background: #5BD8FF;
 }
 
 /* Two-column layout: article + sidebar */
@@ -182,7 +182,7 @@ a { color: inherit; text-decoration: none; }
 .side-teaser h4 em { font-style: italic; }
 .side-teaser:hover h4 { color: var(--accent); }
 .side-nl {
-  background: #0c141c; padding: 24px 22px;
+  background: #5BD8FF; padding: 24px 22px;
 }
 .side-nl .kicker {
   font-family: var(--serif); font-style: italic; font-size: 13px;
@@ -203,7 +203,7 @@ a { color: inherit; text-decoration: none; }
 }
 .side-nl input::placeholder { color: var(--muted); font-style: italic; }
 .side-nl button {
-  background: #0A1015; color: var(--ink); border: none; padding: 12px;
+  background: #fafafa; color: var(--ink); border: none; padding: 12px;
   font-family: var(--sans); font-size: 13px; font-weight: 500;
   letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
   transition: background 0.15s;
@@ -230,7 +230,7 @@ a { color: inherit; text-decoration: none; }
 }
 .related-card { display: flex; flex-direction: column; gap: 18px; }
 .related-card .thumb {
-  aspect-ratio: 4 / 3; background: #0c141c;
+  aspect-ratio: 4 / 3; background: #5BD8FF;
   position: relative; overflow: hidden;
 }
 .related-card .thumb svg { width: 100%; height: 100%; }
@@ -251,14 +251,14 @@ a { color: inherit; text-decoration: none; }
 
 /* Footer */
 footer {
-  background: #0A1015; color: #AEB8C0;
+  background: #fafafa; color: #585858;
   padding: 80px var(--gutter) 32px; margin-top: 80px;
   border-top: 1px solid var(--ink);
 }
 footer .inner {
   max-width: var(--maxw); margin: 0 auto;
   display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
-  gap: 56px; padding-bottom: 56px; border-bottom: 1px solid #C3CCD2;
+  gap: 56px; padding-bottom: 56px; border-bottom: 1px solid #2a2a2a;
 }
 footer .brand-foot {
   font-family: var(--serif-display); font-size: clamp(36px, 3.6vw, 52px);
@@ -266,22 +266,22 @@ footer .brand-foot {
   letter-spacing: -0.02em; line-height: 0.95;
 }
 footer .brand-foot em { font-style: italic; }
-footer p { font-size: 15px; line-height: 1.6; color: #AEB8C0; margin: 0 0 12px; font-family: var(--serif); }
+footer p { font-size: 15px; line-height: 1.6; color: #585858; margin: 0 0 12px; font-family: var(--serif); }
 footer .imprint {
   font-family: var(--mono); font-size: 11px; line-height: 1.7;
-  color: #8e98a0; letter-spacing: 0.04em; margin-top: 18px;
+  color: #8a8a8a; letter-spacing: 0.04em; margin-top: 18px;
 }
 footer .imprint strong { color: var(--ink); font-weight: 700; }
 footer h5 {
   font-family: var(--serif); font-style: italic; font-size: 18px;
   color: var(--issue); margin: 0 0 18px; font-weight: 400;
 }
-footer a { color: #AEB8C0; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
+footer a { color: #585858; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
 footer a:hover { color: var(--issue); }
 footer .legal {
   max-width: var(--maxw); margin: 28px auto 0;
   display: flex; justify-content: space-between;
-  font-family: var(--sans); font-size: 12px; color: #8e98a0;
+  font-family: var(--sans); font-size: 12px; color: #8a8a8a;
   flex-wrap: wrap; gap: 16px;
 }
 
@@ -302,7 +302,7 @@ footer .legal {
 /* Sticky NL Widget — unten rechts */
 .nl-widget {
   position: fixed; bottom: 24px; right: 24px; z-index: 200;
-  background: #0A1015; color: var(--ink);
+  background: #fafafa; color: var(--ink);
   padding: 22px 26px 20px; max-width: 360px;
   box-shadow: 0 18px 48px rgba(0,0,0,0.18); font-family: var(--serif);
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -319,7 +319,7 @@ footer .legal {
 .nl-widget .title em { font-style: italic; }
 .nl-widget form { display: flex; gap: 6px; background: var(--paper); padding: 6px 6px 6px 14px; align-items: center; }
 .nl-widget input { flex: 1; border: none; outline: none; font-family: var(--serif); font-size: 15px; background: transparent; color: var(--ink); padding: 8px 0; min-width: 0; }
-.nl-widget button { background: #0A1015; color: var(--ink); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.nl-widget button { background: #fafafa; color: var(--ink); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
 .nl-widget button:hover { background: var(--accent); }
 .nl-widget .fine { font-family: var(--serif); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.45; }
 .nl-widget.success form, .nl-widget.success .title, .nl-widget.success .kicker { display: none; }
@@ -373,26 +373,26 @@ footer .legal {
   <defs>
     <pattern id="grid20260619" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
       <rect width="40" height="40" fill="#5BD8FF"/>
-      <line x1="0" y1="0" x2="40" y2="0" stroke="#EAF2F5" stroke-width="0.5" opacity="0.18"/>
-      <line x1="0" y1="0" x2="0" y2="40" stroke="#EAF2F5" stroke-width="0.5" opacity="0.18"/>
+      <line x1="0" y1="0" x2="40" y2="0" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
     </pattern>
   </defs>
   <rect width="1280" height="720" fill="url(#grid20260619)"/>
-  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="6" font-weight="600">KI-PERSONALISIERUNG IM B2B-VERTRIEB</text>
-  <text x="80" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="200" fill="#EAF2F5" letter-spacing="-8">60</text>
-  <text x="330" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#EAF2F5" letter-spacing="-4">%</text>
-  <text x="80" y="372" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="600">PERSONALISIERUNG ALS VERTRIEBSHEBEL 2026</text>
-  <line x1="80" y1="414" x2="1200" y2="414" stroke="#EAF2F5" opacity="0.2"/>
-  <line x1="80" y1="414" x2="200" y2="414" stroke="#EAF2F5" stroke-width="2"/>
-  <text x="80" y="472" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">der B2B-Käufer erwarten heute eine</text>
-  <text x="80" y="510" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#EAF2F5">Ansprache, die auf ihre Lage eingeht.</text>
-  <rect x="80" y="559" width="430" height="108" fill="#EAF2F5"/>
+  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-PERSONALISIERUNG IM B2B-VERTRIEB</text>
+  <text x="80" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="200" fill="#0a0a0a" letter-spacing="-8">60</text>
+  <text x="330" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-4">%</text>
+  <text x="80" y="372" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">PERSONALISIERUNG ALS VERTRIEBSHEBEL 2026</text>
+  <line x1="80" y1="414" x2="1200" y2="414" stroke="#0a0a0a" opacity="0.2"/>
+  <line x1="80" y1="414" x2="200" y2="414" stroke="#0a0a0a" stroke-width="2"/>
+  <text x="80" y="472" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">der B2B-Käufer erwarten heute eine</text>
+  <text x="80" y="510" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Ansprache, die auf ihre Lage eingeht.</text>
+  <rect x="80" y="559" width="430" height="108" fill="#0a0a0a"/>
   <text x="295" y="604" font-family="Archivo, sans-serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">&lt; 20 %</text>
   <text x="295" y="638" font-family="Space Mono, monospace" font-size="11" fill="#5BD8FF" text-anchor="middle" letter-spacing="3" font-weight="600">MITTELSTAND LIEFERT DAS</text>
-  <text x="560" y="588" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Datenqualität: unzureichend</text>
-  <text x="560" y="618" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Signalquellen: kaum integriert</text>
-  <text x="560" y="648" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#EAF2F5">Personalisierungs-Engine: selten live</text>
-  <text x="80" y="703" font-family="Space Mono, monospace" font-size="13" fill="#EAF2F5" letter-spacing="3" font-weight="500">QUELLE &#183; SALESFORCE STATE OF SALES 2024 &#183; MCKINSEY B2B PULSE 2025</text>
+  <text x="560" y="588" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Datenqualität: unzureichend</text>
+  <text x="560" y="618" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Signalquellen: kaum integriert</text>
+  <text x="560" y="648" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Personalisierungs-Engine: selten live</text>
+  <text x="80" y="703" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE &#183; SALESFORCE STATE OF SALES 2024 &#183; MCKINSEY B2B PULSE 2025</text>
 </svg></div>
 
   <div class="article-layout">
@@ -423,27 +423,27 @@ footer .legal {
     <div class="inline-fig">
       <svg viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">
         <text x="0" y="18" font-family="Space Mono, monospace" font-size="12" fill="#00B4E6" letter-spacing="3" font-weight="600">PERSONALISIERUNG: DREI EINSTIEGSPUNKTE FÜR DEN MITTELSTAND</text>
-        <line x1="0" y1="38" x2="1000" y2="38" stroke="#EAF2F5" opacity="0.25"/>
-        <line x1="330" y1="62" x2="330" y2="288" stroke="#EAF2F5" opacity="0.15"/>
-        <line x1="690" y1="62" x2="690" y2="288" stroke="#EAF2F5" opacity="0.15"/>
-        <text x="0" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#EAF2F5">01</text>
-        <text x="0" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#EAF2F5">Gesprächs­nachbereitung</text>
-        <text x="0" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">KI fasst Gesprächs-</text>
-        <text x="0" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">inhalte strukturiert</text>
-        <text x="0" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">zusammen – als CRM-</text>
-        <text x="0" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">Input, nicht als PDF.</text>
-        <text x="360" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#EAF2F5">02</text>
-        <text x="360" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#EAF2F5">Intent-Anreicherung</text>
-        <text x="360" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">Externe Signale (Jobs,</text>
-        <text x="360" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">News, Web-Aktivität)</text>
-        <text x="360" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">werden automatisch</text>
-        <text x="360" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">dem Konto zugeordnet.</text>
-        <text x="720" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#EAF2F5">03</text>
-        <text x="720" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#EAF2F5">Dynamische Vorlagen</text>
-        <text x="720" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">E-Mail-/Angebots-</text>
-        <text x="720" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">texte variieren nach</text>
-        <text x="720" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">Branche, Phase und</text>
-        <text x="720" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#C3CCD2">letztem Kontaktpunkt.</text>
+        <line x1="0" y1="38" x2="1000" y2="38" stroke="#0a0a0a" opacity="0.25"/>
+        <line x1="330" y1="62" x2="330" y2="288" stroke="#0a0a0a" opacity="0.15"/>
+        <line x1="690" y1="62" x2="690" y2="288" stroke="#0a0a0a" opacity="0.15"/>
+        <text x="0" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">01</text>
+        <text x="0" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#0a0a0a">Gesprächs­nachbereitung</text>
+        <text x="0" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">KI fasst Gesprächs-</text>
+        <text x="0" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">inhalte strukturiert</text>
+        <text x="0" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">zusammen – als CRM-</text>
+        <text x="0" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Input, nicht als PDF.</text>
+        <text x="360" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">02</text>
+        <text x="360" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#0a0a0a">Intent-Anreicherung</text>
+        <text x="360" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Externe Signale (Jobs,</text>
+        <text x="360" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">News, Web-Aktivität)</text>
+        <text x="360" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">werden automatisch</text>
+        <text x="360" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">dem Konto zugeordnet.</text>
+        <text x="720" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">03</text>
+        <text x="720" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#0a0a0a">Dynamische Vorlagen</text>
+        <text x="720" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">E-Mail-/Angebots-</text>
+        <text x="720" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">texte variieren nach</text>
+        <text x="720" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Branche, Phase und</text>
+        <text x="720" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">letztem Kontaktpunkt.</text>
       </svg>
       <div class="cap">Quelle: Forrester B2B Personalization At Scale 2025 &#183; BCG The Personalization Imperative 2024</div>
     </div>
@@ -592,7 +592,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#0c141c'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#EAF2F5" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#EAF2F5" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#5BD8FF'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>

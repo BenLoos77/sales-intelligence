@@ -42,7 +42,7 @@
       ".ra-btn:hover{background:var(--accent,#00B4E6);border-color:var(--accent,#00B4E6);color:#050608}" +
       ".ra-btn svg{width:16px;height:16px;flex:none}" +
       ".ra-btn[hidden]{display:none}" +
-      ".ra-stop{border-color:rgba(255,255,255,.25);color:var(--muted,#8e98a0);padding:11px 14px}" +
+      ".ra-stop{border-color:rgba(0,0,0,.25);color:var(--muted,#8e98a0);padding:11px 14px}" +
       ".ra-stop:hover{background:transparent;color:var(--ink,#0a0a0a);border-color:var(--ink,#0a0a0a)}" +
       ".ra-progress{font-family:'Space Mono', monospace;font-size:11px;" +
       "letter-spacing:.08em;color:var(--muted,#888);font-variant-numeric:tabular-nums}" +
