@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="shortcut icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="apple-touch-icon" href="https://b77.de/assets/B77_Logo_black.png">
@@ -25,19 +25,19 @@
   color-scheme: light;
   --paper: #ffffff;
   --paper-soft: #fafafa;
-  --ink: #0a0a0a;
+  --ink: #0F0F0F;
   --ink-soft: #2a2a2a;
   --ink-soft2: #585858;
-  --muted: #8a8a8a;
+  --muted: #9A9A9A;
   --hair: rgba(0,0,0,.12);
   --hair-soft: rgba(0,0,0,.06);
-  --accent: #00B4E6;
-  --issue: #5BD8FF;
-  --issue-deep: #5BD8FF;
-  --serif: 'Space Grotesk', sans-serif;
-  --serif-display: 'Anton', sans-serif;
-  --sans: 'Space Grotesk', -apple-system, system-ui, sans-serif;
-  --mono: 'Space Mono', "SFMono-Regular", Menlo, monospace;
+  --accent: #0F0F0F;
+  --issue: #0F0F0F;
+  --issue-deep: #0F0F0F;
+  --serif: 'Hanken Grotesk', sans-serif;
+  --serif-display: 'Hanken Grotesk', sans-serif;
+  --sans: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
 }
@@ -101,10 +101,11 @@ a { color: inherit; text-decoration: none; }
   display: flex; justify-content: space-between; flex-wrap: wrap;
   gap: 16px; margin-bottom: 56px;
 }
-.article-image {
+.article-image { /*MONOLITH-BORDER:.article-image {*/
+  border: 1px solid #0F0F0F;
   width: 100%; max-width: 1080px; aspect-ratio: 16 / 9;
   margin: 0 0 56px; position: relative; overflow: hidden;
-  background: #5BD8FF;
+  background: #FFFFFF;
 }
 
 /* Two-column layout: article + sidebar */
@@ -181,8 +182,8 @@ a { color: inherit; text-decoration: none; }
 }
 .side-teaser h4 em { font-style: italic; }
 .side-teaser:hover h4 { color: var(--accent); }
-.side-nl {
-  background: #5BD8FF; padding: 24px 22px;
+.side-nl { /*MONOLITH-BORDER:.side-nl {*/ border: 1px solid #0F0F0F;
+  background: #FFFFFF; padding: 24px 22px;
 }
 .side-nl .kicker {
   font-family: var(--serif); font-style: italic; font-size: 13px;
@@ -208,7 +209,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
   transition: background 0.15s;
 }
-.side-nl button:hover { background: var(--accent); }
+.side-nl button:hover { background: var(--accent); color: var(--paper); }
 .side-nl .fine {
   font-family: var(--serif); font-style: italic; font-size: 12px;
   color: var(--ink); margin-top: 10px;
@@ -229,8 +230,9 @@ a { color: inherit; text-decoration: none; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px;
 }
 .related-card { display: flex; flex-direction: column; gap: 18px; }
-.related-card .thumb {
-  aspect-ratio: 4 / 3; background: #5BD8FF;
+.related-card .thumb { /*MONOLITH-BORDER:.related-card .thumb {*/
+  border: 1px solid #0F0F0F;
+  aspect-ratio: 4 / 3; background: #FFFFFF;
   position: relative; overflow: hidden;
 }
 .related-card .thumb svg { width: 100%; height: 100%; }
@@ -320,7 +322,7 @@ footer .legal {
 .nl-widget form { display: flex; gap: 6px; background: var(--paper); padding: 6px 6px 6px 14px; align-items: center; }
 .nl-widget input { flex: 1; border: none; outline: none; font-family: var(--serif); font-size: 15px; background: transparent; color: var(--ink); padding: 8px 0; min-width: 0; }
 .nl-widget button { background: #fafafa; color: var(--ink); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
-.nl-widget button:hover { background: var(--accent); }
+.nl-widget button:hover { background: var(--accent); color: var(--paper); }
 .nl-widget .fine { font-family: var(--serif); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.45; }
 .nl-widget.success form, .nl-widget.success .title, .nl-widget.success .kicker { display: none; }
 .nl-widget.success .success-state { display: block; }
@@ -333,8 +335,8 @@ footer .legal {
 }
 
 /* === Dark-Theme Kontrast-Fix === */
-.side-nl button,.nl-widget button{background:var(--accent);color:#050608;}
-.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:#050608;}
+.side-nl button,.nl-widget button{background:var(--accent);color:var(--paper);}
+.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:var(--paper);}
 </style>
 </head>
 <body>
@@ -372,25 +374,25 @@ footer .legal {
   <div class="article-image"><svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
   <defs>
     <pattern id="dots17mai" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-      <rect width="22" height="22" fill="#5BD8FF"/>
+      <rect width="22" height="22" fill="#FFFFFF"/>
       <circle cx="11" cy="11" r="0.8" fill="#0a0a0a" opacity="0.15"/>
     </pattern>
   </defs>
   <rect width="1280" height="720" fill="url(#dots17mai)"/>
-  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-PREISGESTALTUNG · B2B-MITTELSTAND 2026</text>
-  <text x="80" y="290" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="200" fill="#0a0a0a" letter-spacing="-6">+2 bis 5 Pkt.</text>
-  <text x="80" y="335" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">EBITDA-MARGE · TYPISCHE BANDBREITE · SIMON-KUCHER</text>
+  <text x="80" y="110" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-PREISGESTALTUNG · B2B-MITTELSTAND 2026</text>
+  <text x="80" y="290" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="200" fill="#0a0a0a" letter-spacing="-6">+2 bis 5 Pkt.</text>
+  <text x="80" y="335" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">EBITDA-MARGE · TYPISCHE BANDBREITE · SIMON-KUCHER</text>
   <line x1="80" y1="375" x2="1200" y2="375" stroke="#0a0a0a" opacity="0.2"/>
   <line x1="80" y1="375" x2="200" y2="375" stroke="#0a0a0a" stroke-width="2"/>
-  <text x="80" y="435" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Drei Voraussetzungen, ohne die nichts ankommt:</text>
-  <text x="80" y="473" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Stammdaten · Verlustgründe · ein Verantwortlicher.</text>
+  <text x="80" y="435" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Drei Voraussetzungen, ohne die nichts ankommt:</text>
+  <text x="80" y="473" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Stammdaten · Verlustgründe · ein Verantwortlicher.</text>
   <rect x="80" y="525" width="380" height="110" fill="#0a0a0a"/>
-  <text x="270" y="570" font-family="Archivo, sans-serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">3–8 % je Auftrag</text>
-  <text x="270" y="605" font-family="Space Mono, monospace" font-size="11" fill="#5BD8FF" text-anchor="middle" letter-spacing="3" font-weight="600">MARGE PRO ANGEBOT · PILOT-DURCHSCHNITT</text>
-  <text x="500" y="555" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Voraussetzung: saubere CRM-Daten und</text>
-  <text x="500" y="585" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">eine Person, der das Pricing gehört.</text>
-  <text x="500" y="615" font-family="Space Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600" opacity="0.7">SIMON-KUCHER · PWC MASCHINENBAU-BAROMETER · MODULAR OPS</text>
-  <text x="80" y="690" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE · SIMON-KUCHER · PWC MASCHINENBAU-BAROMETER · ABBILDUNG TITEL</text>
+  <text x="270" y="570" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="36" fill="#FFFFFF" text-anchor="middle">3–8 % je Auftrag</text>
+  <text x="270" y="605" font-family="JetBrains Mono, monospace" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="3" font-weight="600">MARGE PRO ANGEBOT · PILOT-DURCHSCHNITT</text>
+  <text x="500" y="555" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Voraussetzung: saubere CRM-Daten und</text>
+  <text x="500" y="585" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">eine Person, der das Pricing gehört.</text>
+  <text x="500" y="615" font-family="JetBrains Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600" opacity="0.7">SIMON-KUCHER · PWC MASCHINENBAU-BAROMETER · MODULAR OPS</text>
+  <text x="80" y="690" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE · SIMON-KUCHER · PWC MASCHINENBAU-BAROMETER · ABBILDUNG TITEL</text>
 </svg></div>
 
   <div class="article-layout">
@@ -416,26 +418,26 @@ footer .legal {
 
     <div class="inline-fig">
       <svg viewBox="0 0 880 320" width="100%" preserveAspectRatio="xMidYMid meet">
-        <text x="0" y="22" font-family="Archivo, sans-serif" font-style="italic" font-size="16" fill="#0a0a0a">EBITDA-Marge nach KI-Preisgestaltung — typische Spannbreite</text>
-        <text x="0" y="42" font-family="Space Mono, monospace" font-size="11" fill="#8a8a8a" letter-spacing="2">REFERENZWERTE · MITTELSTÄNDISCHE PILOTPROJEKTE 2025/26</text>
+        <text x="0" y="22" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="16" fill="#0a0a0a">EBITDA-Marge nach KI-Preisgestaltung — typische Spannbreite</text>
+        <text x="0" y="42" font-family="JetBrains Mono, monospace" font-size="11" fill="#8a8a8a" letter-spacing="2">REFERENZWERTE · MITTELSTÄNDISCHE PILOTPROJEKTE 2025/26</text>
         <line x1="0" y1="58" x2="880" y2="58" stroke="#0a0a0a"/>
-        <text x="0" y="104" font-family="Archivo, sans-serif" font-size="16" fill="#0a0a0a">Ohne Preis-Modell, Bauchgefühl</text>
+        <text x="0" y="104" font-family="Hanken Grotesk, sans-serif" font-size="16" fill="#0a0a0a">Ohne Preis-Modell, Bauchgefühl</text>
         <rect x="320" y="92" width="500" height="18" fill="#0a0a0a" opacity="0.18"/>
         <rect x="320" y="92" width="0" height="18" fill="#0a0a0a"/>
-        <text x="840" y="104" font-family="Archivo, sans-serif" font-size="14" fill="#2a2a2a">±0 Pkt.</text>
-        <text x="0" y="152" font-family="Archivo, sans-serif" font-size="16" fill="#0a0a0a">Rabattband, ohne Datenpflege</text>
+        <text x="840" y="104" font-family="Hanken Grotesk, sans-serif" font-size="14" fill="#2a2a2a">±0 Pkt.</text>
+        <text x="0" y="152" font-family="Hanken Grotesk, sans-serif" font-size="16" fill="#0a0a0a">Rabattband, ohne Datenpflege</text>
         <rect x="320" y="140" width="500" height="18" fill="#0a0a0a" opacity="0.18"/>
         <rect x="320" y="140" width="80" height="18" fill="#0a0a0a"/>
-        <text x="840" y="152" font-family="Archivo, sans-serif" font-size="14" fill="#2a2a2a">+0,5 Pkt.</text>
-        <text x="0" y="200" font-family="Archivo, sans-serif" font-size="16" fill="#0a0a0a">KI-Modell, saubere Stammdaten</text>
+        <text x="840" y="152" font-family="Hanken Grotesk, sans-serif" font-size="14" fill="#2a2a2a">+0,5 Pkt.</text>
+        <text x="0" y="200" font-family="Hanken Grotesk, sans-serif" font-size="16" fill="#0a0a0a">KI-Modell, saubere Stammdaten</text>
         <rect x="320" y="188" width="500" height="18" fill="#0a0a0a" opacity="0.18"/>
-        <rect x="320" y="188" width="240" height="18" fill="#00B4E6"/>
-        <text x="840" y="200" font-family="Archivo, sans-serif" font-size="14" fill="#2a2a2a">+2 Pkt.</text>
-        <text x="0" y="248" font-family="Archivo, sans-serif" font-size="16" fill="#0a0a0a">KI-Modell &amp; gepflegte Verlustgründe</text>
+        <rect x="320" y="188" width="240" height="18" fill="#0F0F0F"/>
+        <text x="840" y="200" font-family="Hanken Grotesk, sans-serif" font-size="14" fill="#2a2a2a">+2 Pkt.</text>
+        <text x="0" y="248" font-family="Hanken Grotesk, sans-serif" font-size="16" fill="#0a0a0a">KI-Modell &amp; gepflegte Verlustgründe</text>
         <rect x="320" y="236" width="500" height="18" fill="#0a0a0a" opacity="0.18"/>
-        <rect x="320" y="236" width="420" height="18" fill="#00B4E6"/>
-        <text x="840" y="248" font-family="Archivo, sans-serif" font-size="14" fill="#2a2a2a">+5 Pkt.</text>
-        <text x="0" y="296" font-family="Archivo, sans-serif" font-style="italic" font-size="13" fill="#8a8a8a">cyan — KI-gestützt · grau — herkömmlich · Werte: Spannbreite typischer Pilotprojekte, Simon-Kucher Insights</text>
+        <rect x="320" y="236" width="420" height="18" fill="#0F0F0F"/>
+        <text x="840" y="248" font-family="Hanken Grotesk, sans-serif" font-size="14" fill="#2a2a2a">+5 Pkt.</text>
+        <text x="0" y="296" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="13" fill="#8a8a8a">cyan — KI-gestützt · grau — herkömmlich · Werte: Spannbreite typischer Pilotprojekte, Simon-Kucher Insights</text>
       </svg>
       <div class="cap">Abb. 1 · Wo der Hebel im Mittelstand realistisch landet. Die Zahlen beschreiben EBITDA-Punkte, nicht Umsatzpunkte — und sie hängen am Datenstand, nicht am Algorithmus.</div>
     </div>
@@ -577,7 +579,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#5BD8FF'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#FFFFFF'}"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>

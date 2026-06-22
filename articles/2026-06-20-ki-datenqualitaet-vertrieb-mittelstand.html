@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="shortcut icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="apple-touch-icon" href="https://b77.de/assets/B77_Logo_black.png">
@@ -25,19 +25,19 @@
   color-scheme: light;
   --paper: #ffffff;
   --paper-soft: #fafafa;
-  --ink: #0a0a0a;
+  --ink: #0F0F0F;
   --ink-soft: #2a2a2a;
   --ink-soft2: #585858;
-  --muted: #8a8a8a;
+  --muted: #9A9A9A;
   --hair: rgba(0,0,0,.12);
   --hair-soft: rgba(0,0,0,.06);
-  --accent: #00B4E6;
-  --issue: #5BD8FF;
-  --issue-deep: #5BD8FF;
-  --serif: 'Space Grotesk', sans-serif;
-  --serif-display: 'Anton', sans-serif;
-  --sans: 'Space Grotesk', -apple-system, system-ui, sans-serif;
-  --mono: 'Space Mono', "SFMono-Regular", Menlo, monospace;
+  --accent: #0F0F0F;
+  --issue: #0F0F0F;
+  --issue-deep: #0F0F0F;
+  --serif: 'Hanken Grotesk', sans-serif;
+  --serif-display: 'Hanken Grotesk', sans-serif;
+  --sans: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
 }
@@ -101,10 +101,11 @@ a { color: inherit; text-decoration: none; }
   display: flex; justify-content: space-between; flex-wrap: wrap;
   gap: 16px; margin-bottom: 56px;
 }
-.article-image {
+.article-image { /*MONOLITH-BORDER:.article-image {*/
+  border: 1px solid #0F0F0F;
   width: 100%; max-width: 1080px; aspect-ratio: 16 / 9;
   margin: 0 0 56px; position: relative; overflow: hidden;
-  background: #5BD8FF;
+  background: #FFFFFF;
 }
 
 /* Two-column layout: article + sidebar */
@@ -181,8 +182,8 @@ a { color: inherit; text-decoration: none; }
 }
 .side-teaser h4 em { font-style: italic; }
 .side-teaser:hover h4 { color: var(--accent); }
-.side-nl {
-  background: #5BD8FF; padding: 24px 22px;
+.side-nl { /*MONOLITH-BORDER:.side-nl {*/ border: 1px solid #0F0F0F;
+  background: #FFFFFF; padding: 24px 22px;
 }
 .side-nl .kicker {
   font-family: var(--serif); font-style: italic; font-size: 13px;
@@ -208,7 +209,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
   transition: background 0.15s;
 }
-.side-nl button:hover { background: var(--accent); }
+.side-nl button:hover { background: var(--accent); color: var(--paper); }
 .side-nl .fine {
   font-family: var(--serif); font-style: italic; font-size: 12px;
   color: var(--ink); margin-top: 10px;
@@ -229,8 +230,9 @@ a { color: inherit; text-decoration: none; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px;
 }
 .related-card { display: flex; flex-direction: column; gap: 18px; }
-.related-card .thumb {
-  aspect-ratio: 4 / 3; background: #5BD8FF;
+.related-card .thumb { /*MONOLITH-BORDER:.related-card .thumb {*/
+  border: 1px solid #0F0F0F;
+  aspect-ratio: 4 / 3; background: #FFFFFF;
   position: relative; overflow: hidden;
 }
 .related-card .thumb svg { width: 100%; height: 100%; }
@@ -320,7 +322,7 @@ footer .legal {
 .nl-widget form { display: flex; gap: 6px; background: var(--paper); padding: 6px 6px 6px 14px; align-items: center; }
 .nl-widget input { flex: 1; border: none; outline: none; font-family: var(--serif); font-size: 15px; background: transparent; color: var(--ink); padding: 8px 0; min-width: 0; }
 .nl-widget button { background: #fafafa; color: var(--ink); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
-.nl-widget button:hover { background: var(--accent); }
+.nl-widget button:hover { background: var(--accent); color: var(--paper); }
 .nl-widget .fine { font-family: var(--serif); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.45; }
 .nl-widget.success form, .nl-widget.success .title, .nl-widget.success .kicker { display: none; }
 .nl-widget.success .success-state { display: block; }
@@ -333,8 +335,8 @@ footer .legal {
 }
 
 /* === Dark-Theme Kontrast-Fix === */
-.side-nl button,.nl-widget button{background:var(--accent);color:#050608;}
-.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:#050608;}
+.side-nl button,.nl-widget button{background:var(--accent);color:var(--paper);}
+.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:var(--paper);}
 </style>
 </head>
 <body>
@@ -371,27 +373,27 @@ footer .legal {
   <div class="article-image"><svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <pattern id="grid20260620" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <rect width="40" height="40" fill="#5BD8FF"/>
+      <rect width="40" height="40" fill="#FFFFFF"/>
       <line x1="0" y1="0" x2="40" y2="0" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
       <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
     </pattern>
   </defs>
   <rect width="1280" height="720" fill="url(#grid20260620)"/>
-  <text x="80" y="110" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-VERTRIEB &amp; DATENQUALITÄT IM MITTELSTAND</text>
-  <text x="80" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="210" fill="#0a0a0a" letter-spacing="-8">2</text>
-  <text x="250" y="320" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-4">/ 5</text>
-  <text x="80" y="372" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">ANTEIL TATSÄCHLICH NUTZBARER CRM-FELDER</text>
+  <text x="80" y="110" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-VERTRIEB &amp; DATENQUALITÄT IM MITTELSTAND</text>
+  <text x="80" y="320" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="210" fill="#0a0a0a" letter-spacing="-8">2</text>
+  <text x="250" y="320" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-4">/ 5</text>
+  <text x="80" y="372" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">ANTEIL TATSÄCHLICH NUTZBARER CRM-FELDER</text>
   <line x1="80" y1="414" x2="1200" y2="414" stroke="#0a0a0a" opacity="0.2"/>
   <line x1="80" y1="414" x2="200" y2="414" stroke="#0a0a0a" stroke-width="2"/>
-  <text x="80" y="472" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Bis zu 60 % der Kontaktdaten in Mittelstands-CRMs</text>
-  <text x="80" y="510" font-family="Archivo, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">sind veraltet, unvollständig oder widersprüchlich.</text>
+  <text x="80" y="472" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Bis zu 60 % der Kontaktdaten in Mittelstands-CRMs</text>
+  <text x="80" y="510" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">sind veraltet, unvollständig oder widersprüchlich.</text>
   <rect x="80" y="559" width="430" height="108" fill="#0a0a0a"/>
-  <text x="295" y="604" font-family="Archivo, sans-serif" font-style="italic" font-size="36" fill="#5BD8FF" text-anchor="middle">~30 %</text>
-  <text x="295" y="638" font-family="Space Mono, monospace" font-size="11" fill="#5BD8FF" text-anchor="middle" letter-spacing="3" font-weight="600">UMSATZVERLUST DURCH SCHLECHTE DATEN</text>
-  <text x="560" y="588" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Gartner schätzt den Schaden</text>
-  <text x="560" y="618" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">schlechter Datenqualität auf</text>
-  <text x="560" y="648" font-family="Archivo, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">~15 Mio. € p.a. je Unternehmen.</text>
-  <text x="80" y="703" font-family="Space Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE &#183; GARTNER 2024 &#183; FORRESTER 2024 &#183; SALESFORCE 2024</text>
+  <text x="295" y="604" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="36" fill="#FFFFFF" text-anchor="middle">~30 %</text>
+  <text x="295" y="638" font-family="JetBrains Mono, monospace" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="3" font-weight="600">UMSATZVERLUST DURCH SCHLECHTE DATEN</text>
+  <text x="560" y="588" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Gartner schätzt den Schaden</text>
+  <text x="560" y="618" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">schlechter Datenqualität auf</text>
+  <text x="560" y="648" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">~15 Mio. € p.a. je Unternehmen.</text>
+  <text x="80" y="703" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE &#183; GARTNER 2024 &#183; FORRESTER 2024 &#183; SALESFORCE 2024</text>
 </svg></div>
 
   <div class="article-layout">
@@ -421,28 +423,28 @@ footer .legal {
 
     <div class="inline-fig">
       <svg viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="18" font-family="Space Mono, monospace" font-size="12" fill="#00B4E6" letter-spacing="3" font-weight="600">DREI HEBEL FÜR BESSERE CRM-DATEN</text>
+        <text x="0" y="18" font-family="JetBrains Mono, monospace" font-size="12" fill="#0F0F0F" letter-spacing="3" font-weight="600">DREI HEBEL FÜR BESSERE CRM-DATEN</text>
         <line x1="0" y1="38" x2="1000" y2="38" stroke="#0a0a0a" opacity="0.25"/>
         <line x1="330" y1="62" x2="330" y2="288" stroke="#0a0a0a" opacity="0.15"/>
         <line x1="690" y1="62" x2="690" y2="288" stroke="#0a0a0a" opacity="0.15"/>
-        <text x="0" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">01</text>
-        <text x="0" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#0a0a0a">Pflichtfelder &amp; Validierung</text>
-        <text x="0" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Wenige, aber harte Felder</text>
-        <text x="0" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">als Pflicht definieren.</text>
-        <text x="0" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Branche, Rolle, Land:</text>
-        <text x="0" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Dropdown statt Freitext.</text>
-        <text x="360" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">02</text>
-        <text x="360" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#0a0a0a">Automatische Anreicherung</text>
-        <text x="360" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Externe Datenanbieter</text>
-        <text x="360" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">(z. B. Firmendaten-APIs)</text>
-        <text x="360" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">ergänzen fehlende Felder</text>
-        <text x="360" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">ohne manuellen Aufwand.</text>
-        <text x="720" y="138" font-family="Archivo, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">03</text>
-        <text x="720" y="178" font-family="Archivo, sans-serif" font-size="21" fill="#0a0a0a">Verfall &amp; Bereinigung</text>
-        <text x="720" y="214" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">Datensätze älter als</text>
-        <text x="720" y="236" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">18 Monate automatisch</text>
-        <text x="720" y="258" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">flaggen und zur Prüfung</text>
-        <text x="720" y="280" font-family="Archivo, sans-serif" font-size="15" fill="#2a2a2a">dem Eigentümer zuweisen.</text>
+        <text x="0" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">01</text>
+        <text x="0" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Pflichtfelder &amp; Validierung</text>
+        <text x="0" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Wenige, aber harte Felder</text>
+        <text x="0" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">als Pflicht definieren.</text>
+        <text x="0" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Branche, Rolle, Land:</text>
+        <text x="0" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Dropdown statt Freitext.</text>
+        <text x="360" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">02</text>
+        <text x="360" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Automatische Anreicherung</text>
+        <text x="360" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Externe Datenanbieter</text>
+        <text x="360" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">(z. B. Firmendaten-APIs)</text>
+        <text x="360" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">ergänzen fehlende Felder</text>
+        <text x="360" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">ohne manuellen Aufwand.</text>
+        <text x="720" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">03</text>
+        <text x="720" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Verfall &amp; Bereinigung</text>
+        <text x="720" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Datensätze älter als</text>
+        <text x="720" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">18 Monate automatisch</text>
+        <text x="720" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">flaggen und zur Prüfung</text>
+        <text x="720" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">dem Eigentümer zuweisen.</text>
       </svg>
       <div class="cap">Maßnahmen mit dem höchsten Hebel auf KI-Ausgabe­qualität im Mittelstands-CRM. Quelle: Forrester 2024, Gartner 2024, IDC 2025.</div>
     </div>
@@ -591,7 +593,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#5BD8FF'}"/><text x="40" y="80" font-family="Space Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Archivo, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#FFFFFF'}"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>
