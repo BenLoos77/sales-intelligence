@@ -501,7 +501,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#FFFFFF'}"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="#FFFFFF"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0F0F0F" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0F0F0F" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>

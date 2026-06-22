@@ -373,21 +373,21 @@ footer .legal {
 
   <div class="article-image"><svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
 <rect width="1280" height="720" fill="#FFFFFF"/>
-<defs><pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#0a0a0a" opacity="0.2"/></pattern></defs>
+<defs><pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#0F0F0F" opacity="0.2"/></pattern></defs>
 <rect width="1280" height="720" fill="url(#dots)"/>
 <g transform="translate(380,200)">
-<rect width="200" height="200" fill="#0a0a0a"/>
-<text x="100" y="118" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#FFFFFF" text-anchor="middle">KI</text>
-<text x="100" y="148" font-family="JetBrains Mono, monospace" font-size="13" fill="#FFFFFF" text-anchor="middle" letter-spacing="6" font-weight="600">AGENT</text>
+<rect width="200" height="200" fill="#FFFFFF"/>
+<text x="100" y="118" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0F0F0F" text-anchor="middle">KI</text>
+<text x="100" y="148" font-family="JetBrains Mono, monospace" font-size="13" fill="#0F0F0F" text-anchor="middle" letter-spacing="6" font-weight="600">AGENT</text>
 </g>
 <g transform="translate(720,200)">
-<rect width="200" height="200" fill="none" stroke="#0a0a0a" stroke-width="2"/>
-<text x="100" y="100" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="38" fill="#0a0a0a" text-anchor="middle">Sales</text>
-<text x="100" y="142" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="38" fill="#0a0a0a" text-anchor="middle">Rep</text>
+<rect width="200" height="200" fill="#FFFFFF" stroke="#0a0a0a" stroke-width="2"/>
+<text x="100" y="100" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="38" fill="#0F0F0F" text-anchor="middle">Sales</text>
+<text x="100" y="142" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="38" fill="#0F0F0F" text-anchor="middle">Rep</text>
 </g>
-<path d="M580 300 Q650 270 720 300" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-dasharray="6,4"/>
-<text x="650" y="280" font-family="JetBrains Mono, monospace" font-size="11" fill="#0a0a0a" text-anchor="middle" letter-spacing="6" font-weight="600">SYNERGIE</text>
-<text x="80" y="660" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">MITTELSTAND · DACH 2026 · ABBILDUNG 1</text>
+<path d="M580 300 Q650 270 720 300" stroke="#0F0F0F" stroke-width="2" fill="none" stroke-dasharray="6,4"/>
+<text x="650" y="280" font-family="JetBrains Mono, monospace" font-size="11" fill="#0F0F0F" text-anchor="middle" letter-spacing="6" font-weight="600">SYNERGIE</text>
+<text x="80" y="660" font-family="JetBrains Mono, monospace" font-size="13" fill="#0F0F0F" letter-spacing="3" font-weight="500">MITTELSTAND · DACH 2026 · ABBILDUNG 1</text>
 </svg></div>
 
   <div class="article-layout">
@@ -553,7 +553,7 @@ async function renderRelated() {
     relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
-      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="${a.color || '#FFFFFF'}"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0a0a0a" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0a0a0a" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="#FFFFFF"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0F0F0F" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0F0F0F" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>
