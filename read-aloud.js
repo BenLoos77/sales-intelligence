@@ -29,6 +29,26 @@
   var ICON_PLAY = "M8 5v14l11-7z";
   var ICON_PAUSE = "M6 5h4v14H6zM14 5h4v14h-4z";
 
+  // ---- Tempo (vom Leser einstellbar, gemerkt) --------------------------
+  var SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+  function fmtSpeed(s) { return String(s).replace(".", ",") + "×"; }
+  function loadSpeedIdx() {
+    var v = parseFloat(localStorage.getItem("ra-speed"));
+    var i = SPEEDS.indexOf(v);
+    return i >= 0 ? i : 1; // Standard: 1,25× (etwas schneller), frei änderbar
+  }
+  // Verdrahtet den Tempo-Button: durchschalten, merken, anwenden.
+  function setupSpeed(b, apply) {
+    var idx = loadSpeedIdx();
+    function commit() { apply(SPEEDS[idx]); b.speed.textContent = fmtSpeed(SPEEDS[idx]); }
+    commit();
+    b.speed.addEventListener("click", function () {
+      idx = (idx + 1) % SPEEDS.length;
+      try { localStorage.setItem("ra-speed", String(SPEEDS[idx])); } catch (e) {}
+      commit();
+    });
+  }
+
   function injectStyle() {
     if (document.getElementById("ra-style")) return;
     var css = document.createElement("style");
@@ -44,6 +64,8 @@
       ".ra-btn[hidden]{display:none}" +
       ".ra-stop{border-color:rgba(0,0,0,.25);color:var(--muted,#8e98a0);padding:11px 14px}" +
       ".ra-stop:hover{background:transparent;color:var(--ink,#0a0a0a);border-color:var(--ink,#0a0a0a)}" +
+      ".ra-speed{padding:11px 14px;min-width:58px;justify-content:center;border-color:rgba(0,0,0,.25);" +
+      "font-variant-numeric:tabular-nums}" +
       ".ra-progress{font-family:'Space Mono', monospace;font-size:11px;" +
       "letter-spacing:.08em;color:var(--muted,#888);font-variant-numeric:tabular-nums}" +
       ".ra-reading{background:rgba(0,180,230,.16);box-shadow:-10px 0 0 rgba(0,180,230,.16),10px 0 0 rgba(0,180,230,.16);" +
@@ -62,12 +84,14 @@
         '<span class="ra-label">Vorlesen</span>' +
       "</button>" +
       '<button type="button" class="ra-btn ra-stop" aria-label="Vorlesen stoppen" hidden>Stopp</button>' +
+      '<button type="button" class="ra-btn ra-speed" aria-label="Vorlesetempo ändern" title="Tempo ändern">1×</button>' +
       '<span class="ra-progress" aria-live="polite"></span>';
     anchor.parentNode.insertBefore(bar, anchor.nextSibling);
     var b = {
       bar: bar,
       toggle: bar.querySelector(".ra-toggle"),
       stop: bar.querySelector(".ra-stop"),
+      speed: bar.querySelector(".ra-speed"),
       icon: bar.querySelector(".ra-ic path"),
       label: bar.querySelector(".ra-label"),
       progress: bar.querySelector(".ra-progress"),
@@ -91,6 +115,9 @@
   // ---- Engine A: vorgefertigte MP3 -------------------------------------
   function audioEngine(b, audio) {
     var state = "idle"; // idle | playing | paused
+    // Tonhöhe beim Schnellerspielen beibehalten.
+    try { audio.preservesPitch = true; audio.mozPreservesPitch = true; audio.webkitPreservesPitch = true; } catch (e) {}
+    setupSpeed(b, function (s) { audio.playbackRate = s; });
     function fmt(s) {
       if (!isFinite(s)) return "0:00";
       var m = Math.floor(s / 60), x = Math.floor(s % 60);
@@ -144,13 +171,14 @@
     }
     pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice;
 
-    var state = "idle", stopped = false;
+    var state = "idle", stopped = false, curIdx = 0, rate = SPEEDS[loadSpeedIdx()];
     function hl(el, on) { if (el && el.classList) el.classList.toggle("ra-reading", !!on); }
     function speakFrom(i) {
       if (stopped) return;
       if (i >= chunks.length) { finish(); return; }
+      curIdx = i;
       var u = new SpeechSynthesisUtterance(chunks[i].text);
-      u.lang = "de-DE"; u.rate = 1.0; if (voice) u.voice = voice;
+      u.lang = "de-DE"; u.rate = rate; if (voice) u.voice = voice;
       b.progress.textContent = "Absatz " + (i + 1) + " / " + chunks.length;
       u.onstart = function () { hl(chunks[i].el, true); };
       u.onend = function () { hl(chunks[i].el, false); if (!stopped) speakFrom(i + 1); };
@@ -164,6 +192,10 @@
       else if (state === "paused") { window.speechSynthesis.resume(); state = "playing"; b.playing(); }
     });
     b.stop.addEventListener("click", finish);
+    setupSpeed(b, function (s) {
+      rate = s;
+      if (state === "playing") { window.speechSynthesis.cancel(); speakFrom(curIdx); }
+    });
     setInterval(function () {
       if (state === "playing" && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
         window.speechSynthesis.resume();
