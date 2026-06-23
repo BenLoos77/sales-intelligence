@@ -86,6 +86,19 @@ def strip_tags(s: str) -> str:
     return re.sub(r"<[^>]+>", "", s or "").strip()
 
 
+def short_dashes(obj):
+    """Lange Gedankenstriche (—, em-dash) rekursiv durch kurze (–, en-dash) ersetzen.
+    Deutscher Halbgeviertstrich. Wird auf das komplette data-Objekt angewandt,
+    damit Artikel-HTML, articles.json, SVG-Texte und Audio einheitlich kurz sind."""
+    if isinstance(obj, str):
+        return obj.replace("—", "–")
+    if isinstance(obj, list):
+        return [short_dashes(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: short_dashes(v) for k, v in obj.items()}
+    return obj
+
+
 def german_date(d: datetime) -> str:
     return f"{d.day}. {MONTHS_DE[d.month]} {d.year}"
 
@@ -747,6 +760,7 @@ def main() -> int:
         print(f"[SI] Generiere Tagesschwerpunkt für {date} mit {MODEL} …")
         data = call_claude(german_date(run_date), articles)
 
+    data = short_dashes(data)  # lange Gedankenstriche (—) → kurze (–)
     result = render_and_write(data, run_date)
     print(f"[SI] Fertig: {result['title']}")
     print(f"[SI]   Datei: articles/{result['file']}")
