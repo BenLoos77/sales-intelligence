@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 778, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 764, in main
+    result = render_and_write(data, run_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 598, in render_and_write
+    hero_svg = build_hero_svg(data["hero_svg"], gid, color)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 142, in build_hero_svg
+    big = h.get("big_number", "")
+          ^^^^^
+AttributeError: 'str' object has no attribute 'get'
