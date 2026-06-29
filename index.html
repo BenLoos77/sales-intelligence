@@ -104,6 +104,21 @@ img, svg { display: block; max-width: 100%; }
   bottom: -6px; left: 0; right: 0;
   height: 2px; background: var(--accent);
 }
+.main-nav a.nav-site {
+  margin-left: 4px;
+  padding-left: 22px;
+  color: var(--muted);
+}
+.main-nav a.nav-site::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 1px; height: 16px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.main-nav a.nav-site:hover { color: var(--ink); }
 
 /* ============================================================
    PAGE CONTAINER
@@ -1563,6 +1578,7 @@ footer .legal {
     <a data-page="tools">Tools</a>
     <a data-page="daten">Daten</a>
     <a data-page="archiv">Archiv</a>
+    <a class="nav-site" href="https://b77.de" target="_blank" rel="noopener">B_77.de ↗</a>
   </nav>
 </header>
 
