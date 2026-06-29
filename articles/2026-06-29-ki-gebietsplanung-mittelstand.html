@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
+<link rel="shortcut icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
+<link rel="apple-touch-icon" href="https://b77.de/assets/B77_Logo_black.png">
+<!-- ARTICLE_META_START -->
+<title>Zweiundzwanzig Gebiete, ein Modell. Warum KI-gestützte Gebietsplanung im Mittelstand die Außendienstressourcen falsch verteilt – und was das kostet. – Sales Intelligence</title>
+<meta name="description" content="Die meisten Mittelständler verteilen ihre Außendienstkapazitäten nach Tradition, nicht nach Datenlage. KI-gestützte Gebietsoptimierung zeigt, wo das Potenzial liegt – doch die wenigsten Unternehmen nutzen sie. Ein Blick auf das unterschätzte Steuerungsproblem im B2B-Vertrieb.">
+<link rel="canonical" href="https://sales-intelligence.b77.de/articles/2026-06-29-ki-gebietsplanung-mittelstand.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zweiundzwanzig Gebiete, ein Modell. Warum KI-gestützte Gebietsplanung im Mittelstand die Außendienstressourcen falsch verteilt – und was das kostet.">
+<meta property="og:description" content="Die meisten Mittelständler verteilen ihre Außendienstkapazitäten nach Tradition, nicht nach Datenlage. KI-gestützte Gebietsoptimierung zeigt, wo das Potenzial liegt – doch die wenigsten Unternehmen nutzen sie. Ein Blick auf das unterschätzte Steuerungsproblem im B2B-Vertrieb.">
+<meta property="og:url" content="https://sales-intelligence.b77.de/articles/2026-06-29-ki-gebietsplanung-mittelstand.html">
+<meta property="og:site_name" content="Sales Intelligence">
+<meta property="og:locale" content="de_DE">
+<meta property="article:published_time" content="2026-06-29T06:00:00+02:00">
+<meta property="article:section" content="Schwerpunkt">
+<!-- ARTICLE_META_END -->
+<style>
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --paper-soft: #fafafa;
+  --ink: #0F0F0F;
+  --ink-soft: #2a2a2a;
+  --ink-soft2: #585858;
+  --muted: #9A9A9A;
+  --hair: rgba(0,0,0,.12);
+  --hair-soft: rgba(0,0,0,.06);
+  --accent: #0F0F0F;
+  --issue: #0F0F0F;
+  --issue-deep: #0F0F0F;
+  --serif: 'Hanken Grotesk', sans-serif;
+  --serif-display: 'Hanken Grotesk', sans-serif;
+  --sans: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --maxw: 1320px;
+  --gutter: clamp(20px, 4vw, 56px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); color: var(--ink); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+
+/* Header */
+.header-rule { border-top: 1px solid var(--ink); max-width: var(--maxw); margin: 18px auto 0; }
+.main-header {
+  background: var(--paper); padding: 26px var(--gutter);
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: var(--maxw); margin: 0 auto;
+  border-bottom: 1px solid var(--ink);
+  flex-wrap: wrap; gap: 24px;
+}
+.wordmark { font-family: var(--serif-display); font-size: 38px; font-weight: 400; line-height: 1; cursor: pointer; }
+.wordmark .em { font-style: italic; }
+.wordmark .subtitle {
+  display: block; font-family: var(--sans); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft2); margin-top: 6px;
+}
+.main-nav { display: flex; gap: 36px; align-items: center; }
+.main-nav a {
+  font-family: var(--serif); font-size: 19px; cursor: pointer;
+  transition: color 0.15s; padding: 4px 0;
+}
+.main-nav a:hover { color: var(--accent); }
+
+/* Article body */
+.article-shell { max-width: var(--maxw); margin: 0 auto; padding: 64px var(--gutter) 96px; }
+.article-eyebrow {
+  display: flex; gap: 22px; align-items: baseline;
+  margin-bottom: 24px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink); max-width: 1080px;
+}
+.article-eyebrow .label {
+  font-family: var(--sans); font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); font-weight: 600;
+}
+.article-eyebrow .label::before { content: "–  "; }
+.article-eyebrow .meta {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.article-title {
+  font-family: var(--serif-display); font-weight: 400;
+  font-size: clamp(48px, 6vw, 88px); line-height: 1.02;
+  letter-spacing: -0.03em; color: var(--ink);
+  max-width: 1080px; margin: 0 0 36px;
+}
+.article-title em { font-style: italic; }
+.article-standfirst {
+  font-family: var(--serif); font-size: 23px; line-height: 1.5;
+  color: var(--ink-soft); margin-bottom: 36px; max-width: 760px;
+}
+.article-byline {
+  font-family: var(--sans); font-size: 13px; color: var(--muted);
+  letter-spacing: 0.04em; padding-top: 18px;
+  border-top: 1px solid var(--hair); max-width: 1080px;
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  gap: 16px; margin-bottom: 56px;
+}
+.article-image { /*MONOLITH-BORDER:.article-image {*/
+  border: 1px solid #0F0F0F;
+  width: 100%; max-width: 1080px; aspect-ratio: 16 / 9;
+  margin: 0 0 56px; position: relative; overflow: hidden;
+  background: #FFFFFF;
+}
+
+/* Two-column layout: article + sidebar */
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) 320px;
+  gap: 80px;
+  max-width: 1180px;
+}
+.article-body { min-width: 0; }
+.article-body p {
+  font-family: var(--serif); font-size: 19px; line-height: 1.7;
+  color: var(--ink-soft); margin: 0 0 24px;
+}
+.article-body p:first-of-type::first-letter {
+  font-family: var(--serif-display); font-size: 80px; font-weight: 400;
+  float: left; line-height: 0.85; margin-right: 14px; margin-top: 6px;
+  color: var(--ink);
+}
+.article-body h3 {
+  font-family: var(--serif-display); font-weight: 400;
+  font-size: clamp(28px, 2.8vw, 38px); line-height: 1.1;
+  letter-spacing: -0.02em; color: var(--ink); margin: 56px 0 22px;
+}
+.article-body h3 em { font-style: italic; }
+.article-body .pullquote {
+  font-family: var(--serif-display); font-style: italic; font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 38px); line-height: 1.2;
+  letter-spacing: -0.025em; color: var(--ink);
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  padding: 32px 0; margin: 56px 0;
+}
+.article-body .pullquote .source {
+  display: block; font-style: normal; font-family: var(--sans);
+  font-size: 12px; letter-spacing: 0.06em; color: var(--muted); margin-top: 18px;
+}
+.article-body .inline-fig {
+  margin: 56px calc(-1 * var(--gutter));
+  background: var(--paper-soft); padding: 40px var(--gutter);
+}
+.article-body .inline-fig .cap {
+  font-family: var(--serif); font-style: italic; font-size: 14px;
+  color: var(--muted); margin-top: 18px; padding-top: 12px;
+  border-top: 1px solid var(--hair);
+}
+.article-body .byline-end {
+  border-top: 1px solid var(--ink); margin-top: 64px; padding-top: 22px;
+  font-family: var(--sans); font-size: 13px; color: var(--muted);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+
+/* Sidebar */
+.article-side {
+  position: sticky; top: 24px;
+  align-self: start;
+  display: flex; flex-direction: column; gap: 48px;
+}
+.article-side .side-h {
+  font-family: var(--serif); font-style: italic; font-size: 17px;
+  color: var(--ink-soft2); margin-bottom: 14px;
+  border-bottom: 1px solid var(--ink); padding-bottom: 10px;
+}
+.side-teasers { display: flex; flex-direction: column; gap: 28px; }
+.side-teaser { display: block; padding-bottom: 22px; border-bottom: 1px solid var(--hair); }
+.side-teaser:last-child { border-bottom: none; }
+.side-teaser .meta {
+  font-family: var(--serif); font-style: italic; font-size: 13px;
+  color: var(--ink-soft2); margin-bottom: 8px;
+}
+.side-teaser h4 {
+  font-family: var(--serif-display); font-weight: 400; font-size: 21px;
+  line-height: 1.15; letter-spacing: -0.015em;
+  color: var(--ink); margin: 0; transition: color 0.15s;
+}
+.side-teaser h4 em { font-style: italic; }
+.side-teaser:hover h4 { color: var(--accent); }
+.side-nl { /*MONOLITH-BORDER:.side-nl {*/ border: 1px solid #0F0F0F;
+  background: #FFFFFF; padding: 24px 22px;
+}
+.side-nl .kicker {
+  font-family: var(--serif); font-style: italic; font-size: 13px;
+  color: var(--ink); margin-bottom: 8px;
+}
+.side-nl h4 {
+  font-family: var(--serif-display); font-weight: 400; font-size: 22px;
+  line-height: 1.15; letter-spacing: -0.015em;
+  margin: 0 0 14px; color: var(--ink);
+}
+.side-nl h4 em { font-style: italic; }
+.side-nl form {
+  display: flex; flex-direction: column; gap: 8px; background: var(--paper); padding: 10px;
+}
+.side-nl input {
+  border: none; outline: none; font-family: var(--serif); font-size: 15px;
+  padding: 10px 12px; background: transparent; color: var(--ink); border-bottom: 1px solid var(--hair);
+}
+.side-nl input::placeholder { color: var(--muted); font-style: italic; }
+.side-nl button {
+  background: #fafafa; color: var(--ink); border: none; padding: 12px;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  transition: background 0.15s;
+}
+.side-nl button:hover { background: var(--accent); color: var(--paper); }
+.side-nl .fine {
+  font-family: var(--serif); font-style: italic; font-size: 12px;
+  color: var(--ink); margin-top: 10px;
+}
+
+/* Related articles below */
+.related {
+  border-top: 1px solid var(--ink);
+  padding-top: 48px; margin-top: 80px; max-width: var(--maxw);
+}
+.related h3 {
+  font-family: var(--serif-display); font-weight: 400;
+  font-size: clamp(36px, 4vw, 56px); letter-spacing: -0.025em;
+  line-height: 1; margin: 0 0 36px;
+}
+.related h3 em { font-style: italic; }
+.related-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px;
+}
+.related-card { display: flex; flex-direction: column; gap: 18px; }
+.related-card .thumb { /*MONOLITH-BORDER:.related-card .thumb {*/
+  border: 1px solid #0F0F0F;
+  aspect-ratio: 4 / 3; background: #FFFFFF;
+  position: relative; overflow: hidden;
+}
+.related-card .thumb svg { width: 100%; height: 100%; }
+.related-card .meta {
+  font-family: var(--serif); font-style: italic; font-size: 14px;
+  color: var(--ink-soft2);
+}
+.related-card h4 {
+  font-family: var(--serif-display); font-weight: 400; font-size: 24px;
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin: 0;
+  transition: color 0.15s;
+}
+.related-card:hover h4 { color: var(--accent); }
+.related-card p {
+  font-family: var(--serif); font-size: 15px; line-height: 1.55;
+  color: var(--ink-soft); margin: 0;
+}
+
+/* Footer */
+footer {
+  background: #fafafa; color: #585858;
+  padding: 80px var(--gutter) 32px; margin-top: 80px;
+  border-top: 1px solid var(--ink);
+}
+footer .inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 56px; padding-bottom: 56px; border-bottom: 1px solid #2a2a2a;
+}
+footer .brand-foot {
+  font-family: var(--serif-display); font-size: clamp(36px, 3.6vw, 52px);
+  font-weight: 400; margin-bottom: 22px; color: var(--ink);
+  letter-spacing: -0.02em; line-height: 0.95;
+}
+footer .brand-foot em { font-style: italic; }
+footer p { font-size: 15px; line-height: 1.6; color: #585858; margin: 0 0 12px; font-family: var(--serif); }
+footer .imprint {
+  font-family: var(--mono); font-size: 11px; line-height: 1.7;
+  color: #8a8a8a; letter-spacing: 0.04em; margin-top: 18px;
+}
+footer .imprint strong { color: var(--ink); font-weight: 700; }
+footer h5 {
+  font-family: var(--serif); font-style: italic; font-size: 18px;
+  color: var(--issue); margin: 0 0 18px; font-weight: 400;
+}
+footer a { color: #585858; font-size: 15px; display: block; padding: 5px 0; font-family: var(--serif); transition: color 0.15s; cursor: pointer; }
+footer a:hover { color: var(--issue); }
+footer .legal {
+  max-width: var(--maxw); margin: 28px auto 0;
+  display: flex; justify-content: space-between;
+  font-family: var(--sans); font-size: 12px; color: #8a8a8a;
+  flex-wrap: wrap; gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .article-layout { grid-template-columns: 1fr; gap: 64px; }
+  .article-side { position: static; }
+  .related-grid { grid-template-columns: 1fr 1fr; }
+  footer .inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .related-grid { grid-template-columns: 1fr; }
+  footer .inner { grid-template-columns: 1fr; }
+  .main-nav { gap: 18px; }
+  .main-nav a { font-size: 16px; }
+}
+
+/* Sticky NL Widget – unten rechts */
+.nl-widget {
+  position: fixed; bottom: 24px; right: 24px; z-index: 200;
+  background: #fafafa; color: var(--ink);
+  padding: 22px 26px 20px; max-width: 360px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.18); font-family: var(--serif);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nl-widget.hidden { transform: translateY(120%); opacity: 0; pointer-events: none; }
+.nl-widget .close {
+  position: absolute; top: 10px; right: 12px; background: none; border: none;
+  color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer;
+  opacity: 0.6; transition: opacity 0.15s; padding: 4px 8px; font-family: var(--sans);
+}
+.nl-widget .close:hover { opacity: 1; }
+.nl-widget .kicker { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--issue); margin-bottom: 8px; }
+.nl-widget .title { font-family: var(--serif-display); font-size: 22px; line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.015em; }
+.nl-widget .title em { font-style: italic; }
+.nl-widget form { display: flex; gap: 6px; background: var(--paper); padding: 6px 6px 6px 14px; align-items: center; }
+.nl-widget input { flex: 1; border: none; outline: none; font-family: var(--serif); font-size: 15px; background: transparent; color: var(--ink); padding: 8px 0; min-width: 0; }
+.nl-widget button { background: #fafafa; color: var(--ink); border: none; padding: 10px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.nl-widget button:hover { background: var(--accent); color: var(--paper); }
+.nl-widget .fine { font-family: var(--serif); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.45; }
+.nl-widget.success form, .nl-widget.success .title, .nl-widget.success .kicker { display: none; }
+.nl-widget.success .success-state { display: block; }
+.nl-widget .success-state { display: none; }
+.nl-widget .success-state .ok-title { font-family: var(--serif-display); font-style: italic; font-size: 22px; color: var(--issue); margin-bottom: 8px; }
+.nl-widget .success-state .ok-text { font-family: var(--serif); font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .nl-widget { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+}
+
+/* === Dark-Theme Kontrast-Fix === */
+.side-nl button,.nl-widget button{background:var(--accent);color:var(--paper);}
+.side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:var(--paper);}
+</style>
+</head>
+<body>
+
+<div class="header-rule"></div>
+<header class="main-header">
+  <a class="wordmark" href="/">Sales <span class="em">Intelligence</span><span class="subtitle">by B_77 &amp; Quoodix</span></a>
+  <nav class="main-nav">
+    <a href="/">Aktuell</a>
+    <a href="/#cases">Cases</a>
+    <a href="/#tools">Tools</a>
+    <a href="/#daten">Daten</a>
+    <a href="/#archiv">Archiv</a>
+  </nav>
+</header>
+
+<main class="article-shell">
+
+  <div class="article-eyebrow">
+    <span class="label">Schwerpunkt</span>
+    <span class="meta">29. Juni 2026 · Lesezeit 7 Minuten</span>
+  </div>
+
+  <h1 class="article-title">Zweiundzwanzig Gebiete, ein Modell. Warum <em>KI-gestützte Gebietsplanung</em> im Mittelstand die Außendienstressourcen falsch verteilt – und was das kostet.</h1>
+
+  <p class="article-standfirst">Die meisten Mittelständler verteilen ihre Außendienstkapazitäten nach Tradition, nicht nach Datenlage. KI-gestützte Gebietsoptimierung zeigt, wo das Potenzial liegt – doch die wenigsten Unternehmen nutzen sie. Ein Blick auf das unterschätzte Steuerungsproblem im B2B-Vertrieb.</p>
+
+  <div class="article-byline">
+    <span>Redaktion · Sales Intelligence</span>
+    <span>29. Juni 2026 · Mittelstand-Edition</span>
+  </div>
+  <audio id="ra-audio" src="/articles/2026-06-29-ki-gebietsplanung-mittelstand.mp3" preload="none"></audio>
+
+  <div class="article-image"><svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid20260629" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#FFFFFF"/>
+      <line x1="0" y1="0" x2="40" y2="0" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0a0a" stroke-width="0.5" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="720" fill="url(#grid20260629)"/>
+  <text x="80" y="110" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="6" font-weight="600">KI-GESTÜTZTE GEBIETSOPTIMIERUNG</text>
+  <text x="80" y="320" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-8">~30</text>
+  <text x="360" y="320" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="150" fill="#0a0a0a" letter-spacing="-4">%</text>
+  <text x="80" y="372" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="600">UNTERSCHÄTZTES UMSATZPOTENZIAL DURCH FEHLVERTEILUNG</text>
+  <line x1="80" y1="414" x2="1200" y2="414" stroke="#0a0a0a" opacity="0.2"/>
+  <line x1="80" y1="414" x2="200" y2="414" stroke="#0a0a0a" stroke-width="2"/>
+  <text x="80" y="472" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">Mittelständler verteilen Außendienstgebiete</text>
+  <text x="80" y="510" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="28" fill="#0a0a0a">nach Tradition – nicht nach Marktdatenlage.</text>
+  <rect x="80" y="559" width="430" height="108" fill="#0a0a0a"/>
+  <text x="295" y="604" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="36" fill="#FFFFFF" text-anchor="middle">&lt; 15 %</text>
+  <text x="295" y="638" font-family="JetBrains Mono, monospace" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="3" font-weight="600">MITTELSTAND NUTZT KI-PLANUNG</text>
+  <text x="560" y="588" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">Kapazitätsverschwendung</text>
+  <text x="560" y="618" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">durch historische Gebietszuschnitte</text>
+  <text x="560" y="648" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0a0a0a">in etablierten Außendienststrukturen</text>
+  <text x="80" y="703" font-family="JetBrains Mono, monospace" font-size="13" fill="#0a0a0a" letter-spacing="3" font-weight="500">QUELLE &#183; GARTNER 2025 &#183; FORRESTER 2025 &#183; MCKINSEY 2025</text>
+</svg></div>
+
+  <div class="article-layout">
+    <article class="article-body">
+    <p>Zweiundzwanzig Außendienstmitarbeiter, dreiundzwanzig Gebiete, ein Zuschnitt aus dem Jahr 2017. So sah die Vertriebsstruktur eines süddeutschen Maschinenbauers mit 340 Mitarbeitern noch Anfang 2025 aus. Die Gebiete orientieren sich an Postleitzahlbereichen, die ein ehemaliger Vertriebsleiter seinerzeit per Handzeichnung festgelegt hatte. Seitdem hat sich der Kundenstamm zweimal umgewälzt, drei Niederlassungen wurden geschlossen, der Markt hat sich regional verschoben – die Gebietsgrenzen blieben. Dieses Unternehmen ist keine Ausnahme. Es ist der Mittelstand.</p>
+
+    <p>Gebietsplanung gilt in vielen mittelständischen Vertriebsorganisationen als einmalige Infrastrukturentscheidung, nicht als dynamische Steuerungsgröße. Dabei ist die Frage, <em>wer welche Kunden und Regionen betreut</em>, eine der folgenreichsten im gesamten Vertriebssystem. Falsch geschnittene Gebiete bedeuten: überlastete Mitarbeiter in potenzialreichen Regionen, unterausgelastete in stagnierenden; Reisezeiten, die Verkaufszeit fressen; Marktpotenziale, die niemand systematisch erschließt. Nach Einschätzungen von Gartner und McKinsey können suboptimale Gebietszuschnitte in B2B-Außendienstorganisationen bis zu 30 Prozent des erreichbaren Umsatzpotenzials ungenutzt lassen – eine Größenordnung, die in der täglichen Steuerung kaum jemand beziffert, weil der entgangene Umsatz schlicht nicht sichtbar ist.</p>
+
+    <h3>Das stille Problem: Potenzial, das niemand misst</h3>
+
+    <p>Das Kernproblem der klassischen Gebietsplanung ist struktureller Natur: Sie optimiert auf Basis von Vergangenheitsdaten – bestehende Kunden, historische Umsätze, bekannte Fahrtzeiten. Was fehlt, ist die systematische Einbeziehung von Marktpotenzial: Welche Unternehmen in einem Gebiet sind <em>noch keine</em> Kunden, hätten aber aufgrund von Branche, Größe, Technologiereife und Kaufsignalen eine hohe Abschlusswahrscheinlichkeit? Dieses Whitespace-Potenzial ist mit herkömmlichen Bordmitteln kaum zu quantifizieren.</p>
+
+    <p>KI-gestützte Gebietsoptimierung setzt genau hier an. Moderne Systeme kombinieren interne CRM-Daten mit externen Firmographiedaten, Branchenregistern, Kaufsignalen aus digitalen Quellen und Geolokationsdaten zu einem Marktpotenzialmodell auf Unternehmensebene. Auf dieser Grundlage lassen sich Gebiete nicht mehr nach historischen Grenzen, sondern nach erreichbarem Deckungsbeitrag neu zuschneiden. Forrester Research beschreibt in seiner Analyse zur Territory Planning-Technologie (2025), dass Unternehmen, die datengetriebene Gebietsplanung einsetzen, im Median eine Steigerung der Zielerreichungsquote ihrer Außendienstmitarbeiter um 15 bis 20 Prozent gegenüber Kontrollgruppen mit statischen Gebietszuschnitten beobachten.</p>
+
+    <p>Der Mittelstand hat diesen Hebel bislang kaum genutzt. Bitkom beziffert in seiner KI-Studie 2025 den Anteil mittelständischer Unternehmen mit mehr als zehn Außendienstmitarbeitern, die KI-gestützte Gebietsplanung produktiv einsetzen, auf unter 15 Prozent. Der Abstand zur Großunternehmenslandschaft, wo entsprechende Lösungen seit Jahren zum Standard gehören, ist erheblich.</p>
+
+    <h3>Was KI-Modelle leisten – und wo ihre Grenzen liegen</h3>
+
+    <p>KI-gestützte Gebietsoptimierung ist kein Allheilmittel. Die Qualität des Outputs hängt unmittelbar von der Datenbasis ab: Ein CRM, das lückenhaft gepflegt ist, liefert Ausgangsdaten, die selbst das beste Modell nicht kompensieren kann. Darüber hinaus stoßen rein algorithmische Ansätze dort an ihre Grenzen, wo lokales Markt- oder Kundenwissen entscheidend ist – Beziehungsgeflechte, regionale Eigenheiten, langjährige Vertrauensverhältnisse zwischen Außendienstmitarbeiter und Einkäufer lassen sich nicht vollständig in Modellen abbilden.</p>
+
+    <div class="pullquote">
+      Gebietsplanung ist keine einmalige Infrastrukturentscheidung. Sie ist eine dynamische Steuerungsgröße – und bleibt im Mittelstand die am wenigsten digitalisierte Disziplin im Vertrieb.
+      <span class="source">Sales Intelligence, Redaktionsanalyse, Juni 2026</span>
+    </div>
+
+    <p>Sinnvoll eingesetzte Systeme arbeiten daher nicht als autonome Umgestalter, sondern als Entscheidungsunterstützung: Sie liefern dem Vertriebsleiter eine quantifizierte Ausgangshypothese – <em>Gebiet X hat 40 Prozent mehr Marktpotenzial als Gebiet Y, wird aber mit 30 Prozent weniger Kapazität bedient</em> – und ermöglichen es, diese Hypothese im Dialog mit dem Team zu validieren. Die Entscheidungshoheit bleibt beim Menschen. Die Transparenz über den Ist-Zustand, die ohne Modell schlicht nicht existiert, ist bereits der eigentliche Mehrwert.</p>
+
+    <p>McKinsey beschreibt in seinen B2B-Sales-Benchmarks 2025, dass Unternehmen, die ihre Gebietsstruktur alle zwei bis drei Jahre auf Basis von Marktpotenzialmodellen überprüfen, eine signifikant gleichmäßigere Auslastung ihrer Außendienstmitarbeiter erreichen und die Fluktuation in dieser Gruppe um durchschnittlich rund ein Fünftel senken. Der Zusammenhang ist plausibel: Systematisch überlastete Gebiete erzeugen Burnout, strukturell unterdotierte Gebiete produzieren frustrierte Mitarbeiter mit dauerhaft verfehlten Quoten.</p>
+
+    <div class="inline-fig">
+      <svg viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="18" font-family="JetBrains Mono, monospace" font-size="12" fill="#0F0F0F" letter-spacing="3" font-weight="600">DREI HEBEL DER KI-GEBIETSOPTIMIERUNG</text>
+        <line x1="0" y1="38" x2="1000" y2="38" stroke="#0a0a0a" opacity="0.25"/>
+        <line x1="330" y1="62" x2="330" y2="288" stroke="#0a0a0a" opacity="0.15"/>
+        <line x1="690" y1="62" x2="690" y2="288" stroke="#0a0a0a" opacity="0.15"/>
+        <text x="0" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">01</text>
+        <text x="0" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Potenzialmodell</text>
+        <text x="0" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">Marktpotenzial je</text>
+        <text x="0" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">Zielunternehmen</text>
+        <text x="0" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">auf Basis externer</text>
+        <text x="0" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">Firmographiedaten</text>
+        <text x="360" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">02</text>
+        <text x="360" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Kapazitätsabgleich</text>
+        <text x="360" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">Reisezeit, Kontaktdichte</text>
+        <text x="360" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">und Abschlussrate</text>
+        <text x="360" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">je Außendienst-</text>
+        <text x="360" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">mitarbeiter</text>
+        <text x="720" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">03</text>
+        <text x="720" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Dynamische Prüfung</text>
+        <text x="720" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">Gebietsüberprüfung</text>
+        <text x="720" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">alle 12–24 Monate</text>
+        <text x="720" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">statt einmalige</text>
+        <text x="720" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#C3CCD2">Historienplanung</text>
+      </svg>
+      <div class="cap">Drei Dimensionen, in denen KI-gestützte Gebietsoptimierung klassische Planungsansätze überbietet. Quellen: Forrester 2025, McKinsey 2025.</div>
+    </div>
+
+    <h3>Der Einführungsweg: Warum Piloten scheitern und was gelingt</h3>
+
+    <p>Wer KI-gestützte Gebietsplanung im Mittelstand einführen will, scheitert selten am Werkzeug selbst. Die häufigsten Stolpersteine sind bekannt: unvollständige CRM-Daten, fehlende Integration zwischen CRM und externen Firmographiequellen sowie – und das ist der unterschätzte Faktor – <em>der Widerstand erfahrener Außendienstmitarbeiter</em>, deren Gebiete neu zugeschnitten werden sollen.</p>
+
+    <p>Letzteres ist kein irrationaler Reflex. Für einen Außendienstmitarbeiter, der sein Gebiet über Jahre aufgebaut hat, ist ein algorithmusbasierter Neuzuschnitt zunächst eine Bedrohung: bestehende Kundenbeziehungen könnten übergehen, gewachsenes Vertrauen könnte entwerten. Wer diesen Widerstand durch unilaterale Top-down-Entscheidungen übergeht, produziert im besten Fall stille Nicht-Nutzung, im schlechtesten Fall erhöhte Fluktuation genau jener Mitarbeiter, die das meiste Kundenwissen tragen.</p>
+
+    <p>Erfolgreiche Einführungen folgen einem anderen Muster: Das Modell wird zunächst nicht zur Entscheidungsgrundlage gemacht, sondern zur Diskussionsgrundlage. Außendienstmitarbeiter werden eingeladen, die algorithmische Ausgangshypothese zu kommentieren und zu korrigieren. Diese Rückkopplungsschleifen verbessern das Modell und erhöhen die Akzeptanz gleichzeitig. Harvard Business Review beschreibt in einer 2024 veröffentlichten Studie zu Territory Redesign, dass Unternehmen, die Außendienstmitarbeiter aktiv in den Planungsprozess einbeziehen, eine signifikant höhere Implementierungsgeschwindigkeit und eine niedrigere Rückfallquote in alte Muster aufweisen.</p>
+
+    <h3>Was Vertriebsleiter jetzt prüfen sollten</h3>
+
+    <p>Für Vertriebsleiter im Mittelstand ergibt sich aus der Datenlage eine klare Priorität: Bevor in neue Vertriebswerkzeuge investiert wird, lohnt die Frage, ob die bestehende Außendienstkapazität überhaupt auf die richtigen Gebiete und Zielunternehmen ausgerichtet ist. Ein Modell, das hervorragend Lead-Scoring betreibt, nützt wenig, wenn der Außendienstmitarbeiter, dem der Lead zugewiesen wird, strukturell überlastet ist oder in einem Gebiet arbeitet, dessen Marktpotenzial erschöpft ist.</p>
+
+    <p>Ein pragmatischer Einstieg ist möglich ohne vollständige Systemintegration: Eine erste Potenzialkartierung auf Basis verfügbarer Branchendaten und bestehender Kundensegmentierung kann mit überschaubarem Aufwand aufzeigen, ob die aktuelle Gebietsstruktur grobe Ungleichgewichte enthält. Wenn diese Analyse ergibt, dass einzelne Gebiete ein mehrfaches des Umsatzpotenzials anderer Gebiete aufweisen, bei gleicher oder niedrigerer Kapazitätszuweisung, ist das ein hinreichendes Argument für eine strukturierte Überarbeitung.</p>
+
+    <p>Die eigentliche Botschaft ist nüchtern: <em>Gebietsplanung ist kein einmaliges Projekt, sondern ein kontinuierlicher Steuerungsprozess.</em> KI macht diesen Prozess erstmals mit vertretbarem Aufwand operationalisierbar. Wer das ignoriert, verschenkt nicht abstrakte Effizienz, sondern konkrete Deckungsbeiträge – Quartal für Quartal, Gebiet für Gebiet, still und ohne sichtbare Gegenrechnung.</p>
+
+    <div class="byline-end">
+      <span>Redaktion &#183; Sales Intelligence &#183; 29. Juni 2026</span>
+      <span>Quellen &#183; Gartner, Sales Force Effectiveness Survey 2025 &#183; McKinsey &amp; Company, B2B Sales Benchmarks 2025 &#183; Forrester Research, Territory Planning &amp; AI 2025 &#183; Bitkom, KI im Mittelstand 2025 &#183; Harvard Business Review, Territory Design Study 2024</span>
+    </div>
+    </article>
+
+    <aside class="article-side">
+      <div>
+        <div class="side-h">Weitere Beiträge</div>
+        <div class="side-teasers" id="side-teasers">
+          <p style="font-family: var(--serif); font-style: italic; color: var(--muted);">Lade verwandte Beiträge …</p>
+        </div>
+      </div>
+
+      <div class="side-nl">
+        <div class="kicker">Tägliches Briefing</div>
+        <h4>Acht Minuten <em>Vorsprung pro Woche.</em></h4>
+        <form id="sideForm" onsubmit="return submitSideForm(event)" action="https://6cd10c7b.sibforms.com/serve/MUIFALQ43oHtKdQaV4vkU71Wy4tqOCT4H_vkY6LXbH--_HmoVrYayihK28hJ5O9KHWC0T6zkbvZcDFslqKb0uxAF-cTM3UCtqildortJzXYWNM-CY77bB0mUTUwVMW7zx_X152lL9hegf5Qaa-K8Em8QLQG8TkSbrZ3Dt9hGAcljheCIAWSonhevoYQsIFxgFr5IjXxR9VL3EF_yjQ==" method="POST">
+          <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true" tabindex="-1">
+          <input type="hidden" name="locale" value="de">
+          <input type="email" name="EMAIL" placeholder="Ihre E-Mail" required>
+          <button type="submit">Abonnieren</button>
+        </form>
+        <div class="fine">Kostenfrei. Mit einem Klick abbestellbar.</div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="related">
+    <h3>Lesen Sie <em>auch.</em></h3>
+    <div class="related-grid" id="related-grid">
+      <p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Lade weitere Beiträge …</p>
+    </div>
+  </section>
+</main>
+
+<aside class="nl-widget" id="nlWidget" aria-label="Newsletter Anmeldung">
+  <button class="close" id="nlClose" aria-label="Schließen">×</button>
+  <div class="kicker">Tägliches Briefing</div>
+  <div class="title">Acht Minuten <em>Vorsprung pro Woche.</em></div>
+  <form id="nlWidgetForm" onsubmit="return submitNlWidget(event)" action="https://6cd10c7b.sibforms.com/serve/MUIFALQ43oHtKdQaV4vkU71Wy4tqOCT4H_vkY6LXbH--_HmoVrYayihK28hJ5O9KHWC0T6zkbvZcDFslqKb0uxAF-cTM3UCtqildortJzXYWNM-CY77bB0mUTUwVMW7zx_X152lL9hegf5Qaa-K8Em8QLQG8TkSbrZ3Dt9hGAcljheCIAWSonhevoYQsIFxgFr5IjXxR9VL3EF_yjQ==" method="POST">
+    <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true" tabindex="-1">
+    <input type="hidden" name="locale" value="de">
+    <input type="email" name="EMAIL" placeholder="Ihre E-Mail" required>
+    <button type="submit">Abonnieren</button>
+  </form>
+  <div class="fine">Kostenfrei. Mit einem Klick abbestellbar.</div>
+  <div class="success-state">
+    <div class="ok-title">Danke!</div>
+    <div class="ok-text">Bitte bestätigen Sie Ihre Anmeldung in der E-Mail.</div>
+  </div>
+</aside>
+
+<footer>
+  <div class="inner">
+    <div>
+      <div class="brand-foot">Sales <em>Intelligence.</em></div>
+      <p>Das tägliche Magazin für Künstliche Intelligenz im Vertrieb des deutschen Mittelstands. Eine Plattform für Vertriebsentscheider, Sales Operations und alle, die wissen wollen, was wirklich funktioniert.</p>
+      <div class="imprint">
+        <strong>Herausgeber</strong><br>
+        B77 GmbH · Sitz Siegen<br>
+        In Kooperation mit Quoodix<br>
+        Erscheint täglich
+      </div>
+    </div>
+    <div>
+      <h5>Rubriken</h5>
+      <a href="/#schwerpunkt">Schwerpunkt</a>
+      <a href="/#cases">Cases</a>
+      <a href="/#tools">Tools</a>
+      <a href="/#daten">Daten</a>
+      <a href="/#archiv">Archiv</a>
+      <a href="/#newsletter">Newsletter</a>
+    </div>
+    <div>
+      <h5>Quellen &amp; Methodik</h5>
+      <a href="https://www.bitkom.org" target="_blank" rel="noopener">Bitkom Studienberichte</a>
+      <a href="https://www.kfw.de" target="_blank" rel="noopener">KfW Mittelstandspanel</a>
+      <a href="https://www.mittelstand-heute.com" target="_blank" rel="noopener">Mittelstand-Heute</a>
+      <a href="https://www.simon-kucher.com" target="_blank" rel="noopener">Simon-Kucher Insights</a>
+      <a>Eigene Recherche &amp; Pilot-Programme</a>
+    </div>
+    <div>
+      <h5>Kontakt</h5>
+      <a href="mailto:kontakt@b77.de">kontakt@b77.de</a>
+      <a href="/#kontakt">Kontaktseite</a>
+      <a href="https://www.b77.de" target="_blank" rel="noopener">B77 GmbH</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 B77 GmbH · Siegen · Alle Rechte vorbehalten</span>
+    <span>
+      <a href="/#impressum" style="display:inline; padding:0;">Impressum</a> ·
+      <a href="/#datenschutz" style="display:inline; padding:0;">Datenschutz</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+const CURRENT_SLUG = "ki-gebietsplanung-mittelstand";
+
+async function loadArticles() {
+  try {
+    const r = await fetch('/articles.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('articles.json missing');
+    return await r.json();
+  } catch (e) { return []; }
+}
+async function renderRelated() {
+  const articles = (await loadArticles()).filter(a => a.slug !== CURRENT_SLUG);
+
+  // Sidebar: 4 most recent (excluding current)
+  const sideEl = document.getElementById('side-teasers');
+  if (articles.length === 0) {
+    sideEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted);">Mehr Beiträge folgen.</p>';
+  } else {
+    sideEl.innerHTML = articles.slice(0, 4).map(a => `
+      <a class="side-teaser" href="${a.url}">
+        <div class="meta">${a.date_display} · ${a.eyebrow || 'Schwerpunkt'}</div>
+        <h4>${a.title}</h4>
+      </a>
+    `).join('');
+  }
+
+  // Related grid: 3 articles
+  const relEl = document.getElementById('related-grid');
+  if (articles.length === 0) {
+    relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
+  } else {
+    relEl.innerHTML = articles.slice(0, 3).map(a => {
+      const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="#FFFFFF"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0F0F0F" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0F0F0F" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
+      return `
+        <a class="related-card" href="${a.url}">
+          <div class="thumb">${thumb}</div>
+          <div class="meta">${a.date_display} · ${a.eyebrow || 'Schwerpunkt'}</div>
+          <h4>${a.title}</h4>
+          <p>${a.deck}</p>
+        </a>`;
+    }).join('');
+  }
+}
+renderRelated();
+
+function brevoSubmit(form) {
+  const params = new URLSearchParams();
+  new FormData(form).forEach((v, k) => params.append(k, v));
+  return fetch(form.action, {
+    method: 'POST', body: params, mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+  });
+}
+function submitSideForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  brevoSubmit(form).finally(() => {
+    form.innerHTML = '<div style="font-family: var(--serif); color: var(--ink); padding: 8px 14px; font-style: italic;">Danke! Bitte bestätigen Sie Ihre Anmeldung in der E-Mail.</div>';
+  });
+  return false;
+}
+function submitNlWidget(e) {
+  e.preventDefault();
+  brevoSubmit(e.target).finally(() => {
+    document.getElementById('nlWidget').classList.add('success');
+    setTimeout(() => { document.getElementById('nlWidget').classList.add('hidden'); }, 4500);
+  });
+  return false;
+}
+document.getElementById('nlClose').addEventListener('click', () => {
+  document.getElementById('nlWidget').classList.add('hidden');
+});
+</script>
+<script src="/read-aloud.js" defer></script>
+</body>
+</html>
