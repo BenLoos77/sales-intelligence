@@ -547,7 +547,7 @@ def _speed_up(mp3: bytes, factor: float) -> bytes:
     try:
         p = subprocess.run(
             ["ffmpeg", "-loglevel", "error", "-i", "pipe:0",
-             "-filter:a", f"atempo={factor}", "-b:a", "128k", "-f", "mp3", "pipe:1"],
+             "-filter:a", f"atempo={factor}", "-ac", "1", "-b:a", "64k", "-f", "mp3", "pipe:1"],
             input=mp3, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
         )
         return p.stdout or mp3
