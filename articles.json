@@ -1,5 +1,19 @@
 [
     {
+        "slug": "ki-cross-selling-mittelstand",
+        "date": "2026-07-09",
+        "date_display": "9. Juli 2026",
+        "iso_date": "2026-07-09T06:00:00+02:00",
+        "url": "/articles/2026-07-09-ki-cross-selling-mittelstand.html",
+        "title": "Dreiundzwanzig Prozent Umsatz, die schon im Haus sind. Warum <em>KI-gestütztes Cross- und Upselling</em> im Mittelstand das profitabelste Wachstum übersieht – und warum der Vertrieb lieber akquiriert.",
+        "deck": "Bestandskunden kaufen häufiger, günstiger und treuer als Neukunden – und trotzdem richtet der Mittelstandsvertrieb seinen KI-Einsatz auf die Neukundengewinnung aus. Dabei liegt der größte Umsatzhebel längst im CRM: ungenutzte Potenziale in bestehenden Accounts, die kein Mensch mehr systematisch auswertet. Was KI-Systeme heute daraus machen – und warum die Organisationskultur der eigentliche Engpass ist.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "23 %",
+        "color": "#FFFFFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#FFFFFF\"/><text x=\"40\" y=\"60\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT &#183; 9. JULI 2026</text><text x=\"40\" y=\"185\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"90\" fill=\"#0a0a0a\" letter-spacing=\"-3\">23 %</text><text x=\"40\" y=\"220\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">UMSATZ, DER SCHON IM HAUS IST</text><line x1=\"40\" y1=\"248\" x2=\"560\" y2=\"248\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"248\" x2=\"120\" y2=\"248\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"293\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">KI-gestütztes Cross- &amp; Upselling</text><text x=\"40\" y=\"321\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">im deutschen Mittelstand 2026</text><rect x=\"40\" y=\"338\" width=\"20\" height=\"20\" fill=\"#0F0F0F\"/><text x=\"72\" y=\"354\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">BESTANDSKUNDEN &#183; ACCOUNT INTELLIGENCE &#183; WACHSTUM</text></svg>",
+        "reading_time": "7 Minuten"
+    },
+    {
         "slug": "ki-onboarding-neukunden-mittelstand",
         "date": "2026-07-08",
         "date_display": "8. Juli 2026",
