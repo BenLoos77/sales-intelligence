@@ -1,5 +1,19 @@
 [
     {
+        "slug": "ki-gespraechsanalyse-einwaende-mittelstand",
+        "date": "2026-07-11",
+        "date_display": "11. Juli 2026",
+        "iso_date": "2026-07-11T06:00:00+02:00",
+        "url": "/articles/2026-07-11-ki-gespraechsanalyse-einwaende-mittelstand.html",
+        "title": "Sechzig Prozent der Einwände, die niemand gehört hat. Warum <em>KI-gestützte Gesprächsanalyse im Mittelstand</em> den unsichtbaren Verlustgrund aufdeckt – und warum der Vertrieb die Aufzeichnung scheut.",
+        "deck": "In den meisten mittelständischen Vertriebsorganisationen verlassen Kundeneinwände den Raum, ohne je dokumentiert zu werden. KI-gestützte Gesprächsanalyse macht diese Dunkelziffer sichtbar – und zeigt, dass die entscheidenden Verlustgründe nicht im CRM stehen, sondern in den Gesprächen, die niemand ausgewertet hat.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "60 %",
+        "color": "#FFFFFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#FFFFFF\"/><text x=\"40\" y=\"60\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT &#183; 11. JULI 2026</text><text x=\"40\" y=\"185\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"90\" fill=\"#0a0a0a\" letter-spacing=\"-3\">60 %</text><text x=\"40\" y=\"220\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">EINWÄNDE, DIE NIEMAND GEHÖRT HAT</text><line x1=\"40\" y1=\"248\" x2=\"560\" y2=\"248\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"248\" x2=\"120\" y2=\"248\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"293\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">KI-Gesprächsanalyse im Mittelstand</text><text x=\"40\" y=\"321\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Verlustgründe, die kein CRM kennt</text><rect x=\"40\" y=\"338\" width=\"20\" height=\"20\" fill=\"#0F0F0F\"/><text x=\"72\" y=\"354\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">VERTRIEB &#183; GESPRÄCHSANALYSE &#183; KI &#183; MITTELSTAND</text></svg>",
+        "reading_time": "7 Minuten"
+    },
+    {
         "slug": "ki-forecasting-mittelstand",
         "date": "2026-07-10",
         "date_display": "10. Juli 2026",
