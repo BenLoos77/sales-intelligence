@@ -1,5 +1,19 @@
 [
     {
+        "slug": "ki-gespraechsanalyse-vertrieb-mittelstand",
+        "date": "2026-08-28",
+        "date_display": "28. August 2026",
+        "iso_date": "2026-08-28T06:00:00+02:00",
+        "url": "/articles/2026-08-28-ki-gespraechsanalyse-vertrieb-mittelstand.html",
+        "title": "Sechzig Prozent der Gesprächsinhalte, die kein Vertrieb je <em>systematisch auswertet</em>. Warum KI-gestützte Gesprächsanalyse im Mittelstand den folgenreichsten Informationsverlust im Abschlussprozess beendet – und warum der Verkäufer das Kundengespräch trotzdem selbst führt.",
+        "deck": "Jedes Vertriebsgespräch produziert Signale: Einwände, Budgethinweise, Wettbewerbernennungen, Entscheidungsstrukturen. Der Großteil davon verschwindet im Gedächtnis des Außendienstlers oder im Freitextfeld des CRM. KI-gestützte Gesprächsanalyse macht diese Signale systematisch auswertbar – und verändert damit, was Vertriebsleiter tatsächlich wissen, wenn sie eine Pipeline bewerten.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "~ 60 %",
+        "color": "#FFFFFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#FFFFFF\"/><text x=\"40\" y=\"60\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT &#183; 28. AUGUST 2026</text><text x=\"40\" y=\"185\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"90\" fill=\"#0a0a0a\" letter-spacing=\"-3\">~ 60 %</text><text x=\"40\" y=\"220\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">GESPRÄCHSANALYSE IM VERTRIEB</text><line x1=\"40\" y1=\"248\" x2=\"560\" y2=\"248\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"248\" x2=\"120\" y2=\"248\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"293\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Was Kunden sagen – und was</text><text x=\"40\" y=\"321\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">im CRM nie ankommt.</text><rect x=\"40\" y=\"338\" width=\"20\" height=\"20\" fill=\"#0F0F0F\"/><text x=\"72\" y=\"354\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">KI &#183; MITTELSTAND &#183; ABSCHLUSSPROZESS &#183; 2026</text></svg>",
+        "reading_time": "7 Minuten"
+    },
+    {
         "slug": "ki-churn-prevention-mittelstand",
         "date": "2026-08-27",
         "date_display": "27. August 2026",
