@@ -8,12 +8,12 @@
 <link rel="shortcut icon" type="image/png" href="https://b77.de/assets/B77_Logo_black.png">
 <link rel="apple-touch-icon" href="https://b77.de/assets/B77_Logo_black.png">
 <!-- ARTICLE_META_START -->
-<title>Achtundachtzig von hundert. Warum der autonome Vertriebs-Agent die Pilotphase nie verlÃ¤sst. â Sales Intelligence</title>
-<meta name="description" content="Die Werbung verspricht Akquise auf Knopfdruck. Doch von hundert Projekten mit autonomen KI-Agenten erreichen nur zwÃ¶lf den Echtbetrieb â und im deutschen Vertrieb arbeiten gerade fÃ¼nf Prozent der Unternehmen Ã¼berhaupt mit KI. Das Hindernis ist selten die Technik.">
+<title>Achtundachtzig von hundert. Warum der autonome Vertriebs-Agent die Pilotphase nie verlässt. – Sales Intelligence</title>
+<meta name="description" content="Die Werbung verspricht Akquise auf Knopfdruck. Doch von hundert Projekten mit autonomen KI-Agenten erreichen nur zwölf den Echtbetrieb – und im deutschen Vertrieb arbeiten gerade fünf Prozent der Unternehmen überhaupt mit KI. Das Hindernis ist selten die Technik.">
 <link rel="canonical" href="https://sales-intelligence.b77.de/articles/2026-06-06-achtundachtzig-von-hundert-vertriebs-agent-pilotphase.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Achtundachtzig von hundert. Warum der autonome Vertriebs-Agent die Pilotphase nie verlÃ¤sst.">
-<meta property="og:description" content="Die Werbung verspricht Akquise auf Knopfdruck. Doch von hundert Projekten mit autonomen KI-Agenten erreichen nur zwÃ¶lf den Echtbetrieb â und im deutschen Vertrieb arbeiten gerade fÃ¼nf Prozent der Unternehmen Ã¼berhaupt mit KI. Das Hindernis ist selten die Technik.">
+<meta property="og:title" content="Achtundachtzig von hundert. Warum der autonome Vertriebs-Agent die Pilotphase nie verlässt.">
+<meta property="og:description" content="Die Werbung verspricht Akquise auf Knopfdruck. Doch von hundert Projekten mit autonomen KI-Agenten erreichen nur zwölf den Echtbetrieb – und im deutschen Vertrieb arbeiten gerade fünf Prozent der Unternehmen überhaupt mit KI. Das Hindernis ist selten die Technik.">
 <meta property="og:url" content="https://sales-intelligence.b77.de/articles/2026-06-06-achtundachtzig-von-hundert-vertriebs-agent-pilotphase.html">
 <meta property="og:site_name" content="Sales Intelligence">
 <meta property="og:locale" content="de_DE">
@@ -81,7 +81,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--sans); font-size: 12px; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--accent); font-weight: 600;
 }
-.article-eyebrow .label::before { content: "â  "; }
+.article-eyebrow .label::before { content: "–  "; }
 .article-eyebrow .meta {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--muted);
@@ -304,7 +304,7 @@ footer .legal {
   .main-nav a { font-size: 16px; }
 }
 
-/* Sticky NL Widget â unten rechts */
+/* Sticky NL Widget – unten rechts */
 .nl-widget {
   position: fixed; bottom: 24px; right: 24px; z-index: 200;
   background: #fafafa; color: var(--ink);
@@ -341,6 +341,65 @@ footer .legal {
 .side-nl button,.nl-widget button{background:var(--accent);color:var(--paper);}
 .side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:var(--paper);}
 </style>
+<style id="b77-brand">
+/* === B_77 Brand-Angleichung: viel Weiß + Neon-Gelb (#FFFF00) + Carbon-Grauschwarz === */
+:root{
+  --ink:#1C1A17;
+  --ink-soft:#33302B;
+  --ink-soft2:#4A4740;
+  --accent:#1C1A17;
+  --issue:#131311;
+  --issue-deep:#232320;
+  --neon:#FFFF00;
+  --carbon:#131311;
+  --carbon-2:#232320;
+}
+/* Aktiver Nav-Unterstrich in Neon-Gelb; aktiver Text bleibt Carbon (lesbar) */
+.main-nav a.active{ color:var(--ink); }
+.main-nav a.active::after{ background:var(--neon); height:3px; bottom:-7px; }
+.main-nav a:hover{ color:var(--ink); }
+/* Primär-CTAs & Subscribe: Neon-Füllung + Carbon-Text (wie Website-Pills) */
+.cta, .side-nl button, .nl-widget button, .nl-strip .form-mini button{
+  background:var(--neon) !important; color:var(--carbon) !important;
+  border-radius:999px; border-color:var(--neon) !important;
+  transition:background .2s ease, color .2s ease;
+}
+.cta:hover, .side-nl button:hover, .nl-widget button:hover, .nl-strip .form-mini button:hover{
+  background:var(--carbon) !important; color:var(--neon) !important;
+}
+/* Hardcodierte Rein-Schwarz-Flächen → Carbon */
+.visual.cream{ background:var(--carbon) !important; }
+
+/* === Carbon-Flächen (wie dunkle Website-Karten) === */
+/* Newsletter-Sektion (volle Breite) dunkel */
+.nl-strip{ background:var(--carbon) !important; color:#F1ECE4; border-radius:22px; }
+.nl-strip .kicker{ color:var(--neon) !important; }
+.nl-strip h3, .nl-strip h3 em{ color:#F1ECE4 !important; }
+.nl-strip p{ color:rgba(241,236,228,.74) !important; }
+.nl-strip .form-mini{ background:var(--carbon-2) !important; border-color:rgba(241,236,228,.18) !important; }
+.nl-strip .form-mini input{ background:transparent !important; color:#F1ECE4 !important; }
+.nl-strip .form-mini input::placeholder{ color:rgba(241,236,228,.5) !important; }
+/* Newsletter-Widget (Popup) dunkel */
+.nl-widget{ background:var(--carbon) !important; color:#F1ECE4; border:1px solid var(--carbon-2); }
+.nl-widget .kicker{ color:var(--neon) !important; }
+.nl-widget .title, .nl-widget .title em{ color:#F1ECE4 !important; }
+.nl-widget .row, .nl-widget form{ background:var(--carbon-2) !important; border:1px solid rgba(241,236,228,.18) !important; border-radius:12px; }
+.nl-widget input{ background:transparent !important; color:#F1ECE4 !important; }
+.nl-widget input::placeholder{ color:rgba(241,236,228,.5) !important; }
+.nl-widget .fine{ color:rgba(241,236,228,.6) !important; }
+.nl-widget .fine a{ color:var(--neon) !important; }
+/* ×-Schließen bleibt neutral, nicht gelb */
+.nl-widget .close{ background:transparent !important; color:#F1ECE4 !important; }
+
+/* === Abgerundete Ecken (neues CI/CD): alle Boxen konsequent === */
+.cover-card, .cover-inner, .nl-widget, .nl-strip,
+.case-tile, .chart-card, .side-card{ border-radius:22px; }
+.art-card .visual, .visual, .thumb{ border-radius:16px; overflow:hidden; }
+.cover-card img, .cover-inner img, .art-card img, .art-card .visual img,
+.thumb img, .case-tile img, .chart-card img, .side-card img, .visual img{ border-radius:inherit; }
+/* Karten-Rahmen: Schwarz → Carbon */
+.art-card .visual{ border-color:var(--carbon) !important; }
+</style>
 </head>
 <body>
 
@@ -361,16 +420,16 @@ footer .legal {
 
   <div class="article-eyebrow">
     <span class="label">Schwerpunkt</span>
-    <span class="meta">6. Juni 2026 Â· Lesezeit 6 Minuten</span>
+    <span class="meta">6. Juni 2026 · Lesezeit 6 Minuten</span>
   </div>
 
-  <h1 class="article-title">Achtundachtzig von hundert. Warum der <em>autonome Vertriebs-Agent</em> die Pilotphase nie verlÃ¤sst.</h1>
+  <h1 class="article-title">Achtundachtzig von hundert. Warum der <em>autonome Vertriebs-Agent</em> die Pilotphase nie verlässt.</h1>
 
-  <p class="article-standfirst">Die Werbung verspricht Akquise auf Knopfdruck. Doch von hundert Projekten mit autonomen KI-Agenten erreichen nur zwÃ¶lf den Echtbetrieb â und im deutschen Vertrieb arbeiten gerade fÃ¼nf Prozent der Unternehmen Ã¼berhaupt mit KI. Das Hindernis ist selten die Technik.</p>
+  <p class="article-standfirst">Die Werbung verspricht Akquise auf Knopfdruck. Doch von hundert Projekten mit autonomen KI-Agenten erreichen nur zwölf den Echtbetrieb – und im deutschen Vertrieb arbeiten gerade fünf Prozent der Unternehmen überhaupt mit KI. Das Hindernis ist selten die Technik.</p>
 
   <div class="article-byline">
-    <span>Redaktion Â· Sales Intelligence</span>
-    <span>6. Juni 2026 Â· Mittelstand-Edition</span>
+    <span>Redaktion · Sales Intelligence</span>
+    <span>6. Juni 2026 · Mittelstand-Edition</span>
   </div>
 
   <audio id="ra-audio" src="/articles/2026-06-06-achtundachtzig-von-hundert-vertriebs-agent-pilotphase.mp3" preload="none"></audio>
@@ -396,7 +455,7 @@ footer .legal {
   <text x="295" y="604" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="36" fill="#0F0F0F" text-anchor="middle">5 %</text>
   <text x="295" y="638" font-family="JetBrains Mono, monospace" font-size="11" fill="#0F0F0F" text-anchor="middle" letter-spacing="3" font-weight="600">DER DT. UNTERNEHMEN NUTZEN KI IM VERTRIEB</text>
   <text x="560" y="588" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0F0F0F">Der Mittelstand steht 2026 nicht mitten in der</text>
-  <text x="560" y="618" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0F0F0F">Agenten-Revolution. Er steht am Anfang â und kann</text>
+  <text x="560" y="618" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0F0F0F">Agenten-Revolution. Er steht am Anfang – und kann</text>
   <text x="560" y="648" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="20" fill="#0F0F0F">aus den Fehlern der Eiligen lernen.</text>
   <text x="80" y="703" font-family="JetBrains Mono, monospace" font-size="13" fill="#0F0F0F" letter-spacing="3" font-weight="500">QUELLE &#183; GARTNER 2026 &#183; BITKOM 2026 &#183; CIO &#183; ABBILDUNG TITEL</text>
 </svg></div>
@@ -404,16 +463,16 @@ footer .legal {
   <div class="article-layout">
     <article class="article-body">
 
-    <p>Wer dieser Tage eine Fachmesse besucht oder durch die Verkaufsseiten der Anbieter scrollt, kÃ¶nnte meinen, der Vertrieb sei bereits automatisiert. Autonome KI-Agenten â Programme, die selbststÃ¤ndig recherchieren, Interessenten ansprechen und Termine vereinbaren â sollen die Akquise auf Knopfdruck erledigen. Die Demonstrationen sehen beeindruckend aus. Das Problem beginnt erst danach: wenn aus dem Testlauf, dem Pilotprojekt, ein dauerhafter Betrieb werden soll. Genau dort enden die meisten Vorhaben.</p>
+    <p>Wer dieser Tage eine Fachmesse besucht oder durch die Verkaufsseiten der Anbieter scrollt, könnte meinen, der Vertrieb sei bereits automatisiert. Autonome KI-Agenten – Programme, die selbstständig recherchieren, Interessenten ansprechen und Termine vereinbaren – sollen die Akquise auf Knopfdruck erledigen. Die Demonstrationen sehen beeindruckend aus. Das Problem beginnt erst danach: wenn aus dem Testlauf, dem Pilotprojekt, ein dauerhafter Betrieb werden soll. Genau dort enden die meisten Vorhaben.</p>
 
     <h3>Warum so viele <em>im Pilot stecken bleiben</em></h3>
 
-    <p>Die Zahl, die in diesem FrÃ¼hjahr durch die Branche ging, ist ernÃ¼chternd: Von hundert KI-Agenten-Projekten schaffen es nur zwÃ¶lf in den Echtbetrieb. Eine branchenÃ¼bergreifende Erhebung formulierte es noch nÃ¼chterner â auf je 33 gebaute Prototypen kommen vier in Produktion. Das Marktforschungshaus Gartner rechnet damit, dass bis Ende 2027 mehr als vier von zehn agentenbasierten KI-Projekten ganz eingestellt werden, vor allem wegen steigender Kosten, unklarem Nutzen und schwacher Kontrolle. Der Hype ist real â die Quote der Vorhaben, die liefern, ist es nicht.</p>
+    <p>Die Zahl, die in diesem Frühjahr durch die Branche ging, ist ernüchternd: Von hundert KI-Agenten-Projekten schaffen es nur zwölf in den Echtbetrieb. Eine branchenübergreifende Erhebung formulierte es noch nüchterner – auf je 33 gebaute Prototypen kommen vier in Produktion. Das Marktforschungshaus Gartner rechnet damit, dass bis Ende 2027 mehr als vier von zehn agentenbasierten KI-Projekten ganz eingestellt werden, vor allem wegen steigender Kosten, unklarem Nutzen und schwacher Kontrolle. Der Hype ist real – die Quote der Vorhaben, die liefern, ist es nicht.</p>
 
-    <p>Das Naheliegende wÃ¤re, die Schuld bei der Technik zu suchen. Doch genau da liegt sie selten. Die Berater von BCG fassen es in einer Faustregel: Erfolg mit KI besteht zu zehn Prozent aus dem Algorithmus, zu zwanzig Prozent aus Daten und Technik â und zu siebzig Prozent aus Menschen, Prozessen und Gewohnheiten. Im Pilot lÃ¤uft der Agent auf sauberen, ausgewÃ¤hlten Daten und einem Sonderfall. Im Echtbetrieb trifft er auf das gewachsene CRM mit Karteileichen, auf ZustÃ¤ndigkeiten, die niemand geregelt hat, und auf einen Vertrieb, der seine Arbeitsweise nicht umstellen will. Mehr als jeder zweite gescheiterte Fall geht laut den Erhebungen auf eine einzige Ursache zurÃ¼ck: zu viel erwartet, zu schnell.</p>
+    <p>Das Naheliegende wäre, die Schuld bei der Technik zu suchen. Doch genau da liegt sie selten. Die Berater von BCG fassen es in einer Faustregel: Erfolg mit KI besteht zu zehn Prozent aus dem Algorithmus, zu zwanzig Prozent aus Daten und Technik – und zu siebzig Prozent aus Menschen, Prozessen und Gewohnheiten. Im Pilot läuft der Agent auf sauberen, ausgewählten Daten und einem Sonderfall. Im Echtbetrieb trifft er auf das gewachsene CRM mit Karteileichen, auf Zuständigkeiten, die niemand geregelt hat, und auf einen Vertrieb, der seine Arbeitsweise nicht umstellen will. Mehr als jeder zweite gescheiterte Fall geht laut den Erhebungen auf eine einzige Ursache zurück: zu viel erwartet, zu schnell.</p>
 
     <div class="pullquote">
-      Der Pilot scheitert fast nie an der Technik. Er scheitert an Daten, an ZustÃ¤ndigkeit und an einer Erwartung, die <em>kein Werkzeug erfÃ¼llen kann.</em>
+      Der Pilot scheitert fast nie an der Technik. Er scheitert an Daten, an Zuständigkeit und an einer Erwartung, die <em>kein Werkzeug erfüllen kann.</em>
       <span class="source">Editorial &#183; Sales Intelligence &#183; 6. Juni 2026</span>
     </div>
 
@@ -436,7 +495,7 @@ footer .legal {
         <text x="360" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Wer pflegt, &#252;berwacht, haftet?</text>
         <text x="360" y="236" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Ohne klaren Eigent&#252;mer bleibt</text>
         <text x="360" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">der Agent ein Projekt der</text>
-        <text x="360" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">IT â nicht des Vertriebs.</text>
+        <text x="360" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">IT – nicht des Vertriebs.</text>
         <text x="720" y="138" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-size="80" fill="#0a0a0a">03</text>
         <text x="720" y="178" font-family="Hanken Grotesk, sans-serif" font-size="21" fill="#0a0a0a">Zu viel auf einmal</text>
         <text x="720" y="214" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Der Agent soll gleich den</text>
@@ -444,36 +503,36 @@ footer .legal {
         <text x="720" y="258" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">Eine eng umrissene Aufgabe</text>
         <text x="720" y="280" font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#2a2a2a">tr&#228;gt weiter als die Vision.</text>
       </svg>
-      <div class="cap">Drei Gr&#252;nde â nur einer davon ist ein technisches Problem.</div>
+      <div class="cap">Drei Gr&#252;nde – nur einer davon ist ein technisches Problem.</div>
     </div>
 
-    <p>Vor diesem Hintergrund wirkt die Aufregung im deutschen Mittelstand seltsam fehl am Platz â denn dort hat die Agenten-Revolution kaum begonnen. Die Bitkom-Studie 2026 zÃ¤hlt zwar 41 Prozent der Unternehmen, die KI aktiv nutzen, ein Sprung von 17 Prozent im Vorjahr. Aber im Vertrieb sind es gerade einmal fÃ¼nf Prozent. Im direkten Kundenkontakt liegt der Wert bei 88 Prozent, in Marketing und Kommunikation bei 57 â der eigentliche Verkauf bleibt das Schlusslicht. Und nur jedes fÃ¼nfte Unternehmen hat Ã¼berhaupt eine schriftliche KI-Strategie. Wer mit MittelstÃ¤ndlern spricht, die produktiv mit Vertriebs-Agenten arbeiten, findet Ã¼berschaubar wenige.</p>
+    <p>Vor diesem Hintergrund wirkt die Aufregung im deutschen Mittelstand seltsam fehl am Platz – denn dort hat die Agenten-Revolution kaum begonnen. Die Bitkom-Studie 2026 zählt zwar 41 Prozent der Unternehmen, die KI aktiv nutzen, ein Sprung von 17 Prozent im Vorjahr. Aber im Vertrieb sind es gerade einmal fünf Prozent. Im direkten Kundenkontakt liegt der Wert bei 88 Prozent, in Marketing und Kommunikation bei 57 – der eigentliche Verkauf bleibt das Schlusslicht. Und nur jedes fünfte Unternehmen hat überhaupt eine schriftliche KI-Strategie. Wer mit Mittelständlern spricht, die produktiv mit Vertriebs-Agenten arbeiten, findet überschaubar wenige.</p>
 
-    <p>Das ist keine schlechte Nachricht. Es bedeutet, dass die meisten HÃ¤user noch die Chance haben, die teuren Fehler der Eiligen zu vermeiden. Wo der Agent funktioniert, lohnt er sich rasch: Ein Agent, der die Akquise im Erstkontakt unterstÃ¼tzt â also Interessenten vorqualifiziert und Routinemails Ã¼bernimmt â amortisiert sich laut Marktauswertungen im Schnitt nach gut drei Monaten, die mittlere Zeit bis zum messbaren Nutzen liegt bei rund fÃ¼nf. Der Unterschied zwischen den zwÃ¶lf Prozent, die ankommen, und den 88, die liegenbleiben, ist keine Frage des Anbieters. Es ist eine Frage der Herangehensweise.</p>
+    <p>Das ist keine schlechte Nachricht. Es bedeutet, dass die meisten Häuser noch die Chance haben, die teuren Fehler der Eiligen zu vermeiden. Wo der Agent funktioniert, lohnt er sich rasch: Ein Agent, der die Akquise im Erstkontakt unterstützt – also Interessenten vorqualifiziert und Routinemails übernimmt – amortisiert sich laut Marktauswertungen im Schnitt nach gut drei Monaten, die mittlere Zeit bis zum messbaren Nutzen liegt bei rund fünf. Der Unterschied zwischen den zwölf Prozent, die ankommen, und den 88, die liegenbleiben, ist keine Frage des Anbieters. Es ist eine Frage der Herangehensweise.</p>
 
     <h3><em>Was</em> bleibt</h3>
 
-    <p>Die zwÃ¶lf Prozent machen drei Dinge anders. Sie beginnen mit einer eng umrissenen Aufgabe statt mit der groÃen Vision â ein Agent, der Anfragen vorsortiert, nicht einer, der den AuÃendienst ersetzt. Sie rÃ¤umen vorher die Daten auf, auf denen der Agent arbeiten soll, denn schlechte DatenqualitÃ¤t ist laut Gartner fÃ¼r die Mehrheit aller gescheiterten KI-Projekte verantwortlich. Und sie benennen einen Verantwortlichen im Vertrieb, nicht in der IT. Wer pflegt, wer prÃ¼ft, wer haftet, wenn der Agent einem Kunden Unsinn schreibt â das gehÃ¶rt geklÃ¤rt, bevor das erste GesprÃ¤ch automatisiert wird.</p>
+    <p>Die zwölf Prozent machen drei Dinge anders. Sie beginnen mit einer eng umrissenen Aufgabe statt mit der großen Vision – ein Agent, der Anfragen vorsortiert, nicht einer, der den Außendienst ersetzt. Sie räumen vorher die Daten auf, auf denen der Agent arbeiten soll, denn schlechte Datenqualität ist laut Gartner für die Mehrheit aller gescheiterten KI-Projekte verantwortlich. Und sie benennen einen Verantwortlichen im Vertrieb, nicht in der IT. Wer pflegt, wer prüft, wer haftet, wenn der Agent einem Kunden Unsinn schreibt – das gehört geklärt, bevor das erste Gespräch automatisiert wird.</p>
 
-    <p>Die NÃ¼chternheit, die der deutsche Mittelstand der KI oft entgegenbringt, ist hier ausnahmsweise ein Vorteil. Ein autonomer Vertriebs-Agent ist kein Produkt, das man kauft und einschaltet. Er ist ein Vertriebsprojekt mit Technik darin: klar umrissen, sauber unterfÃ¼ttert, jemandem zugeordnet. Wer das stellt, gehÃ¶rt zu den zwÃ¶lf von hundert. Wer auf die Demonstration hereinfÃ¤llt und den Rest dem Anbieter Ã¼berlÃ¤sst, finanziert einen weiteren Piloten, der nie abhebt.</p>
+    <p>Die Nüchternheit, die der deutsche Mittelstand der KI oft entgegenbringt, ist hier ausnahmsweise ein Vorteil. Ein autonomer Vertriebs-Agent ist kein Produkt, das man kauft und einschaltet. Er ist ein Vertriebsprojekt mit Technik darin: klar umrissen, sauber unterfüttert, jemandem zugeordnet. Wer das stellt, gehört zu den zwölf von hundert. Wer auf die Demonstration hereinfällt und den Rest dem Anbieter überlässt, finanziert einen weiteren Piloten, der nie abhebt.</p>
 
     <div class="byline-end">
       <span>Redaktion &#183; Sales Intelligence &#183; 6. Juni 2026</span>
-      <span>Quellen &#183; Gartner (Agentic AI / Sales) 2026 &#183; Bitkom Studienbericht âKÃ¼nstliche Intelligenz in Deutschlandâ 2026 &#183; BCG 10-20-70 &#183; CIO &#183; DACH-Marktauswertungen</span>
+      <span>Quellen &#183; Gartner (Agentic AI / Sales) 2026 &#183; Bitkom Studienbericht „Künstliche Intelligenz in Deutschland“ 2026 &#183; BCG 10-20-70 &#183; CIO &#183; DACH-Marktauswertungen</span>
     </div>
 
     </article>
 
     <aside class="article-side">
       <div>
-        <div class="side-h">Weitere BeitrÃ¤ge</div>
+        <div class="side-h">Weitere Beiträge</div>
         <div class="side-teasers" id="side-teasers">
-          <p style="font-family: var(--serif); font-style: italic; color: var(--muted);">Lade verwandte BeitrÃ¤ge â¦</p>
+          <p style="font-family: var(--serif); font-style: italic; color: var(--muted);">Lade verwandte Beiträge …</p>
         </div>
       </div>
 
       <div class="side-nl">
-        <div class="kicker">TÃ¤gliches Briefing</div>
+        <div class="kicker">Tägliches Briefing</div>
         <h4>Acht Minuten <em>Vorsprung pro Woche.</em></h4>
         <form id="sideForm" onsubmit="return submitSideForm(event)" action="https://6cd10c7b.sibforms.com/serve/MUIFALQ43oHtKdQaV4vkU71Wy4tqOCT4H_vkY6LXbH--_HmoVrYayihK28hJ5O9KHWC0T6zkbvZcDFslqKb0uxAF-cTM3UCtqildortJzXYWNM-CY77bB0mUTUwVMW7zx_X152lL9hegf5Qaa-K8Em8QLQG8TkSbrZ3Dt9hGAcljheCIAWSonhevoYQsIFxgFr5IjXxR9VL3EF_yjQ==" method="POST">
           <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true" tabindex="-1">
@@ -489,14 +548,14 @@ footer .legal {
   <section class="related">
     <h3>Lesen Sie <em>auch.</em></h3>
     <div class="related-grid" id="related-grid">
-      <p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Lade weitere BeitrÃ¤ge â¦</p>
+      <p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Lade weitere Beiträge …</p>
     </div>
   </section>
 </main>
 
 <aside class="nl-widget" id="nlWidget" aria-label="Newsletter Anmeldung">
-  <button class="close" id="nlClose" aria-label="SchlieÃen">Ã</button>
-  <div class="kicker">TÃ¤gliches Briefing</div>
+  <button class="close" id="nlClose" aria-label="Schließen">×</button>
+  <div class="kicker">Tägliches Briefing</div>
   <div class="title">Acht Minuten <em>Vorsprung pro Woche.</em></div>
   <form id="nlWidgetForm" onsubmit="return submitNlWidget(event)" action="https://6cd10c7b.sibforms.com/serve/MUIFALQ43oHtKdQaV4vkU71Wy4tqOCT4H_vkY6LXbH--_HmoVrYayihK28hJ5O9KHWC0T6zkbvZcDFslqKb0uxAF-cTM3UCtqildortJzXYWNM-CY77bB0mUTUwVMW7zx_X152lL9hegf5Qaa-K8Em8QLQG8TkSbrZ3Dt9hGAcljheCIAWSonhevoYQsIFxgFr5IjXxR9VL3EF_yjQ==" method="POST">
     <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true" tabindex="-1">
@@ -507,7 +566,7 @@ footer .legal {
   <div class="fine">Kostenfrei. Mit einem Klick abbestellbar.</div>
   <div class="success-state">
     <div class="ok-title">Danke!</div>
-    <div class="ok-text">Bitte bestÃ¤tigen Sie Ihre Anmeldung in der E-Mail.</div>
+    <div class="ok-text">Bitte bestätigen Sie Ihre Anmeldung in der E-Mail.</div>
   </div>
 </aside>
 
@@ -515,12 +574,12 @@ footer .legal {
   <div class="inner">
     <div>
       <div class="brand-foot">Sales <em>Intelligence.</em></div>
-      <p>Das tÃ¤gliche Magazin fÃ¼r KÃ¼nstliche Intelligenz im Vertrieb des deutschen Mittelstands. Eine Plattform fÃ¼r Vertriebsentscheider, Sales Operations und alle, die wissen wollen, was wirklich funktioniert.</p>
+      <p>Das tägliche Magazin für Künstliche Intelligenz im Vertrieb des deutschen Mittelstands. Eine Plattform für Vertriebsentscheider, Sales Operations und alle, die wissen wollen, was wirklich funktioniert.</p>
       <div class="imprint">
         <strong>Herausgeber</strong><br>
-        B77 GmbH Â· Sitz Siegen<br>
+        B77 GmbH · Sitz Siegen<br>
         In Kooperation mit Quoodix<br>
-        Erscheint tÃ¤glich
+        Erscheint täglich
       </div>
     </div>
     <div>
@@ -548,9 +607,9 @@ footer .legal {
     </div>
   </div>
   <div class="legal">
-    <span>Â© 2026 B77 GmbH Â· Siegen Â· Alle Rechte vorbehalten</span>
+    <span>© 2026 B77 GmbH · Siegen · Alle Rechte vorbehalten</span>
     <span>
-      <a href="/#impressum" style="display:inline; padding:0;">Impressum</a> Â·
+      <a href="/#impressum" style="display:inline; padding:0;">Impressum</a> ·
       <a href="/#datenschutz" style="display:inline; padding:0;">Datenschutz</a>
     </span>
   </div>
@@ -572,11 +631,11 @@ async function renderRelated() {
   // Sidebar: 4 most recent (excluding current)
   const sideEl = document.getElementById('side-teasers');
   if (articles.length === 0) {
-    sideEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted);">Mehr BeitrÃ¤ge folgen.</p>';
+    sideEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted);">Mehr Beiträge folgen.</p>';
   } else {
     sideEl.innerHTML = articles.slice(0, 4).map(a => `
       <a class="side-teaser" href="${a.url}">
-        <div class="meta">${a.date_display} Â· ${a.eyebrow || 'Schwerpunkt'}</div>
+        <div class="meta">${a.date_display} · ${a.eyebrow || 'Schwerpunkt'}</div>
         <h4>${a.title}</h4>
       </a>
     `).join('');
@@ -585,14 +644,14 @@ async function renderRelated() {
   // Related grid: 3 articles
   const relEl = document.getElementById('related-grid');
   if (articles.length === 0) {
-    relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere BeitrÃ¤ge.</p>';
+    relEl.innerHTML = '<p style="font-family: var(--serif); font-style: italic; color: var(--muted); grid-column: 1/-1;">Bald folgen weitere Beiträge.</p>';
   } else {
     relEl.innerHTML = articles.slice(0, 3).map(a => {
       const thumb = a.cover_svg || `<svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="450" fill="#FFFFFF"/><text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="11" fill="#0F0F0F" letter-spacing="3" font-weight="600">${(a.eyebrow || 'SCHWERPUNKT').toUpperCase()}</text><text x="40" y="220" font-family="Hanken Grotesk, sans-serif" font-style="italic" font-weight="400" font-size="68" fill="#0F0F0F" letter-spacing="-3">${a.kpi || ''}</text></svg>`;
       return `
         <a class="related-card" href="${a.url}">
           <div class="thumb">${thumb}</div>
-          <div class="meta">${a.date_display} Â· ${a.eyebrow || 'Schwerpunkt'}</div>
+          <div class="meta">${a.date_display} · ${a.eyebrow || 'Schwerpunkt'}</div>
           <h4>${a.title}</h4>
           <p>${a.deck}</p>
         </a>`;
@@ -613,7 +672,7 @@ function submitSideForm(e) {
   e.preventDefault();
   const form = e.target;
   brevoSubmit(form).finally(() => {
-    form.innerHTML = '<div style="font-family: var(--serif); color: var(--ink); padding: 8px 14px; font-style: italic;">Danke! Bitte bestÃ¤tigen Sie Ihre Anmeldung in der E-Mail.</div>';
+    form.innerHTML = '<div style="font-family: var(--serif); color: var(--ink); padding: 8px 14px; font-style: italic;">Danke! Bitte bestätigen Sie Ihre Anmeldung in der E-Mail.</div>';
   });
   return false;
 }

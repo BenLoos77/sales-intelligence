@@ -341,6 +341,65 @@ footer .legal {
 .side-nl button,.nl-widget button{background:var(--accent);color:var(--paper);}
 .side-nl button:hover,.nl-widget button:hover{background:var(--issue);color:var(--paper);}
 </style>
+<style id="b77-brand">
+/* === B_77 Brand-Angleichung: viel Weiß + Neon-Gelb (#FFFF00) + Carbon-Grauschwarz === */
+:root{
+  --ink:#1C1A17;
+  --ink-soft:#33302B;
+  --ink-soft2:#4A4740;
+  --accent:#1C1A17;
+  --issue:#131311;
+  --issue-deep:#232320;
+  --neon:#FFFF00;
+  --carbon:#131311;
+  --carbon-2:#232320;
+}
+/* Aktiver Nav-Unterstrich in Neon-Gelb; aktiver Text bleibt Carbon (lesbar) */
+.main-nav a.active{ color:var(--ink); }
+.main-nav a.active::after{ background:var(--neon); height:3px; bottom:-7px; }
+.main-nav a:hover{ color:var(--ink); }
+/* Primär-CTAs & Subscribe: Neon-Füllung + Carbon-Text (wie Website-Pills) */
+.cta, .side-nl button, .nl-widget button, .nl-strip .form-mini button{
+  background:var(--neon) !important; color:var(--carbon) !important;
+  border-radius:999px; border-color:var(--neon) !important;
+  transition:background .2s ease, color .2s ease;
+}
+.cta:hover, .side-nl button:hover, .nl-widget button:hover, .nl-strip .form-mini button:hover{
+  background:var(--carbon) !important; color:var(--neon) !important;
+}
+/* Hardcodierte Rein-Schwarz-Flächen → Carbon */
+.visual.cream{ background:var(--carbon) !important; }
+
+/* === Carbon-Flächen (wie dunkle Website-Karten) === */
+/* Newsletter-Sektion (volle Breite) dunkel */
+.nl-strip{ background:var(--carbon) !important; color:#F1ECE4; border-radius:22px; }
+.nl-strip .kicker{ color:var(--neon) !important; }
+.nl-strip h3, .nl-strip h3 em{ color:#F1ECE4 !important; }
+.nl-strip p{ color:rgba(241,236,228,.74) !important; }
+.nl-strip .form-mini{ background:var(--carbon-2) !important; border-color:rgba(241,236,228,.18) !important; }
+.nl-strip .form-mini input{ background:transparent !important; color:#F1ECE4 !important; }
+.nl-strip .form-mini input::placeholder{ color:rgba(241,236,228,.5) !important; }
+/* Newsletter-Widget (Popup) dunkel */
+.nl-widget{ background:var(--carbon) !important; color:#F1ECE4; border:1px solid var(--carbon-2); }
+.nl-widget .kicker{ color:var(--neon) !important; }
+.nl-widget .title, .nl-widget .title em{ color:#F1ECE4 !important; }
+.nl-widget .row, .nl-widget form{ background:var(--carbon-2) !important; border:1px solid rgba(241,236,228,.18) !important; border-radius:12px; }
+.nl-widget input{ background:transparent !important; color:#F1ECE4 !important; }
+.nl-widget input::placeholder{ color:rgba(241,236,228,.5) !important; }
+.nl-widget .fine{ color:rgba(241,236,228,.6) !important; }
+.nl-widget .fine a{ color:var(--neon) !important; }
+/* ×-Schließen bleibt neutral, nicht gelb */
+.nl-widget .close{ background:transparent !important; color:#F1ECE4 !important; }
+
+/* === Abgerundete Ecken (neues CI/CD): alle Boxen konsequent === */
+.cover-card, .cover-inner, .nl-widget, .nl-strip,
+.case-tile, .chart-card, .side-card{ border-radius:22px; }
+.art-card .visual, .visual, .thumb{ border-radius:16px; overflow:hidden; }
+.cover-card img, .cover-inner img, .art-card img, .art-card .visual img,
+.thumb img, .case-tile img, .chart-card img, .side-card img, .visual img{ border-radius:inherit; }
+/* Karten-Rahmen: Schwarz → Carbon */
+.art-card .visual{ border-color:var(--carbon) !important; }
+</style>
 </head>
 <body>
 
