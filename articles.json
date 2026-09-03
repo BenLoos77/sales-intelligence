@@ -1,5 +1,19 @@
 [
     {
+        "slug": "ki-preisgestaltung-angebotskalkulation-mittelstand",
+        "date": "2026-09-03",
+        "date_display": "3. September 2026",
+        "iso_date": "2026-09-03T06:00:00+02:00",
+        "url": "/articles/2026-09-03-ki-preisgestaltung-angebotskalkulation-mittelstand.html",
+        "title": "Siebzig Prozent der Kalkulationsfehler, die kein Vertrieb je <em>vor dem Angebot</em> erkennt. Warum KI-gestützte Angebotskalkulation im Mittelstand den folgenreichsten Margenverlust im Angebotsprozess beendet – und warum der Vertriebsleiter die Preisverantwortung trotzdem selbst trägt.",
+        "deck": "Fehlerhafte Kalkulationen kosten den deutschen Mittelstand jährlich Milliarden – nicht durch falsche Listenpreise, sondern durch systematisch unterschätzte Kosten, ignorierte Risikoaufschläge und fehlende Vergleichsdaten im Moment der Angebotserstellung. KI-Systeme können diesen blinden Fleck schließen. Die Entscheidung, welches Angebot abgegeben wird, bleibt Chefsache.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "70 %",
+        "color": "#FFFFFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#FFFFFF\"/><text x=\"40\" y=\"60\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT &#183; 3. SEPTEMBER 2026</text><text x=\"40\" y=\"185\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"90\" fill=\"#0a0a0a\" letter-spacing=\"-3\">70 %</text><text x=\"40\" y=\"220\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">KALKULATIONSFEHLER VOR DEM ANGEBOT</text><line x1=\"40\" y1=\"248\" x2=\"560\" y2=\"248\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"248\" x2=\"120\" y2=\"248\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"293\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Wo Mittelstandsmargen wirklich</text><text x=\"40\" y=\"321\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">verloren gehen – und was KI ändert</text><rect x=\"40\" y=\"338\" width=\"20\" height=\"20\" fill=\"#0F0F0F\"/><text x=\"72\" y=\"354\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">KALKULATION &#183; MARGE &#183; ANGEBOT &#183; KI &#183; MITTELSTAND</text></svg>",
+        "reading_time": "7 Minuten"
+    },
+    {
         "slug": "ki-preisverhandlung-agentic-ai-vertrieb",
         "date": "2026-09-02",
         "date_display": "2. September 2026",
