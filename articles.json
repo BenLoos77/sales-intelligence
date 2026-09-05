@@ -1,5 +1,19 @@
 [
     {
+        "slug": "ki-pipeline-qualitaet-crm-daten",
+        "date": "2026-09-05",
+        "date_display": "5. September 2026",
+        "iso_date": "2026-09-05T06:00:00+02:00",
+        "url": "/articles/2026-09-05-ki-pipeline-qualitaet-crm-daten.html",
+        "title": "Sechzig Prozent der CRM-Einträge, die kein Vertrieb je <em>auf Belastbarkeit prüft</em>. Warum KI-gestützte Datenpflege im Mittelstand den folgenreichsten Steuerungsfehler in der Pipelineführung beendet – und warum der Vertriebsleiter die Datenverantwortung trotzdem selbst trägt.",
+        "deck": "Veraltete Kontakte, doppelte Accounts, fehlende Umsatzfelder: Schlechte CRM-Daten kosten Mittelständler nicht nur Nerven, sondern systematisch Abschlüsse. KI-gestützte Datenqualitätssysteme erkennen, deduplizieren und vervollständigen den Datenstamm in Echtzeit – doch der Vertriebsleiter muss entscheiden, welche Daten überhaupt gepflegt werden sollen.",
+        "eyebrow": "Schwerpunkt",
+        "kpi": "60 %",
+        "color": "#FFFFFF",
+        "cover_svg": "<svg viewBox=\"0 0 600 380\" preserveAspectRatio=\"xMidYMid slice\" width=\"100%\" height=\"100%\"><rect width=\"600\" height=\"380\" fill=\"#FFFFFF\"/><text x=\"40\" y=\"60\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">SCHWERPUNKT &#183; 5. SEPTEMBER 2026</text><text x=\"40\" y=\"185\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-weight=\"900\" font-size=\"90\" fill=\"#0a0a0a\" letter-spacing=\"-3\">60 %</text><text x=\"40\" y=\"220\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#0a0a0a\" letter-spacing=\"2\">CRM-DATENQUALITÄT IM MITTELSTAND</text><line x1=\"40\" y1=\"248\" x2=\"560\" y2=\"248\" stroke=\"#0a0a0a\" opacity=\"0.2\"/><line x1=\"40\" y1=\"248\" x2=\"120\" y2=\"248\" stroke=\"#0a0a0a\" stroke-width=\"2\"/><text x=\"40\" y=\"293\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">Wenn die Pipeline lügt,</text><text x=\"40\" y=\"321\" font-family=\"Hanken Grotesk, sans-serif\" font-style=\"italic\" font-size=\"22\" fill=\"#0a0a0a\">irrt die Steuerung.</text><rect x=\"40\" y=\"338\" width=\"20\" height=\"20\" fill=\"#0F0F0F\"/><text x=\"72\" y=\"354\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#0a0a0a\" letter-spacing=\"3\" font-weight=\"600\">KI &#183; DATENPFLEGE &#183; CRM &#183; B2B-VERTRIEB</text></svg>",
+        "reading_time": "7 Minuten"
+    },
+    {
         "slug": "ki-onboarding-vertrieb-mittelstand",
         "date": "2026-09-04",
         "date_display": "4. September 2026",
