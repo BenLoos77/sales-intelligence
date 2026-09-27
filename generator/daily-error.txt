@@ -5,10 +5,10 @@ Traceback (most recent call last):
   File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 764, in main
     result = render_and_write(data, run_date)
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 598, in render_and_write
-    hero_svg = build_hero_svg(data["hero_svg"], gid, color)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 142, in build_hero_svg
-    big = h.get("big_number", "")
-          ^^^^^
-AttributeError: 'str' object has no attribute 'get'
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 661, in render_and_write
+    build_featured(data, date_display, url),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sales-intelligence/sales-intelligence/generator/generate.py", line 297, in build_featured
+    <textPath href="#circle" startOffset="2%">{svg_text(cov["curved_title"])}</textPath>
+                                                        ~~~^^^^^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
